@@ -10,6 +10,7 @@ import { SidebarBackComponent } from './BackOffice/sidebar-back/sidebar-back.com
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
+
 import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
@@ -24,9 +25,11 @@ import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-
     AllTemplateFrontComponent,
     FooterFrontComponent,
     HeaderFrontComponent,
+
     LoginComponent,
     RegisterComponent,
     AddProjectComponent
+
   ],
   imports: [
     BrowserModule,
