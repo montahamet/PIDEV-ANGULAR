@@ -8,6 +8,5 @@ import { UserService } from './Services/user.service';
 export class AppComponent {
   title = 'PiDevAngular';
 
-  constructor(private userServices: UserService){}
   
 }

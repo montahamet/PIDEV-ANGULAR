@@ -15,7 +15,7 @@ import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 import {  HttpClientModule } from '@angular/common/http';
-import { FindAllUsersComponent } from './backOffice/pages/user/find-all-users/find-all-users.component' ;
+import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
 
 @NgModule({
   declarations: [
