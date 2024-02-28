@@ -6,13 +6,14 @@ import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templ
 
 const routes: Routes = [
   {
-    path:"",
-    component :AllTemplateFrontComponent
+    path: "",
+    component: AllTemplateFrontComponent
   },
   {
-    path:"admin",
-    component :AllTemplatBackComponent
-  }
+    path: "admin",
+    component: AllTemplatBackComponent
+  },
+ 
 ];
 
 @NgModule({
