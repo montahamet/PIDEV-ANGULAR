@@ -1,9 +1,13 @@
-
-<div class="main-content d-flex flex-column hide-sidemenu">
-
-<div class="flex-grow-1"></div>
-        <footer class="footer mt-1">
-            <p>Copyright © 2024 Co Consult. All rights reserved</p>
-        </footer>
-
-</div>
+ <!-- Footer -->
+ <footer class="footer mt-auto">
+    <div class="copyright bg-white">
+      <p>
+        &copy; <span id="copy-year"></span> Copyright Co Consultt by <a class="text-primary" href="http://www.iamabdus.com/" target="_blank" >Abdus</a>.
+      </p>
+    </div>
+    <script>
+        var d = new Date();
+        var year = d.getFullYear();
+        document.getElementById("copy-year").innerHTML = year;
+    </script>
+  </footer>

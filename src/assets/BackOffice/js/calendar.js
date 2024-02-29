@@ -1,105 +1,165 @@
-class Calendar {
-    constructor() {
-        this.monthDiv = document.querySelector('.cal-month__current');
-        this.headDivs = document.querySelectorAll('.cal-head__day');
-        this.bodyDivs = document.querySelectorAll('.cal-body__day');
-        this.nextDiv = document.querySelector('.cal-month__next');
-        this.prevDiv = document.querySelector('.cal-month__previous');
-    }
-    init() {
-        moment.locale(window.navigator.userLanguage || window.navigator.language);
-        this.month = moment();
-        this.today = this.selected = this.month.clone();
-        this.weekDays = moment.weekdaysShort(true);
-        this.headDivs.forEach((day, index) => {
-            day.innerText = this.weekDays[index];
-        });
-        this.nextDiv.addEventListener('click', _ => {
-            this.addMonth();
-        });
-        this.prevDiv.addEventListener('click', _ => {
-            this.removeMonth();
-        });
-        this.bodyDivs.forEach(day => {
-            day.addEventListener('click', e => {
-                const date = +e.target.innerHTML < 10 ? `0${e.target.innerHTML}` : e.target.innerHTML;
-                if (e.target.classList.contains('cal-day__month--next')) {
-                    this.selected = moment(`${this.month.add(1, 'month').format('YYYY-MM')}-${date}`);
-                } else if (e.target.classList.contains('cal-day__month--previous')) {
-                    this.selected = moment(`${this.month.subtract(1, 'month').format('YYYY-MM')}-${date}`);
-                } else {
-                    this.selected = moment(`${this.month.format('YYYY-MM')}-${date}`);
-                }
-                this.update();
-            });
-        });
-        this.update();
-    }
-    update() {
-        this.calendarDays = {
-            first: this.month.clone().startOf('month').startOf('week').date(),
-            last: this.month.clone().endOf('month').date()
-        };
-        this.monthDays = {
-            lastPrevious: this.month.clone().subtract(1, 'months').endOf('month').date(),
-            lastCurrent: this.month.clone().endOf('month').date()
-        };
-        this.monthString = this.month.clone().format('MMMM YYYY');
-        this.draw();
-    }
-    addMonth() {
-        this.month.add(1, 'month');
-        this.update();
-    }
-    removeMonth() {
-        this.month.subtract(1, 'month');
-        this.update();
-    }
-    draw() {
-        this.monthDiv.innerText = this.monthString;
-        let index = 0;
-        if (this.calendarDays.first > 1) {
-            for (let day = this.calendarDays.first; day <= this.monthDays.lastPrevious; index++) {
-                this.bodyDivs[index].innerText = day++;
-                this.cleanCssClasses(false, index);
-                this.bodyDivs[index].classList.add('cal-day__month--previous');
-            }
-        }
-        let isNextMonth = false;
-        for (let day = 1; index <= this.bodyDivs.length - 1; index++) {
-            if (day > this.monthDays.lastCurrent) {
-                day = 1;
-                isNextMonth = true;
-            }
-            this.cleanCssClasses(true, index);
-            if (!isNextMonth) {
-                if (day === this.today.date() && this.today.isSame(this.month, 'day')) {
-                    this.bodyDivs[index].classList.add('cal-day__day--today');
-                }
-                if (day === this.selected.date() && this.selected.isSame(this.month, 'month')) {
-                    this.bodyDivs[index].classList.add('cal-day__day--selected');
-                }
-                this.bodyDivs[index].classList.add('cal-day__month--current');
-            } else {
-                this.bodyDivs[index].classList.add('cal-day__month--next');
-            }
-            this.bodyDivs[index].innerText = day++;
-        }
-    }
-    cleanCssClasses(selected, index) {
-        this.bodyDivs[index].classList.contains('cal-day__month--next') &&
-            this.bodyDivs[index].classList.remove('cal-day__month--next');
-        this.bodyDivs[index].classList.contains('cal-day__month--previous') &&
-            this.bodyDivs[index].classList.remove('cal-day__month--previous');
-        this.bodyDivs[index].classList.contains('cal-day__month--current') &&
-            this.bodyDivs[index].classList.remove('cal-day__month--current');
-        this.bodyDivs[index].classList.contains('cal-day__day--today') &&
-            this.bodyDivs[index].classList.remove('cal-day__day--today');
-        if (selected) {
-            this.bodyDivs[index].classList.contains('cal-day__day--selected') &&
-                this.bodyDivs[index].classList.remove('cal-day__day--selected');
-        }
-    }
-}
-const cal = new Calendar();
-cal.init();
+/**
+ * WEBSITE: https://themefisher.com
+ * TWITTER: https://twitter.com/themefisher
+ * FACEBOOK: https://www.facebook.com/themefisher
+ * GITHUB: https://github.com/themefisher/
+ */
+
+/* ====== Index ======
+
+1. CALENDAR JS
+
+====== End ======*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  var calendarEl = document.getElementById("calendar");
+  var year = new Date().getFullYear();
+  var month = new Date().getMonth() + 1;
+  function n(n) {
+    return n > 9 ? "" + n : "0" + n;
+  }
+  var month = n(month);
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: ["dayGrid"],
+    defaultView: "dayGridMonth",
+
+    eventRender: function (info) {
+      var ntoday = moment().format("YYYYMMDD");
+      var eventStart = moment(info.event.start).format("YYYYMMDD");
+      info.el.setAttribute("title", info.event.extendedProps.description);
+      info.el.setAttribute("data-toggle", "tooltip");
+      if (eventStart < ntoday) {
+        info.el.classList.add("fc-past-event");
+      } else if (eventStart == ntoday) {
+        info.el.classList.add("fc-current-event");
+      } else {
+        info.el.classList.add("fc-future-event");
+      }
+    },
+
+    events: [
+      {
+        title: "All Day Event",
+        description: "description for All Day Event",
+        start: year + "-" + month + "-01",
+      },
+      {
+        title: "First Day Event",
+        description: "description for First Day Event",
+        start: year + "-" + month + "-03",
+      },
+      {
+        title: "Second Day Event",
+        description: "description for Second Day Event",
+        start: year + "-" + month + "-05",
+      },
+      {
+        title: "Long Event",
+        description: "description for Long Event",
+        start: year + "-" + month + "-07",
+        end: year + "-" + month + "-10",
+      },
+      {
+        groupId: "999",
+        title: "Repeating Event",
+        description: "description for Repeating Event",
+        start: year + "-" + month + "-09T16:00:00",
+      },
+      {
+        groupId: "999",
+        title: "Repeating Event",
+        description: "description for Repeating Event",
+        start: year + "-" + month + "-16T16:00:00",
+        end: year + "-" + month + "-16T16:00:00",
+      },
+      {
+        title: "Conference",
+        description: "description for Conference",
+        start: year + "-" + month + "-11",
+        end: year + "-" + month + "-13",
+      },
+      {
+        title: "Meeting",
+        description: "description for Meeting",
+        start: year + "-" + month + "-12T10:30:00",
+        end: year + "-" + month + "-12T12:30:00",
+      },
+      {
+        title: "Lunch",
+        description: "description for Lunch",
+        start: year + "-" + month + "-12T12:00:00",
+        end: year + "-" + month + "-12T12:00:00",
+      },
+      {
+        title: "Meeting",
+        description: "description for Meeting",
+        start: year + "-" + month + "-12T14:30:00",
+        end: year + "-" + month + "-12T14:30:00",
+      },
+      {
+        title: "Birthday Party",
+        description: "description for Birthday Party",
+        start: year + "-" + month + "-13T24:00:00",
+        end: year + "-" + month + "-13T24:00:00",
+      },
+      {
+        title: "Long Event",
+        description: "description for Long Event",
+        start: year + "-" + month + "-20",
+        end: year + "-" + month + "-23",
+      },
+      {
+        groupId: "999",
+        title: "Repeating Event",
+        description: "description for Repeating Event",
+        start: year + "-" + month + "-22T16:00:00",
+      },
+      {
+        title: "Conference",
+        description: "description for Conference",
+        start: year + "-" + month + "-24",
+        end: year + "-" + month + "-27",
+      },
+      {
+        title: "Meeting",
+        description: "description for Meeting",
+        start: year + "-" + month + "-26T10:30:00",
+        end: year + "-" + month + "-26T12:30:00",
+      },
+      {
+        title: "Lunch",
+        description: "description for Lunch",
+        start: year + "-" + month + "-26T12:00:00",
+        end: year + "-" + month + "-26T12:00:00",
+      },
+      {
+        title: "Meeting",
+        description: "description for Meeting",
+        start: year + "-" + month + "-26T14:30:00",
+        end: year + "-" + month + "-26T14:30:00",
+      },
+      {
+        title: "Click for Google",
+        description: "description for Click for Google",
+        url: "http://google.com/",
+        start: year + "-" + month + "-28",
+        end: year + "-" + month + "-28",
+      },
+      {
+        title: "Lunch",
+        description: "description for Lunch",
+        start: year + "-" + month + "-30T12:00:00",
+        end: year + "-" + month + "-31T12:00:00",
+      },
+      {
+        title: "Meeting",
+        description: "description for Meeting",
+        start: year + "-" + month + "-31T14:30:00",
+        end: year + "-" + month + "-31T14:30:00",
+      },
+    ],
+  });
+
+  calendar.render();
+});

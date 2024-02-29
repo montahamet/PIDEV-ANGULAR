@@ -11,6 +11,12 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 
+import { LoginComponent } from './BackOffice/pages/user/login/login.component';
+import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
+import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
+import {  HttpClientModule } from '@angular/common/http';
+import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +26,21 @@ import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.co
     SidebarBackComponent,
     AllTemplateFrontComponent,
     FooterFrontComponent,
-    HeaderFrontComponent
+    HeaderFrontComponent,
+
+    LoginComponent,
+    RegisterComponent,
+    AddProjectComponent,
+    FindAllUsersComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
