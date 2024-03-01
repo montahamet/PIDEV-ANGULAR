@@ -15,7 +15,8 @@ import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 import {  HttpClientModule } from '@angular/common/http';
-import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
+import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component';
+import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component' ;
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/fi
     LoginComponent,
     RegisterComponent,
     AddProjectComponent,
-    FindAllUsersComponent
+    FindAllUsersComponent,
+    FindAllJobOffersComponent
 
   ],
   imports: [
