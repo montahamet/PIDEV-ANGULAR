@@ -1,0 +1,23 @@
+<h1>interviews</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>dateInterview</th>
+            <th>type </th>
+            <th>statusInterview</th>
+            <th>passed</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of interviews ">
+            <td>{{i.dateInterview}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.statusInterview}}</td>
+            <td>{{i.passed}}</td>
+            
+
+        </tr>
+    </tbody>
+</table>

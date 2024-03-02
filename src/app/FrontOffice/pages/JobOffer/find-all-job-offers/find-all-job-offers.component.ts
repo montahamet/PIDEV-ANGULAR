@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JobOffer } from 'src/app/Models/job-offer';
+import { JobOfferService } from 'src/app/Services/job-offer.service';
 
 @Component({
   selector: 'app-find-all-job-offers',
@@ -8,5 +9,14 @@ import { JobOffer } from 'src/app/Models/job-offer';
 })
 export class FindAllJobOffersComponent {
   jobOffers: JobOffer[] = [];
+  constructor(private js:JobOfferService){
+  }
+
+  loadJobOffers(){
+    this.js.findAllJobOffers().subscribe(jobOffers=>this.jobOffers=jobOffers); 
+  }
+  ngOnInit(){
+    this.loadJobOffers();
+  }
 
 }

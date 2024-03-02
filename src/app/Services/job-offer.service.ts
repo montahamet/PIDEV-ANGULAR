@@ -13,6 +13,8 @@ export class JobOfferService {
 
   constructor(private myHttp:HttpClient) { }
   findAllJobOffers():Observable<JobOffer[]>{
-    return this.myHttp.get<JobOffer[]>(this.urlJobOffer+'findAllJobOffers');
-  }
+    return this.myHttp.get<JobOffer[]>(this.urlJobOffer + '/findAllJobOffers');  }
+  addJobOffer(jobOffer:JobOffer):Observable<JobOffer>{
+      return this.myHttp.post<JobOffer>(this.urlJobOffer+ '/addJobOffer',jobOffer);
+    }
 }

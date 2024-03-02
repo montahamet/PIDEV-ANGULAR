@@ -4,9 +4,9 @@ export class JobOffer {
     jobOffer_id!: number;
     titleJobOffer!: string;
     postedDate!: Date;
-    Description!: string;
+    description!: string;
     requiredSkills!: string;
-    Vacancy!: number;
+    vacancy!: number;
     salary!: number;
     jobNature!:JobNature;
 
