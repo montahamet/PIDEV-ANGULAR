@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/Models/user';
+import { User } from 'src/app/Models/User';
 
 @Component({
   selector: 'app-find-all-users',
