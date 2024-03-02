@@ -1,0 +1,4 @@
+export enum StatusCandidacy {
+    PENDING=0,UNDER_REVIEW=1,REJECTERD=2,SELECTED_FOR_INTERVIW=3
+
+}

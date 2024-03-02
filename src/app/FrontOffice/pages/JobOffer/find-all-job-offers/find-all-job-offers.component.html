@@ -1,0 +1,27 @@
+<h1>Job Offers</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>JobTitle</th>
+            <th>Published on</th>
+            <th>Description</th>
+            <th>Required skills</th>
+            <th> Vacancy</th>
+            <th> Salary</th>
+            <th> Job Nature</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let j of jobOffers ">
+            <td>{{j.titleJobOffer}}</td>
+            <td>{{j.postedDate}}</td>
+            <td>{{j.description}}</td>
+            <td>{{j.requiredSkills}}</td>
+            <td>{{j.vacancy}}</td>
+            <td>{{j.salary}}</td>
+            <td>{{j.jobNature}}</td>
+
+        </tr>
+    </tbody>
+</table>
