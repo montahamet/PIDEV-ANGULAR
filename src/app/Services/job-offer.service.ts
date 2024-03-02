@@ -17,4 +17,15 @@ export class JobOfferService {
   addJobOffer(jobOffer:JobOffer):Observable<JobOffer>{
       return this.myHttp.post<JobOffer>(this.urlJobOffer+ '/addJobOffer',jobOffer);
     }
+    getJobOfferById(jobId: number): Observable<JobOffer> {
+      return this.myHttp.get<JobOffer>(`${this.urlJobOffer}/getJobOffer/${jobId}`);
+    }
+  
+    updateJobOffer(jobOffer: JobOffer): Observable<void> {
+      return this.myHttp.put<void>(`${this.urlJobOffer}/updateJobOffer`, jobOffer);
+    }
+  
+    deleteJobOffer(jobId: number): Observable<void> {
+      return this.myHttp.delete<void>(`${this.urlJobOffer}/deleteJobOfferById/${jobId}`);
+    }
 }
