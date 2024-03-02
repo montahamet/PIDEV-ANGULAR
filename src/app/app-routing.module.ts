@@ -6,6 +6,8 @@ import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
+import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
+
 
 import {FindAllUsersComponent} from "./BackOffice/pages/user/find-all-users/find-all-users.component";
 import {RegisterComponent} from "./BackOffice/pages/user/register/register.component";
@@ -120,6 +122,8 @@ const routes: Routes = [
     component: AllTemplateFrontComponent,children:[
       { path: 'addJobOffersfront', component:AddJobOfferComponent },
       { path: 'findAllJobOffersfront', component: FindAllJobOffersComponent },
+      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent }, // New route for updating job offers
+
     ]
   },
   {
