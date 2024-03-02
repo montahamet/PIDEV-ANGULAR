@@ -1,6 +1,6 @@
 <div class="container">
-    <h2>Add Job Offer</h2>
-    <form [formGroup]="jobOfferForm" (ngSubmit)="onSubmit()">
+    <h2>Update Job Offer</h2>
+    <form [formGroup]="jobOfferForm" (ngSubmit)="updateJobOffer()">
       <div class="form-group">
         <label for="titleJobOffer">Job Title:</label>
         <input type="text" class="form-control" id="titleJobOffer" formControlName="titleJobOffer" required>
@@ -59,7 +59,7 @@
         </div>
       </div>
   
-      <button type="submit" class="btn btn-primary" [disabled]="!jobOfferForm.valid">Add</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!jobOfferForm.valid">Update</button>
       <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
     </form>
   </div>
