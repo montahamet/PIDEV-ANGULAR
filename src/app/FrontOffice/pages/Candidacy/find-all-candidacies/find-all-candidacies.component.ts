@@ -9,11 +9,10 @@ import { CandidacyService } from 'src/app/Services/candidacy.service';
 })
 export class FindAllCandidaciesComponent {
   candidacies: Candidacy[] = [];
-  constructor(private c:CandidacyService){
-  }
+  constructor(private c:CandidacyService){}
 
   loadCandidacies(){
-    this.c.findAllCandidacies().subscribe(candidacy=>this.candidacies=candidacy); 
+    this.c.findAllCandidacies().subscribe(candidacy=>this.candidacies=candidacy);
   }
   ngOnInit(){
     this.loadCandidacies();
