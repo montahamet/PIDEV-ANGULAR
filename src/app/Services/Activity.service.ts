@@ -6,7 +6,6 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-//http://localhost:8082/PiDev/Activity-TrainingSession/findAllActivities
 export class ActivityService {
   private ActivityUrl: string = 'http://localhost:8082/PiDev/Activity-TrainingSession/';
 
@@ -16,18 +15,17 @@ export class ActivityService {
     return this.http.get<Activity[]>(this.ActivityUrl + 'findAllActivities');
   }
 
-  findOneActivity(activityId: number): Observable<Activity> {
-    return this.http.get<Activity>(this.ActivityUrl + 'findOneActivity?activity_id=${activityId}');
+  findOneActivity(): Observable<Activity> {
+    return this.http.get<Activity>(this.ActivityUrl + 'findOneActivity');
   }
 
-  UpdateActivity(activity: Activity): Observable<void> {
-    const updateUrl = `${this.ActivityUrl}UpdateActivity/${activity.activity_id}`;
-    return this.http.put<void>(updateUrl, activity);
+  UpdateActivity(activity: Activity): Observable<Activity> {
+    return this.http.put<Activity>(this.ActivityUrl + 'UpdateActivity', activity);
   }
   addActivity(activity: Activity): Observable<Activity> {
     return this.http.post<Activity>(this.ActivityUrl + 'addActivity', activity);
   }
-  deleteActivity(activityId: number) {
-    return this.http.delete(this.ActivityUrl +`/deleteActivity?activity_id=${activityId}`);
+  deleteActivity(Activity_id:number): Observable<void>{
+    return this.http.delete<void>('${this.ActivityUrl}/deleteActivity/${Activity_id}');
   }
 }

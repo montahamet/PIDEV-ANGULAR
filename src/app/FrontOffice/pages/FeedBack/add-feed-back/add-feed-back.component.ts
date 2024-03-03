@@ -5,7 +5,6 @@ import {FeedBack} from "../../../../Models/FeedBack";
 @Component({
   selector: 'app-add-feed-back',
   templateUrl: './add-feed-back.component.html',
-  standalone: true,
   styleUrls: ['./add-feed-back.component.css']
 })
 export class AddFeedBackComponent {
