@@ -22,6 +22,15 @@ import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
+import { AddEventComponent } from './BackOffice/pages/Event/add-event/add-event.component';
+import { UpdateEventComponent } from './BackOffice/pages/Event/update-event/update-event.component';
+import { GetEventComponent } from './BackOffice/pages/Event/get-event/get-event.component';
+import { AddFeedBackComponent } from './BackOffice/pages/FeedBack/add-feed-back/add-feed-back.component';
+import { UpdateFeedBackComponent } from './BackOffice/pages/FeedBack/update-feed-back/update-feed-back.component';
+import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
+import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
+import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
+import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/get-activity.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,25 @@ import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job
     FindAllInterviewsComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-    
+    AddEventComponent,
+    GetEventComponent,
+    UpdateEventComponent,
+    AddFeedBackComponent,
+    GetFeedBackComponent,
+    UpdateFeedBackComponent,
+    AddActivityComponent,
+    GetActivityComponent,
+    UpdateActivityComponent,
+    AddEventComponent,
+    UpdateEventComponent,
+    GetEventComponent,
+    AddFeedBackComponent,
+    UpdateFeedBackComponent,
+    GetFeedBackComponent,
+    AddActivityComponent,
+    UpdateActivityComponent,
+    GetActivityComponent,
+
 
   ],
   imports: [
@@ -51,7 +78,7 @@ import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
-    
+
 
 
   ],
