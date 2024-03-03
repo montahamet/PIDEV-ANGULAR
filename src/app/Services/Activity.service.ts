@@ -25,7 +25,7 @@ export class ActivityService {
   addActivity(activity: Activity): Observable<Activity> {
     return this.http.post<Activity>(this.ActivityUrl + 'addActivity', activity);
   }
-  deleteActivity(Activity_id:number): Observable<void>{
-    return this.http.delete<void>('${this.ActivityUrl}/deleteActivity/${Activity_id}');
+  deleteActivity(Activity_id: number): Observable<void> {
+    return this.http.delete<void>(`${this.ActivityUrl}/deleteActivity/${Activity_id}`);
   }
 }
