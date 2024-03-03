@@ -34,7 +34,6 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
 
 @NgModule({
   declarations: [
-    AppComponent,
     AllTemplatBackComponent,
     FooterBackComponent,
     NavbarBackComponent,
@@ -77,12 +76,12 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    AppComponent
 
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  //bootstrap: [AppComponent]
 })
 export class AppModule { }
