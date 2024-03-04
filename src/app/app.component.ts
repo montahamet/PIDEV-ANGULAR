@@ -15,6 +15,7 @@ import{TrainingSessionService} from "./Services/TrainingSession.service";
 export class AppComponent {
   title = 'PiDevAngular';
 
+
 }
 
 
