@@ -21,8 +21,8 @@ export class FindAllJobOffersComponent {
     this.loadJobOffers();
   }
 
-  updateJobOffer(jobId: number) {
-    this.router.navigate(['/JobOffer/updateJobOffer', jobId]);
+  updateJobOffer(jobOfferId: number) {
+    this.router.navigate(['/JobOffer/updateJobOffer', jobOfferId]);
   }
   deleteJobOffer(jobId: number) {
     if (confirm('Are you sure you want to delete this job offer?')) {

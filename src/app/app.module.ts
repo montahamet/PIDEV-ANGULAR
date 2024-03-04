@@ -23,6 +23,8 @@ import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-a
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { AddInterviewComponent } from './BackOffice/pages/Interview/add-interview/add-interview.component';
+import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
     AddJobOfferComponent,
     UpdateJobOfferComponent,
     HomeFrontComponent,
+    AddInterviewComponent,
+    UpdateInterviewComponent,
     
 
   ],
@@ -52,7 +56,8 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
 
 

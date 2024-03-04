@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Interview } from 'src/app/Models/interview';
 import { InterviewService } from 'src/app/Services/interview.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-find-all-interviews',
@@ -9,14 +10,36 @@ import { InterviewService } from 'src/app/Services/interview.service';
 })
 export class FindAllInterviewsComponent {
   interviews: Interview[] = [];
-  constructor(private i:InterviewService){
+
+  constructor(private interviewService: InterviewService, private router: Router) {
   }
 
-  loadInterviews(){
-    this.i.findAllInterviews().subscribe(interviews=>this.interviews=interviews); 
+  loadInterviews() {
+    this.interviewService.findAllInterviews().subscribe(interviews => this.interviews = interviews);
   }
-  ngOnInit(){
+
+  ngOnInit() {
     this.loadInterviews();
   }
 
+  updateInterview(interviewId: number) {
+    this.router.navigate(['/Interview/updateInterview', interviewId]);
+  }
+  deleteInterview(interviewId: number) {
+    if (confirm('Are you sure you want to delete this interview?')) {
+      this.interviewService.deleteInterview(interviewId).subscribe(
+        () => {
+          console.log('Interview deleted successfully.');
+          alert('Interview deleted successfully.');
+          this.loadInterviews();
+        },
+        error => {
+          console.error('Error deleting interview:', error);
+        }
+      );
+    }
+  }
+  navigateToAddInterview() {
+    this.router.navigate(['/Interview/addInterviewfront']);
+  }
 }

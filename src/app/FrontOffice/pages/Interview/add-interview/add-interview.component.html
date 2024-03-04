@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Add Interview</h2>
+    <form [formGroup]="interviewForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="dateInterview">Date Interview:</label>
+        <input type="date" class="form-control" id="dateInterview" formControlName="dateInterview" required>
+        <div *ngIf="interviewForm.get('dateInterview')?.hasError('required') && interviewForm.get('dateInterview')?.touched">
+          Date Interview is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Interview Type:</label>
+        <select class="form-control" id="type" formControlName="type" required>
+          <option *ngFor="let option of typeInterviewOptions" [value]="option">{{ TypeInterview[option] }}</option>
+        </select>
+        <div *ngIf="interviewForm.get('type')?.hasError('required') && interviewForm.get('type')?.touched">
+          Interview Type is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="statusInterview">Interview Status:</label>
+        <select class="form-control" id="statusInterview" formControlName="statusInterview" required>
+          <option *ngFor="let option of statusInterviewOptions" [value]="option">{{ StatusInterview[option] }}</option>
+        </select>
+        <div *ngIf="interviewForm.get('statusInterview')?.hasError('required') && interviewForm.get('statusInterview')?.touched">
+          Interview Status is required.
+        </div>
+      </div>
+      
+  
+      <div class="form-group">
+        <label for="passed">Passed:</label>
+        <input type="checkbox" class="form-check-input" id="passed" formControlName="passed">
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!interviewForm.valid">Add</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+  
