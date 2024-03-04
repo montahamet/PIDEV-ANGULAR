@@ -1,34 +1,54 @@
-import { Component } from '@angular/core';
-import {Activity} from "../../../../Models/Activity";
-import {ActivityService} from "../../../../Services/Activity.service";
-import {DatePipe} from "@angular/common";
+import { Component, OnInit } from '@angular/core';
+import { Activity } from 'src/app/Models/Activity';
+import { ActivityService } from 'src/app/Services/Activity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-activity',
   templateUrl: './get-activity.component.html',
-  standalone: true,
-  imports: [
-    DatePipe
-  ],
-  styleUrls: ['./get-activity.component.css']
+  styleUrls: ['./get-activity.component.css'],
 })
-export class GetActivityComponent  {
+export class GetActivityComponentFront implements OnInit {
   activities: Activity[] = [];
-  constructor(              private activityService: ActivityService,
-  ){}
-  ngOnInit(): void {
-    this.loadActivities();
-  }
-  loadActivities(): void {
-    this.activityService.findAllActivities().subscribe(
-      (activities) => {
-        console.log('Activities loaded successfully:', activities);
+
+  constructor(private activityServiceF: ActivityService, private router: Router) {}
+
+  loadActivitiesFront(): void {
+    this.activityServiceF.findAllActivities().subscribe(
+      activities => {
         this.activities = activities;
-      },
-      (error) => {
-        console.log('Error loading activities:', error);
+        console.log('Activities:', this.activities);
       }
     );
   }
 
+
+  ngOnInit(): void {
+    this.loadActivitiesFront();
+    console.log('Activities:', this.activities);
+  }
+
+  updateActivity(activity_id: number): void {
+    this.router.navigate([`/Activity/updateactivityF/${activity_id}`]);
+  }
+
+  deleteActivity(activity_id : number): void {
+    console.log('Activity ID:', activity_id );
+    if (confirm('Are you sure you want to delete this activity?')) {
+      this.activityServiceF.deleteActivity(activity_id ).subscribe(
+        () => {
+          console.log('Activity deleted successfully.');
+          alert('Activity deleted successfully.');
+          this.loadActivitiesFront();
+        },
+        error => {
+          console.error('Error deleting activity:', error);
+        }
+      );
+    }
+  }
+
+  navigateToAddActivity(): void {
+    this.router.navigate(['/Activity/AddActivityF']);
+  }
 }
