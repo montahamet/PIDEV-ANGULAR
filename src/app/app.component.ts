@@ -9,19 +9,13 @@ import{TrainingSessionService} from "./Services/TrainingSession.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  standalone: true,
   styleUrls: ['./app.component.css']
 })
 @Injectable({ providedIn: 'root' })
 export class AppComponent {
   title = 'PiDevAngular';
 
-  constructor(private userService: UserService,
-              private eventService: EventService,
-              private activityService : ActivityService,
-              private feedBackService:FeedBackService,
-              private trainingSessionService:TrainingSessionService
-  ){}
+
 }
 
 
