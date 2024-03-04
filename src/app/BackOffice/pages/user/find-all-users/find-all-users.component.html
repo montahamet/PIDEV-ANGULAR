@@ -1,1 +1,22 @@
 <p>find-all-users works!</p>
+<p>user works!</p>
+<h1>USERS</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td> {{user.userId }}</td>
+    <td>{{user.firstname}}</td>
+    <td>{{user.email}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+
