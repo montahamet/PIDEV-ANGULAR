@@ -84,5 +84,9 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
   ],
   providers: [],
   bootstrap: [AppComponent]
+
+
+
+  
 })
 export class AppModule { }
