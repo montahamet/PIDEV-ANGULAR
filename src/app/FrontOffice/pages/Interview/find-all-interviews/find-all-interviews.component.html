@@ -1,4 +1,6 @@
 <h1>interviews</h1>
+<button class="btn btn-success" (click)="navigateToAddInterview()">Add Interview</button>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -6,6 +8,7 @@
             <th>type </th>
             <th>statusInterview</th>
             <th>passed</th>
+            <th>Actions</th>
             
 
         </tr>
@@ -16,7 +19,11 @@
             <td>{{i.type}}</td>
             <td>{{i.statusInterview}}</td>
             <td>{{i.passed}}</td>
-            
+            <td>
+                <button class="btn btn-primary" (click)="updateInterview(i.interview_id)">Update</button>
+                <button class="btn btn-danger" (click)="deleteInterview(i.interview_id)">Delete</button>
+
+            </td>
 
         </tr>
     </tbody>

@@ -8,6 +8,10 @@
           Job Title is required.
         </div>
       </div>
+      <div class="form-group">
+        <label for="postedDate">Posted Date:</label>
+        <input type="text" class="form-control" id="postedDate" formControlName="postedDate" [value]="jobOfferForm.get('postedDate')?.value | date:'medium'" readonly>
+      </div>
   
       <div class="form-group">
         <label for="description">Description:</label>

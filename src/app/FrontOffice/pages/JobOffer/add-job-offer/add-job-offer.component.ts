@@ -13,21 +13,22 @@ import { Location } from '@angular/common';
 export class AddJobOfferComponent {
   jobOfferForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private jobOfferService: JobOfferService,private location: Location) {
+  constructor(private formBuilder: FormBuilder, private jobOfferService: JobOfferService, private location: Location) {
     this.jobOfferForm = this.formBuilder.group({
       titleJobOffer: ['', Validators.required],
+      postedDate: [new Date()] ,
       description: ['', Validators.required],
       requiredSkills: ['', Validators.required],
-      vacancy:  [Validators.required, Validators.min(1)],
+      vacancy: [Validators.required, Validators.min(1)],
       salary: [Validators.required, Validators.min(1)],
-      jobNature: [0, Validators.required], 
+      jobNature: [0, Validators.required],
+      
     });
   }
 
   onSubmit() {
     if (this.jobOfferForm.valid) {
       const jobOffer: JobOffer = this.jobOfferForm.value;
-      jobOffer.postedDate = new Date(); 
       this.jobOfferService.addJobOffer(jobOffer).subscribe(
         (addedJobOffer: JobOffer) => {
           console.log('Job offer added successfully:', addedJobOffer);
@@ -39,7 +40,8 @@ export class AddJobOfferComponent {
       );
     }
   }
+
   cancel() {
-    this.location.back(); 
+    this.location.back();
   }
 }

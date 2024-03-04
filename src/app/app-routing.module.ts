@@ -12,7 +12,9 @@ import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
-
+import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { AddInterviewComponent } from './BackOffice/pages/Interview/add-interview/add-interview.component';
+import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,12 @@ const routes: Routes = [
   {
 
     path: "home",
-    component: AllTemplateFrontComponent
+    component: AllTemplateFrontComponent,
+    children:[
+      {path:"",
+      component:HomeFrontComponent
+    }
+    ]
   },
   {
     path: "admin",
@@ -33,8 +40,15 @@ const routes: Routes = [
       {path:"findall", component:FindAllUsersComponent},
     ]},
 
+{
+    component: AllTemplatBackComponent,
+    children:[{ path: 'JobOffer', component:AllTemplatBackComponent,children:[
+      { path: 'findAllJobOffers', component: FindAllJobOffersComponent },
+      { path: 'addJobOffer', component: AddJobOfferComponent },
+      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent },
+    ] }
 
-    component: AllTemplatBackComponent
+    ]
   },
   
   {
@@ -42,7 +56,7 @@ const routes: Routes = [
     component: AllTemplateFrontComponent,children:[
       { path: 'addJobOffersfront', component:AddJobOfferComponent },
       { path: 'findAllJobOffersfront', component: FindAllJobOffersComponent },
-      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent }, // New route for updating job offers
+      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent },
 
     ]
   },
@@ -51,8 +65,13 @@ const routes: Routes = [
     component: FindAllCandidaciesComponent
   },
   {
-    path: "findAllInterviewsfront",
-    component: FindAllInterviewsComponent
+    path: "Interview",
+    component: AllTemplateFrontComponent,
+    children: [
+      { path: 'findAllInterviewsfront', component: FindAllInterviewsComponent },
+      { path: 'addInterviewfront', component: AddInterviewComponent },
+      { path: 'updateInterview/:id', component: UpdateInterviewComponent }, // Update this line
+    ]
   },
  
 
