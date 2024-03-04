@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/Models/user';
+import { User } from 'src/app/Models/User';
+import {UserService} from "../../../../Services/user.service";
 
 @Component({
   selector: 'app-find-all-users',
@@ -8,5 +9,13 @@ import { User } from 'src/app/Models/user';
 })
 export class FindAllUsersComponent {
   users : User[] = [];
+  constructor(private userService: UserService ){}
+  ngOnInit(){
+    this.loadUsers();
+  }
+  loadUsers(){
+    this.userService.findAllUsers().subscribe(users=>this.users=users);
+
+  }
 
 }

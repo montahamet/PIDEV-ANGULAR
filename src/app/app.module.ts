@@ -16,6 +16,7 @@ import { RegisterComponent } from './BackOffice/pages/user/register/register.com
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/fi
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
 
 
