@@ -12,7 +12,8 @@ export class FindAllCandidaciesComponent {
   constructor(private c:CandidacyService){}
 
   loadCandidacies(){
-    this.c.findAllCandidacies().subscribe(candidacy=>this.candidacies=candidacy);
+    this.c.findAllCandidacies().subscribe(
+      candidacy=>this.candidacies=candidacy);
   }
   ngOnInit(){
     this.loadCandidacies();
