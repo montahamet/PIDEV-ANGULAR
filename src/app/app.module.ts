@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
@@ -9,10 +8,10 @@ import { SidebarBackComponent } from './BackOffice/sidebar-back/sidebar-back.com
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
-
 import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
+
 import {  HttpClientModule } from '@angular/common/http';
 
 
@@ -35,13 +34,17 @@ import { UpdateFeedBackComponent } from './BackOffice/pages/FeedBack/update-feed
 import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
 import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
 import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
-import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/get-activity.component';
-import { AppComponent } from './app.component';
+import {GetActivityComponentBack} from './BackOffice/pages/Activity/get-activity/get-activity.component';
+import {GetActivityComponentFront} from './FrontOffice/pages/Activity/get-activity/get-activity.component';
+import { CommonModule } from "@angular/common";
+import { AppComponent } from "./app.component";
+import {AddActivityComponentFront} from "./FrontOffice/pages/Activity/add-activity/add-activity.component";
+import {UpdateActivityComponentF} from "./FrontOffice/pages/Activity/update-activity/update-activity.component";
+import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     AllTemplatBackComponent,
     FooterBackComponent,
     NavbarBackComponent,
@@ -49,7 +52,6 @@ import { AppComponent } from './app.component';
     AllTemplateFrontComponent,
     FooterFrontComponent,
     HeaderFrontComponent,
-
     LoginComponent,
     RegisterComponent,
     AddProjectComponent,
@@ -64,37 +66,32 @@ import { AppComponent } from './app.component';
     UpdateInterviewComponent,
     
     AddEventComponent,
-    GetEventComponent,
     UpdateEventComponent,
     AddFeedBackComponent,
     GetFeedBackComponent,
     UpdateFeedBackComponent,
     AddActivityComponent,
-    GetActivityComponent,
+    GetActivityComponentBack,
     UpdateActivityComponent,
-    AddEventComponent,
-    UpdateEventComponent,
-    GetEventComponent,
-    AddFeedBackComponent,
-    UpdateFeedBackComponent,
-    GetFeedBackComponent,
-    AddActivityComponent,
-    UpdateActivityComponent,
-    GetActivityComponent,
-
-
+    AppComponent,
+    GetActivityComponentFront,
+    AddActivityComponentFront,
+    UpdateActivityComponentF,
+    GetEventComponentF
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule,
     FormsModule
+
     
 
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // Bootstrap AppComponent here
 })
 export class AppModule { }
