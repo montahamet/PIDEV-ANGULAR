@@ -1,0 +1,31 @@
+<h1>Job Offers</h1>
+<button class="btn btn-success float-right" (click)="navigateToAddJobOffer()">Add Job Offer</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Published on</th>
+            <th>Description</th>
+            <th>Required Skills</th>
+            <th>Vacancy</th>
+            <th>Salary</th>
+            <th>Job Nature</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let j of jobOffers">
+            <td>{{j.titleJobOffer}}</td>
+            <td>{{j.postedDate}}</td>
+            <td>{{j.description}}</td>
+            <td>{{j.requiredSkills}}</td>
+            <td>{{j.vacancy}}</td>
+            <td>{{j.salary}}</td>
+            <td>{{j.jobNature}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="updateJobOffer(j.jobOffer_id)">Update</button>
+                <button class="btn btn-danger" (click)="deleteJobOffer(j.jobOffer_id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
