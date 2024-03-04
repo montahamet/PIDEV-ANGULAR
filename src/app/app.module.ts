@@ -15,6 +15,10 @@ import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 import {  HttpClientModule } from '@angular/common/http';
+
+import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
+import { ReactiveFormsModule } from '@angular/forms';
+
 import  { FormsModule, ReactiveFormsModule } from '@angular/forms' ;
 import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component';
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
@@ -31,6 +35,7 @@ import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/
 import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
 import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
 import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/get-activity.component';
+
 
 @NgModule({
   declarations: [

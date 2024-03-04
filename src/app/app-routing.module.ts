@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
 
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
+
+import {FindAllUsersComponent} from "./BackOffice/pages/user/find-all-users/find-all-users.component";
+import {RegisterComponent} from "./BackOffice/pages/user/register/register.component";
+
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
@@ -10,13 +14,26 @@ import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
 
 
+
 const routes: Routes = [
   {
-    path: "",
+    path: "Register",
+    component: RegisterComponent
+  },
+  {
+
+    path: "home",
     component: AllTemplateFrontComponent
   },
   {
     path: "admin",
+
+    component: AllTemplatBackComponent,
+    children:[
+      {path:"findall", component:FindAllUsersComponent},
+    ]},
+
+
     component: AllTemplatBackComponent
   },
   
@@ -38,6 +55,7 @@ const routes: Routes = [
     component: FindAllInterviewsComponent
   },
  
+
 ];
 
 @NgModule({
