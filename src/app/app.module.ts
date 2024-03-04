@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
 import { NavbarBackComponent } from './BackOffice/navbar-back/navbar-back.component';
@@ -34,7 +35,6 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
 
 @NgModule({
   declarations: [
-    AppComponent,
     AllTemplatBackComponent,
     FooterBackComponent,
     NavbarBackComponent,
@@ -70,6 +70,7 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
     AddActivityComponent,
     UpdateActivityComponent,
     GetActivityComponent,
+    AppComponent,
 
 
   ],
@@ -77,7 +78,8 @@ import { GetActivityComponent } from './BackOffice/pages/Activity/get-activity/g
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
 
 
 
