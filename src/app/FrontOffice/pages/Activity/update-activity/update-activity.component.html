@@ -2,8 +2,8 @@
   <h2>Update Activity</h2>
   <form [formGroup]="activityForm" (ngSubmit)="updateActivity()">
     <div class="form-group">
-      <label for="activityName">Activity Name:</label>
-      <input type="text" class="form-control" id="activityName" formControlName="activity_name" required>
+      <label for="activity_name">Activity Name:</label>
+      <input type="text" class="form-control" id="activity_name" formControlName="activity_name" required>
       <div *ngIf="activityForm.get('activity_name')?.hasError('required') && activityForm.get('activity_name')?.touched">
         Activity Name is required.
       </div>
@@ -23,6 +23,9 @@
       <div *ngIf="activityForm.get('startTime')?.hasError('required') && activityForm.get('startTime')?.touched">
         Start Time is required.
       </div>
+      <div *ngIf="activityForm.hasError('dateRange')">
+        <div class="alert alert-danger">Start time must be before finish time.</div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -31,8 +34,20 @@
       <div *ngIf="activityForm.get('finishTime')?.hasError('required') && activityForm.get('finishTime')?.touched">
         Finish Time is required.
       </div>
+      <div *ngIf="activityForm.hasError('dateRange')">
+        <div class="alert alert-danger">Finish time must be after start time.</div>
+      </div>
     </div>
 
+    <div class="form-group">
+      <label for="event_id">Event:</label>
+      <select class="form-control" id="event_id" formControlName="event_id" required>
+        <option *ngFor="let event of events" [value]="event.event_id">{{ event.event_name }}</option>
+      </select>
+      <div *ngIf="activityForm.get('event_id')?.hasError('required') && activityForm.get('event_id')?.touched">
+        Event is required.
+      </div>
+    </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="!activityForm.valid">Update</button>
     <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>

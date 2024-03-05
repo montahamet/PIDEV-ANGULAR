@@ -12,6 +12,8 @@ import {GetActivityComponentBack} from "./BackOffice/pages/Activity/get-activity
 import {AddActivityComponentFront} from "./FrontOffice/pages/Activity/add-activity/add-activity.component";
 import {UpdateActivityComponentF} from "./FrontOffice/pages/Activity/update-activity/update-activity.component";
 import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.component";
+import {AddEventComponentF} from "./FrontOffice/pages/Event/add-event/add-event.component";
+import {  AddFeedBackComponentF} from "./FrontOffice/pages/FeedBack/add-feed-back/add-feed-back.component";
 
 const routes: Routes = [
   {
@@ -22,13 +24,26 @@ const routes: Routes = [
     path: 'admin',
     component: AllTemplatBackComponent
   },
-
   {
-    path: 'Activity',
+    path:'ActivityB',
+    component: AllTemplatBackComponent,
+    children:[
+      { path: 'allactivitiesB', component: GetActivityComponentBack },
+
+    ]
+  },
+  {
+    path : 'feedback',
+    component : AllTemplateFrontComponent,
+    children:[
+      {path :'add',component: AddFeedBackComponentF}
+    ]
+  },
+  {
+    path: 'ActivityF',
     component: AllTemplateFrontComponent,
     children:[
       { path: 'allactivitiesF', component: GetActivityComponentFront },
-      { path: 'allactivitiesB', component: GetActivityComponentBack },
       { path: 'AddActivityF', component: AddActivityComponentFront },
       {path: 'updateactivityF/:id', component: UpdateActivityComponentF}
     ]
@@ -38,8 +53,8 @@ const routes: Routes = [
     component: AllTemplateFrontComponent,
     children:[
       { path: 'allEventF', component: GetEventComponentF },
+      { path: 'AddEvenF', component: AddEventComponentF },
       // { path: 'allactivitiesB', component: GetActivityComponentBack },
-      // { path: 'AddActivityF', component: AddActivityComponentFront },
       // {path: 'updateactivityF/:id', component: UpdateActivityComponentF}
     ]
   },

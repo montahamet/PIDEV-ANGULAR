@@ -7,7 +7,7 @@ export class Event{
   event_id!: number;
   event_name!: string;
   event_date!: Date;
-  users!: User;
+  users!: User [];
   RegistationEvents!:RegistrationEvent[];
   Activitys!: Activity[];
   FeedBacks!: FeedBack[];

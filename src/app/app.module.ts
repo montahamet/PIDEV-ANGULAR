@@ -22,9 +22,6 @@ import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job
 import { AddEventComponent } from './BackOffice/pages/Event/add-event/add-event.component';
 import { UpdateEventComponent } from './BackOffice/pages/Event/update-event/update-event.component';
 import { GetEventComponent } from './BackOffice/pages/Event/get-event/get-event.component';
-import { AddFeedBackComponent } from './BackOffice/pages/FeedBack/add-feed-back/add-feed-back.component';
-import { UpdateFeedBackComponent } from './BackOffice/pages/FeedBack/update-feed-back/update-feed-back.component';
-import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
 import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
 import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
 import {GetActivityComponentBack} from './BackOffice/pages/Activity/get-activity/get-activity.component';
@@ -34,7 +31,9 @@ import { AppComponent } from "./app.component";
 import {AddActivityComponentFront} from "./FrontOffice/pages/Activity/add-activity/add-activity.component";
 import {UpdateActivityComponentF} from "./FrontOffice/pages/Activity/update-activity/update-activity.component";
 import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.component";
-
+import {AddEventComponentF} from "./FrontOffice/pages/Event/add-event/add-event.component";
+import {AddFeedBackComponentF} from  "./FrontOffice/pages/FeedBack/add-feed-back/add-feed-back.component"
+import {GetFeedBackComponent} from "./BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component";
 @NgModule({
   declarations: [
     AllTemplatBackComponent,
@@ -53,11 +52,7 @@ import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.
     FindAllInterviewsComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-    AddEventComponent,
     UpdateEventComponent,
-    AddFeedBackComponent,
-    GetFeedBackComponent,
-    UpdateFeedBackComponent,
     AddActivityComponent,
     GetActivityComponentBack,
     UpdateActivityComponent,
@@ -65,7 +60,7 @@ import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.
     GetActivityComponentFront,
     AddActivityComponentFront,
     UpdateActivityComponentF,
-    GetEventComponentF
+    GetEventComponentF,AddEventComponentF,AddFeedBackComponentF,GetFeedBackComponent
   ],
   imports: [
     BrowserModule,

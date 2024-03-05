@@ -7,5 +7,7 @@ export class Activity{
   startTime!: Date;
   finishTime!: Date;
   event!:Event;
+  event_id!: number;
+  event_name!: string;
 
 }

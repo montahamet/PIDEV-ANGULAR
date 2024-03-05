@@ -29,7 +29,7 @@ export class GetActivityComponentFront implements OnInit {
   }
 
   updateActivity(activity_id: number): void {
-    this.router.navigate([`/Activity/updateactivityF/${activity_id}`]);
+    this.router.navigate([`/ActivityF/updateactivityF/${activity_id}`]);
   }
 
   deleteActivity(activity_id : number): void {
@@ -49,6 +49,6 @@ export class GetActivityComponentFront implements OnInit {
   }
 
   navigateToAddActivity(): void {
-    this.router.navigate(['/Activity/AddActivityF']);
+    this.router.navigate(['/ActivityF/AddActivityF']);
   }
 }
