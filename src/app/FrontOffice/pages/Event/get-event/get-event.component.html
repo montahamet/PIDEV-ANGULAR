@@ -1,55 +1,40 @@
-<div class="container">
-  <button class="btn btn-success float-right" (click)="navigateToAddEvent()">Ajouter un événement</button>
-  <table class="table table-striped mt-3">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nom de l'événement</th>
-      <th scope="col">Date de l'événement</th>
-      <th scope="col">Utilisateurs associés</th>
-      <th scope="col">Activités associées</th>
-      <th scope="col">Inscriptions associées</th>
-      <th scope="col">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let event of events">
-      <td>{{ event.event_name }}</td>
-      <td>{{ event.event_date }}</td>
-      <td>
-        <ng-container *ngIf="event.users && event.users.length > 0; else noUser">
-            <span *ngFor="let user of event.users">
-              {{ user.firstname }} {{ user.lastname }}<br>
-            </span>
-        </ng-container>
-        <ng-template #noUser>
-          Aucun utilisateur
-        </ng-template>
-      </td>
-      <td>
-        <ng-container *ngIf="event.Activitys && event.Activitys.length > 0; else noActivity">
-            <span *ngFor="let activity of event.Activitys">
-              {{ activity.activity_name }}<br>
-            </span>
-        </ng-container>
-        <ng-template #noActivity>
-          Aucune activité
-        </ng-template>
-      </td>
-      <td>
-        <ng-container *ngIf="event.RegistationEvents && event.RegistationEvents.length > 0; else noRegistration">
-            <span *ngFor="let registration of event.RegistationEvents">
-              {{ registration.registrationE_id }}<br>
-            </span>
-        </ng-container>
-        <ng-template #noRegistration>
-          Aucune inscription
-        </ng-template>
-      </td>
-      <td>
-        <button class="btn btn-primary mr-2" (click)="updateEvent(event.event_id)">Modifier</button>
-        <button class="btn btn-danger" (click)="deleteEvent(event.event_id)">Supprimer</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Event Name</th>
+    <th>Event Date</th>
+    <th>Related Users</th>
+    <th>Related Activities</th>
+    <th>Related Registrations</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of events">
+    <td>{{ event.event_name }}</td>
+    <td>{{ event.event_date }}</td>
+    <select *ngIf="event.users"> <!-- Vérifiez simplement si l'utilisateur est défini -->
+      <option>{{ event.users.firstname }}</option>
+      <option>{{ event.users.lastname }}</option>
+
+    </select>
+    <span *ngIf="!event.users">No user</span>
+    <td>
+      <select *ngIf="event.Activitys">
+        <option *ngFor="let activity of event.Activitys">{{ activity.activity_name }}</option>
+      </select>
+      <span *ngIf="!event.Activitys">No activities</span>
+    </td>
+    <td>
+      <select *ngIf="event.RegistationEvents">
+        <option *ngFor="let registration of event.RegistationEvents">{{ registration.registrationE_id }}</option>
+      </select>
+      <span *ngIf="!event.RegistationEvents">No registrations</span>
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="updateEvent(event.event_id)">Update</button>
+      <button class="btn btn-danger" (click)="deleteEvent(event.event_id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

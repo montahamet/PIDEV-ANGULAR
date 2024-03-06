@@ -8,10 +8,24 @@ import { Observable } from 'rxjs';
 })
 export class InterviewService {
 
-  urlIntrview : string = "http://localhost:8082/PiDev/Interview";
+  urlIntrview: string = "http://localhost:8082/PiDev/Interview";
 
 
-  constructor(private myHttp:HttpClient) { }
-  findAllInterviews():Observable<Interview[]>{
-    return this.myHttp.get<Interview[]>(this.urlIntrview + '/findAllInterviews');  }
+  constructor(private myHttp: HttpClient) { }
+  findAllInterviews(): Observable<Interview[]> {
+    return this.myHttp.get<Interview[]>(this.urlIntrview + '/findAllInterviews');
+  }
+  addInterview(interview: Interview): Observable<Interview> {
+    return this.myHttp.post<Interview>(this.urlIntrview + '/addInterview', interview);
+  }
+  getInterview(id: number): Observable<Interview> {
+    return this.myHttp.get<Interview>(`${this.urlIntrview}/getInterview/${id}`);
+  }
+
+  updateInterview(id: Interview): Observable<void> {
+    return this.myHttp.put<void>(`${this.urlIntrview}/updateInterview`, id);
+  }
+  deleteInterview(id: number): Observable<void> {
+    return this.myHttp.delete<void>(`${this.urlIntrview}/deleteInterviewById/${id}`);
+  }
 }

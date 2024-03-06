@@ -49,6 +49,6 @@ export class GetActivityComponentFront implements OnInit {
   }
 
   navigateToAddActivity(): void {
-    this.router.navigate(['/ActivityF/AddActivityF']);
+    this.router.navigate(['/Activity/AddActivityF']);
   }
 }

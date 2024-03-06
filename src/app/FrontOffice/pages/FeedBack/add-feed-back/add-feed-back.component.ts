@@ -9,29 +9,24 @@ import { FeedBack } from '../../../../Models/FeedBack';
 })
 export class AddFeedBackComponentF {
   feedbackForm!: FormGroup;
-  feedback: FeedBack = new FeedBack(); // Déclarez la propriété feedback
+  feedback: FeedBack = new FeedBack();
 
   constructor(private formBuilder: FormBuilder) {
-    this.createForm(); // Initialisez le formulaire dans le constructeur
+    this.createForm();
   }
-
-  // Fonction pour créer le formulaire avec les contrôles de saisie
   createForm() {
     this.feedbackForm = this.formBuilder.group({
-      description: ['', Validators.required], // Champ de description avec validation requise
-      note: ['', Validators.required], // Champ de note avec validation requise
-      user: ['', Validators.required], // Champ d'utilisateur avec validation requise
-      event: ['', Validators.required], // Champ d'événement avec validation requise
-      trainingsession: ['', Validators.required] // Champ de session de formation avec validation requise
+      description: ['', Validators.required],
+      note: ['', Validators.required],
+      user: ['', Validators.required],
+      event: ['', Validators.required],
+      trainingsession: ['', Validators.required]
     });
   }
 
-  // Fonction pour soumettre le formulaire
   onSubmit() {
-    if (this.feedbackForm.valid) { // Vérifiez si le formulaire est valide avant de soumettre
-      // Soumettre le formulaire ici
+    if (this.feedbackForm.valid) {
     } else {
-      // Marquez tous les champs du formulaire comme touchés pour afficher les messages d'erreur
       Object.values(this.feedbackForm.controls).forEach(control => {
         control.markAsTouched();
       });

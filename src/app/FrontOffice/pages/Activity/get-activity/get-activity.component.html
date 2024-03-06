@@ -17,11 +17,11 @@
     <td>{{ activity.finishTime }}</td>
     <td *ngIf="activity.event_id">{{ activity.event_id }}</td>
     <td *ngIf="!activity.event_id">No Event</td> <!-- Fallback si l'événement est null -->
+
     <td>
       <button class="btn btn-primary" (click)="updateActivity(activity.activity_id)">Update</button>
       <button class="btn btn-danger" (click)="deleteActivity(activity.activity_id)">Delete</button>
     </td>
   </tr>
-
   </tbody>
 </table>

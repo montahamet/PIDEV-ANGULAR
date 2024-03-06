@@ -44,13 +44,13 @@ export class AddActivityComponentFront implements OnInit {
   onSubmit() {
     if (this.activityForm.valid) {
       const activity: Activity = this.activityForm.value;
-      console.log(activity);
       this.activityService.addActivity(activity).subscribe(
         (addedActivity: Activity) => {
           console.log('Activity added successfully:', addedActivity);
           alert('Activity added successfully!');
           this.router.navigate(['/ActivityF/allactivitiesF']);
           },
+
         error => {
           console.error('Error adding activity:', error);
         }

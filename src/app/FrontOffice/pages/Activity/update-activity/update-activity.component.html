@@ -4,6 +4,7 @@
     <div class="form-group">
       <label for="activity_name">Activity Name:</label>
       <input type="text" class="form-control" id="activity_name" formControlName="activity_name" required>
+
       <div *ngIf="activityForm.get('activity_name')?.hasError('required') && activityForm.get('activity_name')?.touched">
         Activity Name is required.
       </div>
@@ -26,6 +27,7 @@
       <div *ngIf="activityForm.hasError('dateRange')">
         <div class="alert alert-danger">Start time must be before finish time.</div>
       </div>
+
     </div>
 
     <div class="form-group">
@@ -48,6 +50,7 @@
         Event is required.
       </div>
     </div>
+
 
     <button type="submit" class="btn btn-primary" [disabled]="!activityForm.valid">Update</button>
     <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>

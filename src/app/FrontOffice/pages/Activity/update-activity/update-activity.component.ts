@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Activity } from 'src/app/Models/Activity';
 import { Event } from 'src/app/Models/Event';
+
 import { ActivityService } from 'src/app/Services/Activity.service';
 import { Location } from '@angular/common';
 
@@ -16,6 +17,7 @@ export class UpdateActivityComponentF implements OnInit {
   activity: Activity = new Activity();
   events: Event[] = [];
 
+
   constructor(
     private formBuilder: FormBuilder,
     private activityService: ActivityService,
@@ -28,8 +30,9 @@ export class UpdateActivityComponentF implements OnInit {
       description: ['', Validators.required],
       startTime: ['', Validators.required],
       finishTime: ['', Validators.required],
-      event_id: ['', Validators.required]
-    }, { validators: this.dateRangeValidator });
+      event_id: ['', Validators.required]},
+      { validators: this.dateRangeValidator });
+
   }
 
   ngOnInit() {
@@ -58,6 +61,7 @@ export class UpdateActivityComponentF implements OnInit {
           startTime: activity.startTime,
           finishTime: activity.finishTime,
           event_id: activity.event_id
+
         });
       },
       error => {
@@ -86,6 +90,7 @@ export class UpdateActivityComponentF implements OnInit {
           console.log('Activity updated successfully.');
           alert('Activity updated successfully.');
           this.router.navigate(['/ActivityF/allactivitiesF']);
+
         },
         error => {
           console.error('Error updating activity:', error);

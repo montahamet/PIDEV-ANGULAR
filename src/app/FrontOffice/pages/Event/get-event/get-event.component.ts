@@ -49,6 +49,7 @@ export class GetEventComponentF implements OnInit {
     }
   }
 
+
   updateEvent(event_id: number): void {
     this.router.navigate([`/Event/updateeventF/${event_id}`]);
   }
@@ -82,6 +83,7 @@ export class GetEventComponentF implements OnInit {
       }
     );
   }
+
   loadRelatedData(event: Event): void {
     this.eventService.getRelatedUsers(event.event_id).subscribe(
       (users: User[]) => {
@@ -97,6 +99,7 @@ export class GetEventComponentF implements OnInit {
     this.eventService.getRelatedActivities(event.event_id).subscribe(
       (activities: Activity[]) => {
         event.Activitys = activities;
+
       },
       (error: any) => {
         console.error('Error loading related activities:', error);
@@ -106,6 +109,7 @@ export class GetEventComponentF implements OnInit {
     this.eventService.getRelatedRegistrations(event.event_id).subscribe(
       (registrations: RegistrationEvent[]) => {
         event.RegistationEvents = registrations;
+
       },
       (error: any) => {
         console.error('Error loading related registrations:', error);
@@ -115,5 +119,6 @@ export class GetEventComponentF implements OnInit {
 
   navigateToAddEvent(): void {
     this.router.navigate(['/Event/AddEvenF']);
+
   }
 }
