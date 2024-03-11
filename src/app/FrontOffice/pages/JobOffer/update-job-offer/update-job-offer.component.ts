@@ -26,9 +26,13 @@ export class UpdateJobOfferComponent implements OnInit {
       titleJobOffer: ['', Validators.required],
       description: ['', Validators.required],
       requiredSkills: ['', Validators.required],
+      experience: ['', Validators.required],
+      jobLocation: ['', Validators.required],
+      applicationDeadLine: ['', Validators.required],
       vacancy: [Validators.required, Validators.min(1)],
-      salary: [Validators.required, Validators.min(1)],
-      jobNature: [0, Validators.required], 
+      minsalary: [Validators.required, Validators.min(1)],
+      maxsalary: [Validators.required, Validators.min(1)],
+      jobNature: [0, Validators.required],
     });
   }
 
@@ -47,14 +51,18 @@ export class UpdateJobOfferComponent implements OnInit {
           titleJobOffer: jobOffer.titleJobOffer,
           description: jobOffer.description,
           requiredSkills: jobOffer.requiredSkills,
+          experience: jobOffer.experience,
+          jobLocation: jobOffer.jobLocation,
+          applicationDeadLine: jobOffer.applicationDeadLine,
           vacancy: jobOffer.vacancy,
-          salary: jobOffer.salary,
+          minsalary: jobOffer.minsalary,
+          maxsalary: jobOffer.maxsalary,
           jobNature: jobOffer.jobNature
         });
       },
       error => {
         console.error('Error loading job offer:', error);
-        
+
       }
     );
   }
@@ -62,7 +70,7 @@ export class UpdateJobOfferComponent implements OnInit {
   updateJobOffer() {
     if (this.jobOfferForm.valid) {
       const updatedJobOffer: JobOffer = this.jobOfferForm.value;
-      updatedJobOffer.jobOffer_id = this.jobOffer.jobOffer_id; 
+      updatedJobOffer.jobOffer_id = this.jobOffer.jobOffer_id;
       this.jobOfferService.updateJobOffer(updatedJobOffer).subscribe(
         () => {
           console.log('Job offer updated successfully.');
@@ -75,8 +83,8 @@ export class UpdateJobOfferComponent implements OnInit {
       );
     }
   }
-  
+
   cancel() {
-    this.location.back(); 
+    this.location.back();
   }
 }

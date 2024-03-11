@@ -8,11 +8,7 @@
           Job Title is required.
         </div>
       </div>
-      <div class="form-group">
-        <label for="postedDate">Posted Date:</label>
-        <input type="text" class="form-control" id="postedDate" formControlName="postedDate" [value]="jobOfferForm.get('postedDate')?.value | date:'medium'" readonly>
-      </div>
-  
+
       <div class="form-group">
         <label for="description">Description:</label>
         <textarea class="form-control" id="description" formControlName="description" required></textarea>
@@ -20,7 +16,7 @@
           Description is required.
         </div>
       </div>
-  
+
       <div class="form-group">
         <label for="requiredSkills">Required Skills:</label>
         <input type="text" class="form-control" id="requiredSkills" formControlName="requiredSkills" required>
@@ -28,7 +24,21 @@
           Required Skills are required.
         </div>
       </div>
-  
+      <div class="form-group">
+        <label for="experience">Eperience:</label>
+        <textarea class="form-control" id="experience" formControlName="experience" required></textarea>
+        <div *ngIf="jobOfferForm.get('experience')?.hasError('required') && jobOfferForm.get('experience')?.touched">
+          Experience is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jobLocation">Job Location:</label>
+        <textarea class="form-control" id="jobLocation" formControlName="jobLocation" required></textarea>
+        <div *ngIf="jobOfferForm.get('jobLocation')?.hasError('required') && jobOfferForm.get('jobLocation')?.touched">
+          Job Location is required.
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="vacancy">Vacancy:</label>
         <input type="number" class="form-control" id="vacancy" formControlName="vacancy" required>
@@ -39,18 +49,28 @@
           Vacancy cannot be negative.
         </div>
       </div>
-  
+
       <div class="form-group">
-        <label for="salary">Salary:</label>
-        <input type="number" class="form-control" id="salary" formControlName="salary" required>
-        <div *ngIf="jobOfferForm.get('salary')?.hasError('required') && jobOfferForm.get('salary')?.touched">
-          Salary is required.
+        <label for="minsalary">Min salary:</label>
+        <input type="number" class="form-control" id="minsalary" formControlName="minsalary" required>
+        <div *ngIf="jobOfferForm.get('minsalary')?.hasError('required') && jobOfferForm.get('minsalary')?.touched">
+          minsalary is required.
         </div>
-        <div *ngIf="jobOfferForm.get('salary')?.hasError('min') && jobOfferForm.get('salary')?.touched">
-          Salary cannot be negative.
+        <div *ngIf="jobOfferForm.get('minsalary')?.hasError('min') && jobOfferForm.get('minsalary')?.touched">
+          minsalary cannot be negative.
         </div>
       </div>
-  
+      <div class="form-group">
+        <label for="maxsalary">Max salary:</label>
+        <input type="number" class="form-control" id="maxsalary" formControlName="maxsalary" required>
+        <div *ngIf="jobOfferForm.get('maxsalary')?.hasError('required') && jobOfferForm.get('maxsalary')?.touched">
+          maxsalary is required.
+        </div>
+        <div *ngIf="jobOfferForm.get('maxsalary')?.hasError('min') && jobOfferForm.get('maxsalary')?.touched">
+          maxsalary cannot be negative.
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="jobNature">Job Nature:</label>
         <select class="form-control" id="jobNature" formControlName="jobNature" required>
@@ -62,9 +82,15 @@
           Job Nature is required.
         </div>
       </div>
-  
+      <div class="form-group">
+        <label for="applicationDeadLine">Application Deadline Date and Time:</label>
+        <input type="datetime-local" class="form-control" formControlName="applicationDeadLine" required>
+        <div *ngIf="jobOfferForm.get('applicationDeadLine')?.hasError('required') && jobOfferForm.get('applicationDeadLine')?.touched">
+          Application Deadline and Time are required.
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-primary" [disabled]="!jobOfferForm.valid">Add</button>
       <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
     </form>
   </div>
-  

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Interview } from 'src/app/Models/interview';
-import { StatusInterview } from 'src/app/Models/status-interview';
-import { TypeInterview } from 'src/app/Models/type-interview';
 import { InterviewService } from 'src/app/Services/interview.service';
 import { Location } from '@angular/common';
 
@@ -13,23 +12,26 @@ import { Location } from '@angular/common';
 })
 export class AddInterviewComponent {
   interviewForm: FormGroup;
-  statusInterviewOptions = Object.values(StatusInterview).filter(value => typeof value === 'number');
-  typeInterviewOptions = Object.values(TypeInterview).filter(value => typeof value === 'number');
 
-  constructor(private formBuilder: FormBuilder, private interviewService: InterviewService, private location: Location) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private interviewService: InterviewService,
+    private location: Location
+  ) {
     this.interviewForm = this.formBuilder.group({
       dateInterview: ['', Validators.required],
-      type: ['', Validators.required],
-      statusInterview: ['', Validators.required],
+      type: [0, Validators.required],
+      statusInterview: [0, Validators.required],
       passed: [false, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.interviewForm.valid) {
-      const interview = this.interviewForm.value;
+      const interview: Interview = this.interviewForm.value;
+      // Additional logic if needed
       this.interviewService.addInterview(interview).subscribe(
-        (addedInterview) => {
+        (addedInterview: Interview) => {
           console.log('Interview added successfully:', addedInterview);
           alert('Interview added successfully!');
         },

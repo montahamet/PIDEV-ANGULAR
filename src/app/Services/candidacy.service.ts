@@ -7,10 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CandidacyService {
-  urlCandidacy: string = "http://localhost:8082/PiDev/Candidacy";
+  urlCandidacy: string = "http://localhost:8082/PiDev/candidacy";
 
 findAllCandidacies(): Observable<Candidacy[]> {
   return this.myHttp.get<Candidacy[]>(this.urlCandidacy + '/findAllCandidacies');
+}
+addInterview(candidacy: Candidacy): Observable<Candidacy> {
+  return this.myHttp.post<Candidacy>(this.urlCandidacy + '/addCandidacy', candidacy);
 }
 
   constructor(private myHttp:HttpClient) { }
