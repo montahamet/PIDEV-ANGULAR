@@ -12,6 +12,7 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
 import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
+import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
 
 
 const routes: Routes = [
@@ -28,14 +29,15 @@ const routes: Routes = [
     path: "admin",
     component: AllTemplatBackComponent
   },
-  
+
   {
     path: "JobOffer",
     component: AllTemplateFrontComponent,children:[
       { path: 'addJobOffersfront', component:AddJobOfferComponent },
       { path: 'job-offer-details/:id', component: JobOfferDetailsComponent },
       { path: 'findAllJobOffersfront', component: FindAllJobOffersComponent },
-      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent }, 
+      { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent },
+      { path: 'wishlist', component: WishlistComponent },
 
 
     ]
@@ -52,10 +54,10 @@ const routes: Routes = [
     children: [
       { path: 'findAllInterviewsfront', component: FindAllInterviewsComponent },
       { path: 'addInterviewfront', component: AddInterviewComponent },
-      { path: 'updateInterview/:id', component: UpdateInterviewComponent }, 
+      { path: 'updateInterview/:id', component: UpdateInterviewComponent },
     ]
   },
- 
+
 ];
 
 @NgModule({
