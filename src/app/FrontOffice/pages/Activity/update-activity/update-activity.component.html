@@ -1,1 +1,40 @@
-<p>update-activity works!</p>
+<div class="container">
+  <h2>Update Activity</h2>
+  <form [formGroup]="activityForm" (ngSubmit)="updateActivity()">
+    <div class="form-group">
+      <label for="activityName">Activity Name:</label>
+      <input type="text" class="form-control" id="activityName" formControlName="activity_name" required>
+      <div *ngIf="activityForm.get('activity_name')?.hasError('required') && activityForm.get('activity_name')?.touched">
+        Activity Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+      <div *ngIf="activityForm.get('description')?.hasError('required') && activityForm.get('description')?.touched">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start Time:</label>
+      <input type="datetime-local" class="form-control" id="startTime" formControlName="startTime" required>
+      <div *ngIf="activityForm.get('startTime')?.hasError('required') && activityForm.get('startTime')?.touched">
+        Start Time is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="finishTime">Finish Time:</label>
+      <input type="datetime-local" class="form-control" id="finishTime" formControlName="finishTime" required>
+      <div *ngIf="activityForm.get('finishTime')?.hasError('required') && activityForm.get('finishTime')?.touched">
+        Finish Time is required.
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="!activityForm.valid">Update</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+  </form>
+</div>

@@ -1,8 +1,8 @@
 import {Event} from "./Event";
 
 export class Activity{
-  Activity_id! : number ;
-  Activity_name! : string;
+  activity_id ! : number ;
+  activity_name! : string;
   description! : string;
   startTime!: Date;
   finishTime!: Date;
