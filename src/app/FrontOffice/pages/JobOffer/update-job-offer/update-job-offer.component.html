@@ -1,65 +1,96 @@
 <div class="container">
-  <h2>Update Job Offer</h2>
-  <form [formGroup]="jobOfferForm" (ngSubmit)="updateJobOffer()">
-    <div class="form-group">
-      <label for="titleJobOffer">Job Title:</label>
-      <input type="text" class="form-control" id="titleJobOffer" formControlName="titleJobOffer" required>
-      <div *ngIf="jobOfferForm.get('titleJobOffer')?.hasError('required') && jobOfferForm.get('titleJobOffer')?.touched">
-        Job Title is required.
+    <h2>Update Job Offer</h2>
+    <form [formGroup]="jobOfferForm" (ngSubmit)="updateJobOffer()">
+      <div class="form-group">
+        <label for="titleJobOffer">Job Title:</label>
+        <input type="text" class="form-control" id="titleJobOffer" formControlName="titleJobOffer" required>
+        <div *ngIf="jobOfferForm.get('titleJobOffer')?.hasError('required') && jobOfferForm.get('titleJobOffer')?.touched">
+          Job Title is required.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea class="form-control" id="description" formControlName="description" required></textarea>
-      <div *ngIf="jobOfferForm.get('description')?.hasError('required') && jobOfferForm.get('description')?.touched">
-        Description is required.
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" formControlName="description" required></textarea>
+        <div *ngIf="jobOfferForm.get('description')?.hasError('required') && jobOfferForm.get('description')?.touched">
+          Description is required.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="requiredSkills">Required Skills:</label>
-      <input type="text" class="form-control" id="requiredSkills" formControlName="requiredSkills" required>
-      <div *ngIf="jobOfferForm.get('requiredSkills')?.hasError('required') && jobOfferForm.get('requiredSkills')?.touched">
-        Required Skills are required.
+      <div class="form-group">
+        <label for="requiredSkills">Required Skills:</label>
+        <input type="text" class="form-control" id="requiredSkills" formControlName="requiredSkills" required>
+        <div *ngIf="jobOfferForm.get('requiredSkills')?.hasError('required') && jobOfferForm.get('requiredSkills')?.touched">
+          Required Skills are required.
+        </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="experience">Eperience:</label>
+        <textarea class="form-control" id="experience" formControlName="experience" required></textarea>
+        <div *ngIf="jobOfferForm.get('experience')?.hasError('required') && jobOfferForm.get('experience')?.touched">
+          Experience is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jobLocation">Job Location:</label>
+        <textarea class="form-control" id="jobLocation" formControlName="jobLocation" required></textarea>
+        <div *ngIf="jobOfferForm.get('jobLocation')?.hasError('required') && jobOfferForm.get('jobLocation')?.touched">
+          Job Location is required.
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="vacancy">Vacancy:</label>
-      <input type="number" class="form-control" id="vacancy" formControlName="vacancy" required>
-      <div *ngIf="jobOfferForm.get('vacancy')?.hasError('required') && jobOfferForm.get('vacancy')?.touched">
-        Vacancy is required.
+      <div class="form-group">
+        <label for="vacancy">Vacancy:</label>
+        <input type="number" class="form-control" id="vacancy" formControlName="vacancy" required>
+        <div *ngIf="jobOfferForm.get('vacancy')?.hasError('required') && jobOfferForm.get('vacancy')?.touched">
+          Vacancy is required.
+        </div>
+        <div *ngIf="jobOfferForm.get('vacancy')?.hasError('min') && jobOfferForm.get('vacancy')?.touched">
+          Vacancy cannot be negative.
+        </div>
       </div>
-      <div *ngIf="jobOfferForm.get('vacancy')?.hasError('min') && jobOfferForm.get('vacancy')?.touched">
-        Vacancy cannot be negative.
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="salary">Salary:</label>
-      <input type="number" class="form-control" id="salary" formControlName="salary" required>
-      <div *ngIf="jobOfferForm.get('salary')?.hasError('required') && jobOfferForm.get('salary')?.touched">
-        Salary is required.
+      <div class="form-group">
+        <label for="minsalary">Min salary:</label>
+        <input type="number" class="form-control" id="minsalary" formControlName="minsalary" required>
+        <div *ngIf="jobOfferForm.get('minsalary')?.hasError('required') && jobOfferForm.get('minsalary')?.touched">
+          min salary is required.
+        </div>
+        <div *ngIf="jobOfferForm.get('minsalary')?.hasError('min') && jobOfferForm.get('minsalary')?.touched">
+          min salary cannot be negative.
+        </div>
       </div>
-      <div *ngIf="jobOfferForm.get('salary')?.hasError('min') && jobOfferForm.get('salary')?.touched">
-        Salary cannot be negative.
+      <div class="form-group">
+        <label for="maxsalary">Max salary:</label>
+        <input type="number" class="form-control" id="maxsalary" formControlName="maxsalary" required>
+        <div *ngIf="jobOfferForm.get('maxsalary')?.hasError('required') && jobOfferForm.get('maxsalary')?.touched">
+          max salary is required.
+        </div>
+        <div *ngIf="jobOfferForm.get('maxsalary')?.hasError('max') && jobOfferForm.get('maxsalary')?.touched">
+          max salary cannot be negative.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="jobNature">Job Nature:</label>
-      <select class="form-control" id="jobNature" formControlName="jobNature" required>
-        <option value="0">Full Time</option>
-        <option value="1">Part Time</option>
-        <option value="2">Intern</option>
-      </select>
-      <div *ngIf="jobOfferForm.get('jobNature')?.hasError('required') && jobOfferForm.get('jobNature')?.touched">
-        Job Nature is required.
+      <div class="form-group">
+        <label for="jobNature">Job Nature:</label>
+        <select class="form-control" id="jobNature" formControlName="jobNature" required>
+          <option value="0">Full Time</option>
+          <option value="1">Part Time</option>
+          <option value="2">Intern</option>
+        </select>
+        <div *ngIf="jobOfferForm.get('jobNature')?.hasError('required') && jobOfferForm.get('jobNature')?.touched">
+          Job Nature is required.
+        </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="applicationDeadLine">Application Deadline Date and Time:</label>
+        <input type="datetime-local" class="form-control" formControlName="applicationDeadLine" required>
+        <div *ngIf="jobOfferForm.get('applicationDeadLine')?.hasError('required') && jobOfferForm.get('applicationDeadLine')?.touched">
+          Application Deadline and Time are required.
+        </div>
+      </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!jobOfferForm.valid">Update</button>
-    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-primary" [disabled]="!jobOfferForm.valid">Update</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
