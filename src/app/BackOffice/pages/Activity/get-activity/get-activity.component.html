@@ -1,1 +1,21 @@
-<p>get-activity works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom de l'activité</th>
+    <th>Description</th>
+    <th>Heure de début</th>
+    <th>Heure de fin</th>
+    <th>Événement associé</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let activity of activities">
+    <td>{{ activity.activity_name }}</td>
+    <td>{{ activity.description }}</td>
+    <td>{{ activity.startTime }}</td>
+    <td>{{ activity.finishTime }}</td>
+    <td *ngIf="activity.event">{{ activity.event.event_name }}</td>
+    <td *ngIf="!activity.event">No Event</td> <!-- Example fallback if 'event' is null -->
+  </tr>
+  </tbody>
+</table>

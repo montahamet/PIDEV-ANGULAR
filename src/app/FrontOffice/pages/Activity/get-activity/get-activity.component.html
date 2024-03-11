@@ -1,1 +1,29 @@
-<p>get-activity works!</p>
+  <button class="btn btn-success float-right" (click)="navigateToAddActivity()">Add Activity</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom de l'activité</th>
+    <th>Description</th>
+    <th>Heure de début</th>
+    <th>Heure de fin</th>
+    <th>Événement associé</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let activity of activities">
+    <td>{{ activity.activity_name }}</td>
+    <td>{{ activity.description }}</td>
+    <td>{{ activity.startTime }}</td>
+    <td>{{ activity.finishTime }}</td>
+    <td *ngIf="activity.event">{{ activity.event.event_name }}</td>
+    <td *ngIf="!activity.event">No Event</td> <!-- Example fallback if 'event' is null -->
+
+    <td>
+      <button class="btn btn-primary" (click)="updateActivity(activity.activity_id)">Update</button>
+      <button class="btn btn-danger" (click)="deleteActivity(activity.activity_id)">Delete</button>
+    </td>
+
+
+  </tr>
+  </tbody>
+</table>
