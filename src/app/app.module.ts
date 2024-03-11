@@ -27,6 +27,7 @@ import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-i
 
 import { UpdateCandidacyComponent } from './FrontOffice/pages/Candidacy/update-candidacy/update-candidacy.component';
 import { JobOfferDetailsComponent } from './BackOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
+import { WishlistComponent } from './FrontOffice/pages/JobOffer/wishlist/wishlist.component';
 
 
 import { AddEventComponent } from './BackOffice/pages/Event/add-event/add-event.component';
@@ -70,6 +71,7 @@ import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.
     UpdateInterviewComponent,
     UpdateCandidacyComponent,
     JobOfferDetailsComponent,
+    WishlistComponent,
     
 
     AddEventComponent,

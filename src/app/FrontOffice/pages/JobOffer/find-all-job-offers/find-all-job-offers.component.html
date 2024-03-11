@@ -15,8 +15,14 @@
     <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/slicknav.css">
 
     <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/style.css">
-<h1>Job Offers</h1>
-    <button class="btn btn-success float-right" (click)="navigateToAddJobOffer()">Add Job Offer</button>
+
+<button class="btn btn-success float-right" style="background-color: #fb6d1c; color: white;" (click)="navigateToAddJobOffer()">
+  <i class="fa fa-plus"></i>
+</button>
+<button class="btn btn-primary float-right" style="background-color: #007bff; color: white;" (click)="navigateToWishlist()">
+  <i class="fa fa-heart"></i>
+</button>
+
 
     <!-- job_listing_area_start -->
     <div class="job_listing_area plus_padding">
@@ -135,7 +141,8 @@
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
+                                      <!-- Inside the ngFor loop -->
+                                      <a (click)="addToWishlist(j)" class="heart_mark"> <i class="fa fa-heart"></i> </a>
                                         <a [routerLink]="['/JobOffer/job-offer-details', j.jobOffer_id]" class="boxed-btn3">Apply Now</a>
                                     </div>
                                     <div class="date">
@@ -149,7 +156,7 @@
             </div>
         </div>
     </div>
-    
+
         <!-- link that opens popup -->
     <!-- JS here -->
     <script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>

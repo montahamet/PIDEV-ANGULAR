@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- job_listing_area_end -->
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/magnific-popup.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/themify-icons.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/nice-select.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/flaticon.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/jquery-ui.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/gijgo.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/animate.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/slicknav.css">
+
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/style.css">
+<!-- Bootstrap container to center the wishlist -->
+
+<!-- Bootstrap container to center the wishlist -->
+<div class="container">
+  <div class="wishlist-container">
+    <h2>Your Wishlist</h2>
+
+    <div *ngIf="wishlist.length === 0; else wishlistItems" class="empty-wishlist">
+      Your wishlist is empty.
+    </div>
+
+    <ng-template #wishlistItems>
+      <div class="job_listing_area plus_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div *ngFor="let jobOffer of wishlist" class="job_lists m-0">
+                <div class="single_jobs white-bg d-flex justify-content-between">
+                  <div class="jobs_left d-flex align-items-center">
+                    <div class="thumb">
+                      <!-- Use the actual image source if available -->
+                      <img src="/assets/FrontOffice/JobOffer/img/svg_icon/1.svg" alt="">
+                    </div>
+                    <div class="jobs_conetent">
+                      <h4>{{ jobOffer.titleJobOffer }}</h4>
+                      <div class="links_locat d-flex align-items-center">
+                        <div class="location">
+                          <p> <i class="fa fa-map-marker"></i> {{ jobOffer.jobLocation }}</p>
+                        </div>
+                        <div class="location">
+                          <p> <i class="fa fa-clock-o"></i> {{ jobOffer.jobNature }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="jobs_right">
+                    <div class="apply_now">
+                      <button (click)="removeFromWishlist(jobOffer)" class="btn heart_mark remove-from-wishlist btn-danger"> <i class="fa fa-trash"></i> </button>
+                      <!-- Add a button/link to view the job offer details -->
+                      <a [routerLink]="['/JobOffer/job-offer-details', jobOffer.jobOffer_id]" class="boxed-btn3">Apply Now</a>
+                    </div>
+                    <div class="date">
+                      <p>Date line: {{ jobOffer.applicationDeadLine }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <div *ngIf="wishlist.length > 0" class="wishlist-actions">
+      <button (click)="clearWishlist()" class="btn btn-danger clear-wishlist-btn">
+        <i class="fa fa-trash"></i> Clear Wishlist
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- link that opens popup -->
+<!-- JS here -->
+<script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/popper.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/owl.carousel.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/isotope.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/ajax-form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/waypoints.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.counterup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/scrollIt.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.scrollUp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/wow.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/nice-select.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.slicknav.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/plugins.js"></script>
+<!-- <script src="js/gijgo.min.js"></script> -->
+<script src="/assets/FrontOffice/JobOffer/js/range.js"></script>
+
+
+
+<!--contact js-->
+<script src="/assets/FrontOffice/JobOffer/js/contact.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.ajaxchimp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.validate.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/mail-script.js"></script>
+
+
+<script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
+<style>
+
+.clear-wishlist-btn:hover {
+background-color: #d9534f; /* Darker red on hover */
+}
+</style>
