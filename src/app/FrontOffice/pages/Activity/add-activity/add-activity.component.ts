@@ -28,12 +28,15 @@ export class AddActivityComponentFront implements OnInit {
       finishTime: ['', Validators.required],
       event_id: ['', Validators.required]
     });
+
   }
 
   ngOnInit() {
     this.activityService.getAllEventsWithName().subscribe(
       (events: Event[]) => {
         this.events = events;
+        console.log('Events:', this.events); // Affiche les événements dans la console
+
       },
       error => {
         console.error('Error fetching events:', error);
@@ -44,19 +47,27 @@ export class AddActivityComponentFront implements OnInit {
   onSubmit() {
     if (this.activityForm.valid) {
       const activity: Activity = this.activityForm.value;
+      const eventIdControl = this.activityForm.get('event_id');
+      if (eventIdControl) {
+        const selectedEventId = eventIdControl.value;
+        console.log('Selected event ID:', selectedEventId); // Ajoutez cette ligne pour déboguer
+        activity.event_id = selectedEventId;
+      }
+      console.log('Activity to add:', activity); // Log the activity data
       this.activityService.addActivity(activity).subscribe(
         (addedActivity: Activity) => {
           console.log('Activity added successfully:', addedActivity);
           alert('Activity added successfully!');
           this.router.navigate(['/ActivityF/allactivitiesF']);
-          },
-
+        },
         error => {
           console.error('Error adding activity:', error);
         }
       );
     }
   }
+
+
 
   goBack() {
     this.location.back();

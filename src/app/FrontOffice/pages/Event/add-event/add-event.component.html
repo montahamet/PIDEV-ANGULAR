@@ -17,40 +17,19 @@
       </div>
     </div>
 
-<!--    &lt;!&ndash; Select Users &ndash;&gt;-->
-<!--    <div class="form-group">-->
-<!--      <label for="users">Users:</label>-->
-<!--      <select multiple class="form-control" id="users" formControlName="users">-->
-<!--        <option *ngFor="let user of users" [ngValue]="user">{{ user.firstname}}</option>-->
-<!--      </select>-->
-<!--    </div>-->
+    <div class="form-group">
+      <label for="event_description">Event Description:</label>
+      <input type="text" class="form-control" id="event_description" formControlName="event_description">
+    </div>
 
-<!--    &lt;!&ndash; Select Registration Events &ndash;&gt;-->
-<!--    <div class="form-group">-->
-<!--      <label for="registration_events">Registration Events:</label>-->
-<!--      <select multiple class="form-control" id="registration_events" formControlName="registration_events">-->
-<!--        &lt;!&ndash; Options here &ndash;&gt;-->
-<!--      </select>-->
-<!--    </div>-->
+    <div class="form-group">
+      <label for="place">Place:</label>
+      <input type="text" class="form-control" id="place" formControlName="place">
+    </div>
 
-<!--    &lt;!&ndash; Select Activities &ndash;&gt;-->
-<!--    <div class="form-group">-->
-<!--      <label for="activities">Activities:</label>-->
-<!--      <select multiple class="form-control" id="activities" formControlName="activities">-->
-<!--        &lt;!&ndash; Options here &ndash;&gt;-->
-<!--      </select>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Select Feedbacks &ndash;&gt;-->
-<!--    <div class="form-group">-->
-<!--      <label for="feedbacks">Feedbacks:</label>-->
-<!--      <select multiple class="form-control" id="feedbacks" formControlName="feedbacks">-->
-<!--        &lt;!&ndash; Options here &ndash;&gt;-->
-<!--      </select>-->
-<!--    </div>-->
+    <!-- Other fields can be added here as needed -->
 
     <button type="submit" class="btn btn-primary" [disabled]="!eventForm.valid">Add</button>
     <button type="button" class="btn btn-secondary" (click)="goBack()">Cancel</button>
   </form>
 </div>
-

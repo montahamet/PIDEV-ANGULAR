@@ -1,46 +1,50 @@
 <div class="container">
-  <h2>Add Feedback</h2>
-  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea class="form-control" id="description" formControlName="description"></textarea>
-      <div class="invalid-feedback" *ngIf="feedbackForm.get('description')?.invalid && feedbackForm.get('description')?.touched">
-        Description is required.
+  <h2 class="text-center">Add Feedback</h2>
+  <div class="row justify-content-center">
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="col-md-6">
+      <div class="form-group">
+        <div class="form-group">
+          <label>Date:</label>
+          <p class="text-center">{{ currentDate | date: 'medium' }}</p>
+        </div>
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" formControlName="description"></textarea>
+        <div class="invalid-feedback" *ngIf="feedbackForm.get('description')?.invalid && feedbackForm.get('description')?.touched">
+          Description is required.
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Date:</label>
-      <p>{{ feedback.FeedBack_date | date: 'medium' }}</p>
-    </div>
-    <div class="form-group">
-      <label for="note">Note:</label>
-      <input type="number" class="form-control" id="note" formControlName="note">
-      <div class="invalid-feedback" *ngIf="feedbackForm.get('note')?.invalid && feedbackForm.get('note')?.touched">
-        Note is required and must be between 0 and 10.
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="user">User:</label>
-      <input type="text" class="form-control" id="user" formControlName="user">
-      <div class="invalid-feedback" *ngIf="feedbackForm.get('user')?.invalid && feedbackForm.get('user')?.touched">
-        User is required.
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="event">Event:</label>
-      <input type="text" class="form-control" id="event" formControlName="event">
-      <div class="invalid-feedback" *ngIf="feedbackForm.get('event')?.invalid && feedbackForm.get('event')?.touched">
-        Event is required.
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="trainingsession">Training Session:</label>
-      <input type="text" class="form-control" id="trainingsession" formControlName="trainingsession">
-      <div class="invalid-feedback" *ngIf="feedbackForm.get('trainingsession')?.invalid && feedbackForm.get('trainingsession')?.touched">
-        Training Session is required.
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
 
+      <div class="form-group">
+        <label for="note">Note:</label>
+        <input type="number" class="form-control" id="note" formControlName="note">
+        <div class="invalid-feedback" *ngIf="feedbackForm.get('note')?.invalid && feedbackForm.get('note')?.touched">
+          Note is required and must be between 0 and 10.
+        </div>
+      </div>
+<!--      <div class="form-group">-->
+<!--        <label for="user">User:</label>-->
+<!--        <input type="text" class="form-control" id="user" formControlName="user">-->
+<!--        <div class="invalid-feedback" *ngIf="feedbackForm.get('user')?.invalid && feedbackForm.get('user')?.touched">-->
+<!--          User is required.-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="form-group">
+        <label for="event">Event:</label>
+        <select class="form-control" id="event" formControlName="event">
+          <option *ngFor="let event of events" [value]="event.event_id">{{ event.event_name }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="feedbackForm.get('event')?.invalid && feedbackForm.get('event')?.touched">
+          Event is required.
+        </div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="trainingsession">Training Session:</label>
+        <input type="text" class="form-control" id="trainingsession" formControlName="trainingsession">
+        <div class="invalid-feedback" *ngIf="feedbackForm.get('trainingsession')?.invalid && feedbackForm.get('trainingsession')?.touched">
+          Training Session is required.
+        </div>
+      </div> -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

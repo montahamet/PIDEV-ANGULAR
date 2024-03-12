@@ -18,7 +18,7 @@ import { AddInterviewComponent } from './BackOffice/pages/Interview/add-intervie
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 import { AddFeedBackComponent } from './BackOffice/pages/FeedBack/add-feed-back/add-feed-back.component';
 import { UpdateFeedBackComponent } from './BackOffice/pages/FeedBack/update-feed-back/update-feed-back.component';
-import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
+import {GetFeedbackComponent} from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
 import {AppComponent} from "./app.component";
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
@@ -26,7 +26,7 @@ import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-a
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
 import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.component";
-import {UpdateEventComponent} from './BackOffice/pages/Event/update-event/update-event.component';
+import {UpdateEventComponent} from './FrontOffice/pages/Event/update-event/update-event.component';
 import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
 import {GetActivityComponentBack} from './BackOffice/pages/Activity/get-activity/get-activity.component';
 import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
@@ -35,7 +35,7 @@ import {AddActivityComponentFront} from "./FrontOffice/pages/Activity/add-activi
 import {UpdateActivityComponentF} from "./FrontOffice/pages/Activity/update-activity/update-activity.component";
 import {AddEventComponentF} from "./FrontOffice/pages/Event/add-event/add-event.component";
 import {AddFeedBackComponentF} from  "./FrontOffice/pages/FeedBack/add-feed-back/add-feed-back.component"
-import { CommonModule } from "@angular/common";
+import {CommonModule, DatePipe} from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -52,7 +52,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddProjectComponent,
     FindAllUsersComponent,
     AddFeedBackComponent,
-    GetFeedBackComponent,
     UpdateFeedBackComponent,
     HomeFrontComponent,
     AddInterviewComponent,
@@ -62,7 +61,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FindAllInterviewsComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-    UpdateEventComponent,
     AddActivityComponent,
     GetActivityComponentBack,
     UpdateActivityComponent,
@@ -70,7 +68,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GetActivityComponentFront,
     AddActivityComponentFront,
     UpdateActivityComponentF,
-    GetEventComponentF,AddEventComponentF,AddFeedBackComponentF,GetFeedBackComponent
+    GetEventComponentF,
+    AddEventComponentF,
+    AddFeedBackComponentF,
+    UpdateEventComponent,
+    GetFeedbackComponent
+
 
 
   ],
@@ -84,7 +87,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent] // Bootstrap AppComponent here
 })
 export class AppModule { }

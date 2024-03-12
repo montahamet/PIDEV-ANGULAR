@@ -1,13 +1,10 @@
-import {Event} from "./Event";
+import { Event} from "./Event";
 
-export class Activity{
-  activity_id ! : number ;
-  activity_name! : string;
-  description! : string;
+export class Activity {
+  activity_id!: number;
+  activity_name!: string;
+  description!: string;
   startTime!: Date;
   finishTime!: Date;
-  event!:Event;
-  event_id!: number;
-  event_name!: string;
-
+  event_id!: Event;
 }

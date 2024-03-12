@@ -18,14 +18,15 @@ export class GetActivityComponentFront implements OnInit {
       activities => {
         this.activities = activities;
         console.log('Activities:', this.activities);
+      },
+      error => {
+        console.error('Error fetching activities:', error);
       }
     );
   }
 
-
   ngOnInit(): void {
     this.loadActivitiesFront();
-    console.log('Activities:', this.activities);
   }
 
   updateActivity(activity_id: number): void {
@@ -49,6 +50,6 @@ export class GetActivityComponentFront implements OnInit {
   }
 
   navigateToAddActivity(): void {
-    this.router.navigate(['/Activity/AddActivityF']);
+    this.router.navigate(['/ActivityF/AddActivityF']);
   }
 }

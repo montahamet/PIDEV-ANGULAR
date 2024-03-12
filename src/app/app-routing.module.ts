@@ -21,6 +21,8 @@ import { AddInterviewComponent } from './BackOffice/pages/Interview/add-intervie
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
+import {UpdateEventComponent} from "./FrontOffice/pages/Event/update-event/update-event.component";
+import {GetFeedbackComponent} from "./BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component";
 
 const routes: Routes = [
   {
@@ -80,7 +82,14 @@ const routes: Routes = [
     ]
   },
   {
-    path : 'feedback',
+    path :'feedBackB',
+    component : AllTemplatBackComponent,
+    children:[
+      {path :'getB', component: GetFeedbackComponent}
+    ]
+  },
+  {
+    path : 'feedbackF',
     component : AllTemplateFrontComponent,
     children:[
       {path :'add',component: AddFeedBackComponentF}
@@ -95,9 +104,10 @@ const routes: Routes = [
       { path: 'AddEvenF', component: AddEventComponentF },
       // { path: 'allactivitiesB', component: GetActivityComponentBack },
       // { path: 'AddActivityF', component: AddActivityComponentFront },
-      // {path: 'updateactivityF/:id', component: UpdateActivityComponentF}
+       {path: 'updateeventF/:id', component: UpdateEventComponent}
     ]
   },
+
   {
     path: 'JobOffer',
     component: AllTemplateFrontComponent,

@@ -26,36 +26,21 @@ export class GetEventComponentF implements OnInit {
       events => {
         this.events = events;
         console.log('Events:', this.events);
+        // Charger les données liées pour chaque événement
+        this.events.forEach(event => this.loadRelatedData(event));
       },
       error => {
         console.error('Error loading events:', error);
       }
     );
   }
-  generateTabs(): void {
-    const currentDate = new Date();
-    const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-
-    for (let i = 0; i < 7; i++) {
-      const date = new Date();
-      date.setDate(currentDate.getDate() + i);
-      const formattedDate = date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-      const tabId = 'tabs-' + (i + 1);
-
-      const tabContent = document.createElement('div');
-      tabContent.className = 'tab-pane';
-      tabContent.setAttribute('id', tabId);
-      document.getElementById('tabContent')?.appendChild(tabContent);
-    }
-  }
-
 
   updateEvent(event_id: number): void {
+    console.log('Updating event with ID:', event_id);
     this.router.navigate([`/Event/updateeventF/${event_id}`]);
   }
-
   deleteEvent(event_id: number): void {
-    console.log('Event ID:', event_id);
+    console.log('Deleting event with ID:', event_id); // Ajoutez ce log pour vérifier que la méthode est appelée correctement
     if (confirm('Are you sure you want to delete this event?')) {
       this.eventService.deleteEvent(event_id).subscribe(
         () => {
@@ -99,7 +84,6 @@ export class GetEventComponentF implements OnInit {
     this.eventService.getRelatedActivities(event.event_id).subscribe(
       (activities: Activity[]) => {
         event.Activitys = activities;
-
       },
       (error: any) => {
         console.error('Error loading related activities:', error);
@@ -109,7 +93,6 @@ export class GetEventComponentF implements OnInit {
     this.eventService.getRelatedRegistrations(event.event_id).subscribe(
       (registrations: RegistrationEvent[]) => {
         event.RegistationEvents = registrations;
-
       },
       (error: any) => {
         console.error('Error loading related registrations:', error);
@@ -119,6 +102,5 @@ export class GetEventComponentF implements OnInit {
 
   navigateToAddEvent(): void {
     this.router.navigate(['/Event/AddEvenF']);
-
   }
 }
