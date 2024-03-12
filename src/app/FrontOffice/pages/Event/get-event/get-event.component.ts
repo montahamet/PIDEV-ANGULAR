@@ -26,6 +26,8 @@ export class GetEventComponentF implements OnInit {
       events => {
         this.events = events;
         console.log('Events:', this.events);
+        // Charger les données liées pour chaque événement
+        this.events.forEach(event => this.loadRelatedData(event));
       },
       error => {
         console.error('Error loading events:', error);
@@ -34,11 +36,11 @@ export class GetEventComponentF implements OnInit {
   }
 
   updateEvent(event_id: number): void {
+    console.log('Updating event with ID:', event_id);
     this.router.navigate([`/Event/updateeventF/${event_id}`]);
   }
-
   deleteEvent(event_id: number): void {
-    console.log('Event ID:', event_id);
+    console.log('Deleting event with ID:', event_id); // Ajoutez ce log pour vérifier que la méthode est appelée correctement
     if (confirm('Are you sure you want to delete this event?')) {
       this.eventService.deleteEvent(event_id).subscribe(
         () => {
@@ -58,7 +60,7 @@ export class GetEventComponentF implements OnInit {
       () => {
         console.log('Event added successfully.');
         alert('Event added successfully.');
-        this.newEvent = new Event(); // Réinitialiser le modèle pour le nouvel événement
+        this.newEvent = new Event();
         this.loadEvents();
       },
       error => {
@@ -71,7 +73,7 @@ export class GetEventComponentF implements OnInit {
     this.eventService.getRelatedUsers(event.event_id).subscribe(
       (users: User[]) => {
         if (users && users.length > 0) {
-          event.users = users[0];
+          event.users = users;
         }
       },
       (error: any) => {
@@ -79,20 +81,18 @@ export class GetEventComponentF implements OnInit {
       }
     );
 
-    // Chargez les activités liées à l'événement
     this.eventService.getRelatedActivities(event.event_id).subscribe(
       (activities: Activity[]) => {
-        event.Activitys = activities; // Assurez-vous que 'activities' est correctement nommé dans votre modèle Event
+        event.Activitys = activities;
       },
       (error: any) => {
         console.error('Error loading related activities:', error);
       }
     );
 
-    // Chargez les inscriptions liées à l'événement
     this.eventService.getRelatedRegistrations(event.event_id).subscribe(
       (registrations: RegistrationEvent[]) => {
-        event.RegistationEvents = registrations; // Assurez-vous que 'registrations' est correctement nommé dans votre modèle Event
+        event.RegistationEvents = registrations;
       },
       (error: any) => {
         console.error('Error loading related registrations:', error);
@@ -101,6 +101,6 @@ export class GetEventComponentF implements OnInit {
   }
 
   navigateToAddEvent(): void {
-    this.router.navigate(['/Event/AddEventF']);
+    this.router.navigate(['/Event/AddEvenF']);
   }
 }

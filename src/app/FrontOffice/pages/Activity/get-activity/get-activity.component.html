@@ -15,15 +15,12 @@
     <td>{{ activity.description }}</td>
     <td>{{ activity.startTime }}</td>
     <td>{{ activity.finishTime }}</td>
-    <td *ngIf="activity.event">{{ activity.event.event_name }}</td>
-    <td *ngIf="!activity.event">No Event</td> <!-- Example fallback if 'event' is null -->
-
+    <td *ngIf="activity.event_id">{{ activity.event_id}}</td>
+    <td *ngIf="!activity.event_id">No Event</td>
     <td>
       <button class="btn btn-primary" (click)="updateActivity(activity.activity_id)">Update</button>
       <button class="btn btn-danger" (click)="deleteActivity(activity.activity_id)">Delete</button>
     </td>
-
-
   </tr>
   </tbody>
 </table>
