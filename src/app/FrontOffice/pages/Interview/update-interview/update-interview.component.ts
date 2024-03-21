@@ -6,8 +6,7 @@ import { Interview } from 'src/app/Models/interview';
 import { InterviewService } from 'src/app/Services/interview.service';
 import { Location } from '@angular/common';
 
-// Import the enums
-import { TypeInterview } from 'src/app/Models/type-interview'; // Update the path accordingly
+import { TypeInterview } from 'src/app/Models/type-interview'; 
 import { StatusInterview } from 'src/app/Models/status-interview';
 
 @Component({
@@ -18,7 +17,6 @@ import { StatusInterview } from 'src/app/Models/status-interview';
 export class UpdateInterviewComponent implements OnInit {
   interviewForm: FormGroup;
   interview: Interview = new Interview();
-  // Bind enums to the component
   typeInterview = TypeInterview;
   statusInterview = StatusInterview;
 
@@ -31,8 +29,8 @@ export class UpdateInterviewComponent implements OnInit {
   ) {
     this.interviewForm = this.formBuilder.group({
       dateInterview: ['', Validators.required],
-      type: [TypeInterview.HR, Validators.required], // Set a default value from the enum
-      statusInterview: [StatusInterview.SCHEDULED, Validators.required], // Set a default value from the enum
+      type: [TypeInterview.HR, Validators.required], 
+      statusInterview: [StatusInterview.SCHEDULED, Validators.required], 
       passed: [false, Validators.required],
     });
   }

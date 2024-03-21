@@ -1,31 +1,218 @@
-<h1>Job Offers</h1>
-<button class="btn btn-success float-right" (click)="navigateToAddJobOffer()">Add Job Offer</button>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Job Title</th>
-            <th>postedDate</th>
-            <th>Description</th>
-            <th>Required Skills</th>
-            <th>Vacancy</th>
-            <th>Salary</th>
-            <th>Job Nature</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let j of jobOffers">
-            <td>{{j.titleJobOffer}}</td>
-            <td>{{j.postedDate}}</td>
-            <td>{{j.description}}</td>
-            <td>{{j.requiredSkills}}</td>
-            <td>{{j.vacancy}}</td>
-            <td>{{j.salary}}</td>
-            <td>{{j.jobNature}}</td>
-            <td>
-                <button class="btn btn-primary" (click)="updateJobOffer(j.jobOffer_id)">Update</button>
-                <button class="btn btn-danger" (click)="deleteJobOffer(j.jobOffer_id)">Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- job_listing_area_end -->
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/gijgo.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/slicknav.css">
+
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/style.css">
+
+<button class="btn btn-success float-right" style="background-color: #fb6d1c; color: white;" (click)="navigateToAddJobOffer()">
+  <i class="fa fa-plus"></i>
+</button>
+<button class="btn btn-primary float-right" style="background-color: #007bff; color: white;" (click)="navigateToWishlist()">
+  <i class="fa fa-heart"></i>
+</button>
+
+
+    <!-- job_listing_area_start -->
+    <div class="job_listing_area plus_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="job_filter white-bg">
+                        <div class="form_inner white-bg">
+                            <h3>Filter</h3>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <input type="text" placeholder="Search keyword">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select class="wide">
+                                                <option data-display="Location">Location</option>
+                                                <option value="1">Rangpur</option>
+                                                <option value="2">Dhaka</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select class="wide">
+                                                <option data-display="Category">Category</option>
+                                                <option value="1">Category 1</option>
+                                                <option value="2">Category 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select class="wide">
+                                                <option data-display="Experience">Experience</option>
+                                                <option value="1">Experience 1</option>
+                                                <option value="2">Experience 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select class="wide">
+                                                <option data-display="Job type">Job type</option>
+                                                <option value="1">Full time</option>
+                                                <option value="2">Part time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select class="wide">
+                                                <option data-display="Qualification">Qualification</option>
+                                                <option value="1">Qualification 1</option>
+                                                <option value="2">Qualification 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="range_wrap">
+                            <label for="amount">Price range:</label>
+                            <div id="slider-range"></div>
+                            <p>
+                                <input type="text" id="amount" readonly style="border: 0; color: #7A838B; font-size: 14px; font-weight: 400;">
+                            </p>
+                        </div>
+                        <div class="reset_btn">
+                            <button class="boxed-btn3 w-100" type="submit">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="recent_joblist_wrap">
+                        <div class="recent_joblist white-bg">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h4>Job Listing</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="serch_cat d-flex justify-content-end">
+                                        <select>
+                                            <option data-display="Most Recent">Most Recent</option>
+                                            <!-- Additional sorting options -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job_lists m-0">
+                        <div *ngFor="let j of jobOffers" class="col-lg-12 col-md-12">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+                                    <div class="thumb">
+                                        <!-- Use the actual image source if available -->
+                                        <img src="/assets/FrontOffice/JobOffer/img/svg_icon/1.svg" alt="">
+                                    </div>
+                                    <div class="jobs_conetent">
+                                        <a [routerLink]="['/JobOffer/job-offer-details', j.jobOffer_id]">                                            <h4>{{ j.titleJobOffer }}</h4>
+                                        </a>
+                                        <div class="links_locat d-flex align-items-center">
+                                            <div class="location">
+                                                <p> <i class="fa fa-map-marker"></i> {{ j.jobLocation }}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-clock-o"></i> {{ j.jobNature }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jobs_right">
+                                    <div class="apply_now">
+                                      <!-- Inside the ngFor loop -->
+                                      <a (click)="addToWishlist(j)" class="heart_mark"> <i class="fa fa-heart"></i> </a>
+                                        <a [routerLink]="['/JobOffer/job-offer-details', j.jobOffer_id]" class="boxed-btn3">Apply Now</a>
+                                    </div>
+                                    <div class="date">
+                                        <p>Date line: {{ j.applicationDeadLine }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- link that opens popup -->
+    <!-- JS here -->
+    <script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/popper.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/bootstrap.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/owl.carousel.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/isotope.pkgd.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/ajax-form.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/waypoints.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.counterup.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/scrollIt.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.scrollUp.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/wow.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/nice-select.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.slicknav.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/plugins.js"></script>
+    <!-- <script src="js/gijgo.min.js"></script> -->
+    <script src="/assets/FrontOffice/JobOffer/js/range.js"></script>
+
+
+
+    <!--contact js-->
+    <script src="/assets/FrontOffice/JobOffer/js/contact.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.form.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/jquery.validate.min.js"></script>
+    <script src="/assets/FrontOffice/JobOffer/js/mail-script.js"></script>
+
+
+    <script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
+
+
+
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 24600,
+                values: [750, 24600],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1) + "/ Year");
+        });
+    </script>
+
+<style>
+    #amount {
+        background-color: #f8f9fa; /* Set your desired background color */
+        padding: 10px; /* Add padding for better visibility */
+        border: 1px solid #ced4da; /* Add a border for a neat look */
+    }
+</style>
