@@ -6,5 +6,5 @@ export class Activity {
   description!: string;
   startTime!: Date;
   finishTime!: Date;
-  event_id!: Event;
+  event!: Event;
 }

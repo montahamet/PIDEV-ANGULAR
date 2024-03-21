@@ -37,6 +37,10 @@ import {AddEventComponentF} from "./FrontOffice/pages/Event/add-event/add-event.
 import {AddFeedBackComponentF} from  "./FrontOffice/pages/FeedBack/add-feed-back/add-feed-back.component"
 import {CommonModule, DatePipe} from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -83,8 +87,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    FormsModule
-
+    FormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
 
   ],
   providers: [

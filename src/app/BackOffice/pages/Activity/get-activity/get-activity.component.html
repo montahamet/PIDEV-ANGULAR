@@ -14,8 +14,8 @@
     <td>{{ activity.description }}</td>
     <td>{{ activity.startTime }}</td>
     <td>{{ activity.finishTime }}</td>
-    <td *ngIf="activity.event_id">{{ activity.event_id }}</td>
-    <td *ngIf="!activity.event_id">No Event</td> <!-- Example fallback if 'event' is null -->
+    <td *ngIf="activity.event">{{ activity.event }}</td>
+    <td *ngIf="!activity.event">No Event</td> <!-- Example fallback if 'event' is null -->
   </tr>
   </tbody>
 </table>
