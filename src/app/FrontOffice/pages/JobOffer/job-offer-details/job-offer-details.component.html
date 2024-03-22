@@ -87,11 +87,24 @@
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
-                                    </div>
+                              <div class="col-md-12">
+                                <div class="toolbar" style="width: 100%;">
+                                  <button id="bold" title="Bold"><b>B</b></button>
+                                  <button id="italic" title="Italic"><i>I</i></button>
+                                  <button id="underline" title="Underline"><u>U</u></button>
+                                  <select id="font-size">
+                                    <option value="1">Small</option>
+                                    <option value="2" selected>Medium</option>
+                                    <option value="3">Large</option>
+                                  </select>
+                                  <input type="color" id="font-color" title="Font Color">
                                 </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="input_field">
+                                  <textarea name="#" id="editor" cols="30" rows="10" placeholder="Coverletter" contenteditable="true"></textarea>
+                                </div>
+                              </div>
                                 <div class="col-md-12">
                                     <div class="submit_btn">
                                         <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
@@ -167,3 +180,75 @@
 
 
 <script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
+<style>
+  .toolbar {
+    background-color: #f2f2f2;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .toolbar button {
+    background-color: #e7e7e7;
+    border: none;
+    color: #333;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .toolbar select,
+  .toolbar input[type="color"] {
+    margin: 4px 2px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+  }
+
+  #editor {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+</style>
+<script>
+  const editor = document.getElementById('editor');
+  const boldButton = document.getElementById('bold');
+  const italicButton = document.getElementById('italic');
+  const underlineButton = document.getElementById('underline');
+  const fontSizeSelect = document.getElementById('font-size');
+  const fontColorInput = document.getElementById('font-color');
+
+  boldButton.addEventListener('click', () => {
+    document.execCommand('bold', false, null);
+  });
+
+  italicButton.addEventListener('click', () => {
+    document.execCommand('italic', false, null);
+  });
+
+  underlineButton.addEventListener('click', () => {
+    document.execCommand('underline', false, null);
+  });
+
+  fontSizeSelect.addEventListener('change', () => {
+    const fontSize = fontSizeSelect.value;
+    document.execCommand('fontSize', false, fontSize);
+  });
+
+  fontColorInput.addEventListener('change', () => {
+    const fontColor = fontColorInput.value;
+    document.execCommand('foreColor', false, fontColor);
+  });
+</script>

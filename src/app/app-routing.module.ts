@@ -6,24 +6,28 @@ import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templ
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
-import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
-import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
-import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
+import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
+import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
+import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
+import { AddProjectofferComponent } from './FrontOffice/pages/ProjectOffer/add-projectoffer/add-projectoffer.component';
+import {AddQuoteComponent} from "./FrontOffice/pages/Quote/add-quote/add-quote.component";
+import {GetProjectofferComponent} from "./FrontOffice/pages/ProjectOffer/get-projectoffer/get-projectoffer.component";
+import {GetQuotesComponent} from "./FrontOffice/pages/Quote/get-quotes/get-quotes.component";
+import {
+  UpdateProjectofferComponent
+} from "./FrontOffice/pages/ProjectOffer/update-projectoffer/update-projectoffer.component";
+import {UpdateQuoteComponent} from "./FrontOffice/pages/Quote/update-quote/update-quote.component";
 import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
 import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+
 
 
 const routes: Routes = [
   {
     path: "",
-    component: AllTemplateFrontComponent,
-    children:[
-      {path:"",
-      component:HomeFrontComponent
-    }
-    ]
+    component: AllTemplateFrontComponent
   },
   {
     path: "admin",
@@ -43,10 +47,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: "Candidacy",
-    component: AllTemplateFrontComponent,children:[
-    {path: "findAllCandidaciesfront",component: FindAllCandidaciesComponent}
-    ]
+    path: "findAllCandidaciesfront",
+    component: FindAllCandidaciesComponent
   },
   {
     path: "Interview",
@@ -55,6 +57,27 @@ const routes: Routes = [
       { path: 'findAllInterviewsfront', component: FindAllInterviewsComponent },
       { path: 'addInterviewfront', component: AddInterviewComponent },
       { path: 'updateInterview/:id', component: UpdateInterviewComponent },
+    ]
+  },
+  {
+    path: "ProjectOffer",
+    component: AllTemplateFrontComponent,children:[
+      { path: 'addprojectoffer', component:AddProjectofferComponent },
+      { path: 'getprojectoffer', component:GetProjectofferComponent },
+      { path: 'updateProjectOffer/:id', component: UpdateProjectofferComponent }, // New route for updating job offers
+
+
+    ]
+  },
+  {
+    path: "quote",
+    component: AllTemplateFrontComponent,children:[
+      { path: 'addquote', component:AddQuoteComponent },
+      { path: 'getquote', component:GetQuotesComponent },
+      { path: 'updatequote/:id', component: UpdateQuoteComponent }, // New route for updating job offers
+
+
+
     ]
   },
 
