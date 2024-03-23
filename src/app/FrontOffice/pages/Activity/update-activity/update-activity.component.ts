@@ -46,18 +46,15 @@ export class UpdateActivityComponentF implements OnInit {
     this.activityService.findOneActivity(activityId).subscribe(
       (activity: Activity) => {
         this.activity = activity;
-        // Convertissez les chaînes en objets Date
         const startTime = new Date(activity.startTime);
         const finishTime = new Date(activity.finishTime);
 
-        // Mise à jour du formulaire avec les valeurs de l'activité chargée
         this.activityForm.patchValue({
           activity_name: activity.activity_name,
           description: activity.description,
-          // Utilisez les objets Date convertis pour appeler toISOString()
           startTime: startTime.toISOString().slice(0, 16),
           finishTime: finishTime.toISOString().slice(0, 16),
-          event: activity.event?.event_id // Assurez-vous que cette valeur correspond à ce que votre backend attend
+          event: activity.event?.event_id
         });
       },
       error => {

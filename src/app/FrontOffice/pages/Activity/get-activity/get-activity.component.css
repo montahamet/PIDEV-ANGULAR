@@ -19,6 +19,7 @@
   color: #fff;
 }
 
+
 .card-body {
   background-color: #fff;
   border-left: 5px solid var(--color-soft-green);
@@ -56,7 +57,7 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
-  background-color: #08718e; /* Assurez-vous que cette couleur est bien définie et visible */
+  background-color: #08718e;
   color: white;
   padding: 0.75rem 1.5rem;
   font-size: 1.2rem;
@@ -68,13 +69,15 @@
 }
 
 .btn-add-activity:hover {
-  background-color: #fa7022; /* Une couleur différente pour le survol */
+  background-color: #fa7022;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
 
 
-
+.card-title {
+  color: black !important;
+}
 .btn-add-activity:hover {
   filter: brightness(85%);
 }

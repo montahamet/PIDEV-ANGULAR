@@ -10,6 +10,10 @@ import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-a
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
+import {UpdateEventComponent} from "./FrontOffice/pages/Event/update-event/update-event.component";
+import {GetFeedbackComponent} from "./BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component";
+import {JobOfferDetailsComponent} from "./FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component";
+import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
 
 
 
@@ -36,8 +40,21 @@ const routes: Routes = [
   },
   {
     path: "admin",
-    component: AllTemplatBackComponent
+    component: AllTemplatBackComponent,
+    children:[
+      { path: 'allactivitiesB', component: GetActivityComponentBack },
+
+    ]
   },
+//   {  path: 'admin',
+//     component: AllTemplatBackComponent ,
+//     import: { HomeFrontComponent }, from, './FrontOffice/home-front/home-front.component': ,
+// import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
+// import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
+// import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
+// import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+// },
+
   {
     path: "",
     component: AllTemplateFrontComponent,
@@ -63,6 +80,17 @@ const routes: Routes = [
 
   },
   {
+
+    path: 'findAllCandidaciesfront',
+    component: FindAllCandidaciesComponent
+  },
+  {
+    path: 'findAllInterviewsfront',
+    component: FindAllInterviewsComponent
+  },
+
+  {
+
     path: "Interview",
     component: AllTemplateFrontComponent,
     children: [
@@ -70,6 +98,7 @@ const routes: Routes = [
       { path: 'addInterviewfront', component: AddInterviewComponent },
       { path: 'updateInterview/:id', component: UpdateInterviewComponent },
     ]
+
   },
   {
     path: "ProjectOffer",
@@ -90,7 +119,7 @@ const routes: Routes = [
     ]
   },
 
-];
+]
 
 
 @NgModule({
