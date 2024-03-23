@@ -1,16 +1,16 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
-
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
+
+
 import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
-import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 import { AddProjectofferComponent } from './FrontOffice/pages/ProjectOffer/add-projectoffer/add-projectoffer.component';
 import {AddQuoteComponent} from "./FrontOffice/pages/Quote/add-quote/add-quote.component";
 import {GetProjectofferComponent} from "./FrontOffice/pages/ProjectOffer/get-projectoffer/get-projectoffer.component";
@@ -35,6 +35,7 @@ const routes: Routes = [
   },
 
   {
+
     path: "JobOffer",
     component: AllTemplateFrontComponent,children:[
       { path: 'addJobOffersfront', component:AddJobOfferComponent },
@@ -47,8 +48,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: "findAllCandidaciesfront",
-    component: FindAllCandidaciesComponent
+    path: "Candidacy",
+    component: AllTemplateFrontComponent,children:[
+    {path: "findAllCandidaciesfront",component: FindAllCandidaciesComponent}
+    ]
+
   },
   {
     path: "Interview",
