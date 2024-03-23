@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <!-- job_listing_area_end -->
 <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/owl.carousel.min.css">
@@ -15,7 +14,16 @@
     <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/slicknav.css">
 
     <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/style.css">
-
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+  <div class="row py-5">
+    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+      <h1 class="display-4 text-white animated zoomIn">Job Listing</h1>
+      <a href="" class="h5 text-white">Home</a>
+      <i class="far fa-circle text-white px-2"></i>
+      <a href="" class="h5 text-white">Job Offer</a>
+    </div>
+  </div>
+</div>
 <button class="btn btn-success float-right" style="background-color: #fb6d1c; color: white;" (click)="navigateToAddJobOffer()">
   <i class="fa fa-plus"></i>
 </button>
@@ -32,68 +40,68 @@
                     <div class="job_filter white-bg">
                         <div class="form_inner white-bg">
                             <h3>Filter</h3>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <input type="text" placeholder="Search keyword">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select class="wide">
-                                                <option data-display="Location">Location</option>
-                                                <option value="1">Rangpur</option>
-                                                <option value="2">Dhaka</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select class="wide">
-                                                <option data-display="Category">Category</option>
-                                                <option value="1">Category 1</option>
-                                                <option value="2">Category 2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select class="wide">
-                                                <option data-display="Experience">Experience</option>
-                                                <option value="1">Experience 1</option>
-                                                <option value="2">Experience 2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select class="wide">
-                                                <option data-display="Job type">Job type</option>
-                                                <option value="1">Full time</option>
-                                                <option value="2">Part time</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select class="wide">
-                                                <option data-display="Qualification">Qualification</option>
-                                                <option value="1">Qualification 1</option>
-                                                <option value="2">Qualification 2</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                          <form action="#">
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <input type="text" placeholder="Search keyword" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
                                 </div>
-                            </form>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Location">Location</option>
+                                    <option value="1">Rangpur</option>
+                                    <option value="2">Dhaka</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Category">Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Experience">Experience</option>
+                                    <option value="1">Experience 1</option>
+                                    <option value="2">Experience 2</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Job type">Job type</option>
+                                    <option value="1">Full time</option>
+                                    <option value="2">Part time</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Qualification">Skills</option>
+                                    <option value="1">Qualification 1</option>
+                                    <option value="2">Qualification 2</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
                         </div>
-                        <div class="range_wrap">
-                            <label for="amount">Price range:</label>
-                            <div id="slider-range"></div>
-                            <p>
-                                <input type="text" id="amount" readonly style="border: 0; color: #7A838B; font-size: 14px; font-weight: 400;">
-                            </p>
-                        </div>
+                      <div class="range_wrap">
+                        <label for="amount">Price range:</label>
+                        <div id="slider-range"></div>
+                        <p>
+                          <input type="text" id="amount" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
+                        </p>
+                      </div>
                         <div class="reset_btn">
                             <button class="boxed-btn3 w-100" type="submit">Reset</button>
                         </div>
@@ -104,16 +112,15 @@
                         <div class="recent_joblist white-bg">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <h4>Job Listing</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="serch_cat d-flex justify-content-end">
-                                        <select>
-                                            <option data-display="Most Recent">Most Recent</option>
-                                            <!-- Additional sorting options -->
-                                        </select>
-                                    </div>
+                              <div class="col-md-6">
+                                <div class="single_field">
+                                  <select class="wide" style="width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                                    <option data-display="Most Recent">Most Recent</option>
+                                    <!-- Additional sorting options -->
+                                  </select>
                                 </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -157,62 +164,71 @@
         </div>
     </div>
 
-        <!-- link that opens popup -->
-    <!-- JS here -->
-    <script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/popper.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/bootstrap.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/owl.carousel.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/isotope.pkgd.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/ajax-form.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/waypoints.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.counterup.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/scrollIt.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.scrollUp.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/wow.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/nice-select.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.slicknav.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.magnific-popup.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/plugins.js"></script>
-    <!-- <script src="js/gijgo.min.js"></script> -->
-    <script src="/assets/FrontOffice/JobOffer/js/range.js"></script>
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Your other scripts -->
+<script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/popper.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/owl.carousel.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/isotope.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/ajax-form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/waypoints.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.counterup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/scrollIt.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.scrollUp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/wow.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/nice-select.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.slicknav.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/plugins.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/range.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/contact.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.ajaxchimp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.validate.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/mail-script.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
+
+<!-- Your slider script -->
+<script>
+  $(document).ready(function () {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 24600,
+      values: [750, 24600],
+      slide: function (event, ui) {
+        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
+      }
+    });
+
+    // Initial display of the default values
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+      " - $" + $("#slider-range").slider("values", 1) + "/ Year");
+  });
+</script>
 
 
-
-    <!--contact js-->
-    <script src="/assets/FrontOffice/JobOffer/js/contact.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.ajaxchimp.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.form.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/jquery.validate.min.js"></script>
-    <script src="/assets/FrontOffice/JobOffer/js/mail-script.js"></script>
-
-
-    <script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
-
-
-
-    <script>
-        $(function () {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 24600,
-                values: [750, 24600],
-                slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
-                }
-            });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                " - $" + $("#slider-range").slider("values", 1) + "/ Year");
-        });
-    </script>
 
 <style>
     #amount {
         background-color: #f8f9fa; /* Set your desired background color */
         padding: 10px; /* Add padding for better visibility */
         border: 1px solid #ced4da; /* Add a border for a neat look */
+    }
+    .single_field input[type="text"],
+    .single_field select.wide {
+      width: 100%;
+      height: 40px; /* Adjust the height value as needed */
+      padding: 8px 12px; /* Add padding for better spacing */
+      border: 1px solid #ccc; /* Add a border for a consistent look */
+      border-radius: 4px; /* Add border-radius for rounded corners */
+      font-size: 14px; /* Adjust the font size as needed */
     }
 </style>

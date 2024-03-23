@@ -1,0 +1,35 @@
+<h1>Quotes</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>description</th>
+    <th>issuanceDate</th>
+    <th>quantity</th>
+    <th>totalamount</th>
+    <th>unitprice</th>
+
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let quote of quotes ">
+    <td>{{quote.description}}</td>
+    <td>{{quote.issuanceDate}}</td>
+    <td>{{quote.quantity}}</td>
+    <td>{{quote.totalamount}}</td>
+    <td>{{quote.unitprice}}</td>
+
+    <td>
+      <button class="btn btn-danger" (click)="deleteQuote(quote.quote_id)">Delete</button>
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="updateQuote(quote.quote_id)">Update</button>
+    </td>
+
+
+  </tr>
+  </tbody>
+  <button class="btn btn-success float-right" (click)="navigateToAddQuote()">Add Quote</button>
+
+</table>
