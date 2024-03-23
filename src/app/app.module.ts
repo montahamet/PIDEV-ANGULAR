@@ -13,7 +13,6 @@ import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
 
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {  HttpClientModule } from '@angular/common/http';
@@ -43,8 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WishlistComponent } from './FrontOffice/pages/JobOffer/wishlist/wishlist.component';
 
 import {CommonModule, DatePipe} from "@angular/common";
-import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
 
 
 
@@ -63,7 +62,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RegisterComponent,
     AddProjectComponent,
     FindAllUsersComponent,
-  
+
     HomeFrontComponent,
     AddInterviewComponent,
     UpdateInterviewComponent,
@@ -74,7 +73,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UpdateInterviewComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-    
+
 
     AddProjectofferComponent,
     AddQuoteComponent,
@@ -84,6 +83,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UpdateQuoteComponent,
     FilterPipe,
     WishlistComponent,
+
 
 
 
