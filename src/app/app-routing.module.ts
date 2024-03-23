@@ -19,10 +19,10 @@ import {  AddFeedBackComponentF} from "./FrontOffice/pages/FeedBack/add-feed-bac
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { AddInterviewComponent } from './BackOffice/pages/Interview/add-interview/add-interview.component';
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
-
-import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 import {UpdateEventComponent} from "./FrontOffice/pages/Event/update-event/update-event.component";
 import {GetFeedbackComponent} from "./BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component";
+import {JobOfferDetailsComponent} from "./FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component";
+import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
 
 const routes: Routes = [
   {
@@ -30,21 +30,21 @@ const routes: Routes = [
     component: AllTemplateFrontComponent
   },
   {
-    path: "adminB",
+    path: "admin",
     component: AllTemplatBackComponent,
     children:[
       { path: 'allactivitiesB', component: GetActivityComponentBack },
 
     ]
   },
-  {  path: 'admin',
-    component: AllTemplatBackComponent
-import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
-import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
-import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
-import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
-import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
-},
+//   {  path: 'admin',
+//     component: AllTemplatBackComponent ,
+//     import: { HomeFrontComponent }, from, './FrontOffice/home-front/home-front.component': ,
+// import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
+// import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
+// import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
+// import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+// },
 
   {
     path: "",
@@ -113,8 +113,8 @@ import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.
     path: 'findAllInterviewsfront',
     component: FindAllInterviewsComponent
   },
- 
 
+  {
     path: "Interview",
     component: AllTemplateFrontComponent,
     children: [
@@ -122,9 +122,9 @@ import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.
       { path: 'addInterviewfront', component: AddInterviewComponent },
       { path: 'updateInterview/:id', component: UpdateInterviewComponent },
     ]
-  },
+  }
 
-];
+]
 
 
 @NgModule({
