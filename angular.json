@@ -26,6 +26,7 @@
             ],
             "styles": [
               "src/custom-theme.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "src/assets/FrontOffice/css/bootstrap.min.css",
               "src/assets/FrontOffice/css/style.css"

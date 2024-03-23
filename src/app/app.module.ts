@@ -16,6 +16,8 @@ import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {  HttpClientModule } from '@angular/common/http';
+
 import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component';
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
@@ -24,14 +26,8 @@ import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-intervi
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
 import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
-import { AddEventComponent } from './BackOffice/pages/Event/add-event/add-event.component';
-import { UpdateEventComponent } from './BackOffice/pages/Event/update-event/update-event.component';
-import { GetEventComponent } from './BackOffice/pages/Event/get-event/get-event.component';
-import { AddFeedBackComponent } from './BackOffice/pages/FeedBack/add-feed-back/add-feed-back.component';
-import { UpdateFeedBackComponent } from './BackOffice/pages/FeedBack/update-feed-back/update-feed-back.component';
-import { GetFeedBackComponent } from './BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component';
-import { AddActivityComponent } from './BackOffice/pages/Activity/add-activity/add-activity.component';
-import { UpdateActivityComponent } from './BackOffice/pages/Activity/update-activity/update-activity.component';
+import { UpdateCandidacyComponent } from './FrontOffice/pages/Candidacy/update-candidacy/update-candidacy.component';
+import { JobOfferDetailsComponent } from './BackOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
 import { AddProjectofferComponent } from './FrontOffice/pages/ProjectOffer/add-projectoffer/add-projectoffer.component';
 import { AddQuoteComponent } from './FrontOffice/pages/Quote/add-quote/add-quote.component';
 import { GetProjectofferComponent } from './FrontOffice/pages/ProjectOffer/get-projectoffer/get-projectoffer.component';
@@ -45,7 +41,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WishlistComponent } from './FrontOffice/pages/JobOffer/wishlist/wishlist.component';
-import {CommonModule} from "@angular/common";
+
+import {CommonModule, DatePipe} from "@angular/common";
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 
@@ -63,6 +63,10 @@ import {CommonModule} from "@angular/common";
     RegisterComponent,
     AddProjectComponent,
     FindAllUsersComponent,
+  
+    HomeFrontComponent,
+    AddInterviewComponent,
+    UpdateInterviewComponent,
     FindAllJobOffersComponent,
     FindAllCandidaciesComponent,
     FindAllInterviewsComponent,
@@ -70,22 +74,8 @@ import {CommonModule} from "@angular/common";
     UpdateInterviewComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-    AddEventComponent,
-    GetEventComponent,
-    UpdateEventComponent,
-    AddFeedBackComponent,
-    GetFeedBackComponent,
-    UpdateFeedBackComponent,
-    AddActivityComponent,
-    UpdateActivityComponent,
-    AddEventComponent,
-    UpdateEventComponent,
-    GetEventComponent,
-    AddFeedBackComponent,
-    UpdateFeedBackComponent,
-    GetFeedBackComponent,
-    AddActivityComponent,
-    UpdateActivityComponent,
+    
+
     AddProjectofferComponent,
     AddQuoteComponent,
     GetProjectofferComponent,
@@ -94,6 +84,7 @@ import {CommonModule} from "@angular/common";
     UpdateQuoteComponent,
     FilterPipe,
     WishlistComponent,
+
 
 
 
@@ -110,16 +101,18 @@ import {CommonModule} from "@angular/common";
     MatDialogModule,
     BrowserAnimationsModule,
 
-    ReactiveFormsModule,
     CommonModule,
-    FormsModule
+    MatPaginatorModule
+
 
 
 
 
 
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent] // Bootstrap AppComponent here
 })
 export class AppModule { }

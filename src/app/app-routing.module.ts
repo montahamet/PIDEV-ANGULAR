@@ -1,10 +1,18 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-template-front.component';
+import {FindAllUsersComponent} from "./BackOffice/pages/user/find-all-users/find-all-users.component";
+import {RegisterComponent} from "./BackOffice/pages/user/register/register.component";
 import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 import { FindAllJobOffersComponent } from './FrontOffice/pages/JobOffer/find-all-job-offers/find-all-job-offers.component';
 import { FindAllCandidaciesComponent } from './FrontOffice/pages/Candidacy/find-all-candidacies/find-all-candidacies.component';
 import { FindAllInterviewsComponent } from './FrontOffice/pages/Interview/find-all-interviews/find-all-interviews.component';
+import { AddJobOfferComponent } from './FrontOffice/pages/JobOffer/add-job-offer/add-job-offer.component';
+import { UpdateJobOfferComponent } from './FrontOffice/pages/JobOffer/update-job-offer/update-job-offer.component';
+import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
+
+import { AllTemplatBackComponent } from './BackOffice/all-templat-back/all-templat-back.component';
 
 
 import { AddInterviewComponent } from './FrontOffice/pages/Interview/add-interview/add-interview.component';
@@ -21,6 +29,7 @@ import {
 import {UpdateQuoteComponent} from "./FrontOffice/pages/Quote/update-quote/update-quote.component";
 import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
 import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+},
 
 
 
@@ -33,9 +42,14 @@ const routes: Routes = [
     path: "admin",
     component: AllTemplatBackComponent
   },
+  {
+    path: "",
+    component: AllTemplateFrontComponent,
+    children:[
+      {path:"", component:HomeFrontComponent }
+    ]},
 
   {
-
     path: "JobOffer",
     component: AllTemplateFrontComponent,children:[
       { path: 'addJobOffersfront', component:AddJobOfferComponent },
@@ -44,9 +58,7 @@ const routes: Routes = [
       { path: 'updateJobOffer/:id', component: UpdateJobOfferComponent },
       { path: 'wishlist', component: WishlistComponent },
 
-
-    ]
-  },
+    ]},
   {
     path: "Candidacy",
     component: AllTemplateFrontComponent,children:[
@@ -79,13 +91,11 @@ const routes: Routes = [
       { path: 'addquote', component:AddQuoteComponent },
       { path: 'getquote', component:GetQuotesComponent },
       { path: 'updatequote/:id', component: UpdateQuoteComponent }, // New route for updating job offers
-
-
-
     ]
   },
 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
