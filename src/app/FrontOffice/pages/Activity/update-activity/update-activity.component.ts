@@ -84,13 +84,12 @@ export class UpdateActivityComponentF implements OnInit {
       updatedActivity.description = formValues.description;
       updatedActivity.startTime = new Date(formValues.startTime);
       updatedActivity.finishTime = new Date(formValues.finishTime);
-      // Créez un objet Event avec seulement l'ID pour l'association
       updatedActivity.event = { event_id: formValues.event } as Event;
 
       this.activityService.updateActivity(updatedActivity, formValues.event).subscribe(
         () => {
           alert('Activity updated successfully.');
-          this.router.navigate(['/ActivityF/allactivitiesF']);
+          this.router.navigate(['/ActivityF/getActivityF']);
         },
         error => {
           console.error('Error updating activity:', error);

@@ -12,8 +12,8 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
 import { UpdateInterviewComponent } from './FrontOffice/pages/Interview/update-interview/update-interview.component';
 import {UpdateEventComponent} from "./FrontOffice/pages/Event/update-event/update-event.component";
 import {GetFeedbackComponent} from "./BackOffice/pages/FeedBack/get-feed-back/get-feed-back.component";
-import {JobOfferDetailsComponent} from "./FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component";
-import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+
+
 
 
 
@@ -29,6 +29,12 @@ import {
 import {UpdateQuoteComponent} from "./FrontOffice/pages/Quote/update-quote/update-quote.component";
 import { JobOfferDetailsComponent } from './FrontOffice/pages/JobOffer/job-offer-details/job-offer-details.component';
 import {WishlistComponent} from "./FrontOffice/pages/JobOffer/wishlist/wishlist.component";
+import {GetActivityComponentBack} from "./BackOffice/pages/Activity/get-activity/get-activity.component";
+import {AddActivityComponentFront} from "./FrontOffice/pages/Activity/add-activity/add-activity.component";
+import {GetActivityComponentFront} from "./FrontOffice/pages/Activity/get-activity/get-activity.component";
+import {UpdateActivityComponentF} from "./FrontOffice/pages/Activity/update-activity/update-activity.component";
+import {AddEventComponentF} from "./FrontOffice/pages/Event/add-event/add-event.component";
+import {GetEventComponentF} from "./FrontOffice/pages/Event/get-event/get-event.component";
 
 
 
@@ -115,10 +121,25 @@ const routes: Routes = [
     component: AllTemplateFrontComponent,children:[
       { path: 'addquote', component:AddQuoteComponent },
       { path: 'getquote', component:GetQuotesComponent },
-      { path: 'updatequote/:id', component: UpdateQuoteComponent }, // New route for updating job offers
+      { path: 'updatequote/:id', component: UpdateQuoteComponent },
     ]
   },
-
+  {
+    path: "ActivityF",
+    component: AllTemplateFrontComponent,children:[
+      { path: 'addActivityF', component:AddActivityComponentFront },
+      { path: 'getActivityF', component:GetActivityComponentFront },
+      { path: 'updateActivityF/:id', component:UpdateActivityComponentF },
+    ]
+  },
+  {
+    path:"EventF",
+    component: AllTemplateFrontComponent, children:[
+      {path: 'addEventF', component: AddEventComponentF},
+      { path: 'getEventF', component: GetEventComponentF},
+        { path: 'updateEventF/:id', component: UpdateEventComponent},
+    ]
+  },
 ]
 
 

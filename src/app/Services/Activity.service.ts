@@ -39,14 +39,21 @@ export class ActivityService {
 
 
 
-  addActivity(activity: Activity, event_id: number): Observable<Activity> {
-    console.log('Adding activity:', activity);
-    // Make sure the event_id is properly included in the URL
-    return this.http.post<Activity>(`${this.ActivityUrl}addActivity/${event_id}`, activity).pipe(
+  // addActivity(activity: Activity, event_id: number): Observable<Activity> {
+  //   console.log('Adding activity:', activity);
+  //   // Make sure the event_id is properly included in the URL
+  //   return this.http.post<Activity>(`${this.ActivityUrl}addActivity/${event_id}`, activity).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+// In ActivityService
+  addActivity(activity: Partial<Activity>, event_id: number): Observable<Activity> {
+    const url = `http://localhost:8082/PiDev/Activity-TrainingSession/addActivity/${event_id}`;
+    return this.http.post<Activity>(url, activity).pipe(
       catchError(this.handleError)
     );
   }
-
 
 
   deleteActivity(activity_id: number): Observable<void> {
