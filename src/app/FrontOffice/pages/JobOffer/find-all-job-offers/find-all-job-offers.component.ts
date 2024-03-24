@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class FindAllJobOffersComponent implements OnInit {
   jobOffers: JobOffer[] = [];
+  currentPage: number = 1; // Current page
+  itemsPerPage: number = 4; // Items per page
   wishlist: JobOffer[] = [];
 
   constructor(private js: JobOfferService, private router: Router) {}
@@ -74,5 +76,24 @@ export class FindAllJobOffersComponent implements OnInit {
   navigateToWishlist() {
     // Navigate to the WishlistComponent or any route you have for the wishlist
     this.router.navigate(['/JobOffer/wishlist']);
+  }
+  onPageChange(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
+
+  getPaginatedItems() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.jobOffers.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+  getTotalPages(): number {
+    return Math.ceil(this.jobOffers.length / this.itemsPerPage);
+  }
+  getPaginationNumbers(): number[] {
+    const totalPages = this.getTotalPages();
+    const pagesArray = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pagesArray.push(i);
+    }
+    return pagesArray;
   }
 }

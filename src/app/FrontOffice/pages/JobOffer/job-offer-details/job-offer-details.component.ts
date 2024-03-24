@@ -39,4 +39,17 @@ jobOffer: JobOffer = {} as JobOffer;
       }
     );
   }
+  addToWishlist(jobOffer: JobOffer): void {
+    // Add the job offer to the wishlist
+    this.jobOfferService.addToWishlist(jobOffer).subscribe(
+      () => {
+        console.log('Job offer added to wishlist:', jobOffer);
+        // Provide any feedback to the user if needed
+      },
+      (error) => {
+        console.error('Error adding job offer to wishlist', error);
+        // Handle error scenario
+      }
+    );
+  }
 }
