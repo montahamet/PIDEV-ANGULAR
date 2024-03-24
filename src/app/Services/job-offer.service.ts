@@ -41,5 +41,8 @@ export class JobOfferService {
       observer.complete(); // Complete the observable
     });
   }
-
+  updateJobOffer2(updatedJobOfferData: { id: number, data: JobOffer }): Observable<any> {
+    // Assuming you have an API endpoint to update job offers
+    return this.myHttp.put<any>(`your-api-url/${updatedJobOfferData.id}`, updatedJobOfferData.data);
+  }
 }
