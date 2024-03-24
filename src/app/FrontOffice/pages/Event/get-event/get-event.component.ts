@@ -101,6 +101,6 @@ export class GetEventComponentF implements OnInit {
   }
 
   navigateToAddEvent(): void {
-    this.router.navigate(['/Event/AddEvenF']);
+    this.router.navigate(['/EventF/addEventF']);
   }
 }
