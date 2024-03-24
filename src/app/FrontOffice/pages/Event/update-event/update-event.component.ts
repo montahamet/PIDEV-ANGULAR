@@ -21,9 +21,8 @@ export class UpdateEventComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) {
-    // Initialisez eventForm dans le constructeur
-    this.eventForm = this.formBuilder.group({
+  )
+  {this.eventForm = this.formBuilder.group({
       event_name: ['', Validators.required],
       event_description: [''],
       place: [''],
@@ -58,8 +57,8 @@ export class UpdateEventComponent implements OnInit {
       const updatedEvent: Event = this.eventForm.value;
       updatedEvent.event_id = this.event_id;
 
-      this.eventService.UpdateEvent(updatedEvent).subscribe(
-        () => {
+      this.eventService.updateEvent(updatedEvent.event_id, updatedEvent).subscribe (
+      () => {
           console.log('Event updated successfully.');
           alert('Event updated successfully!');
           this.router.navigate(['/Event/allEventF']);

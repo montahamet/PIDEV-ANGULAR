@@ -137,8 +137,7 @@ const routes: Routes = [
     component: AllTemplateFrontComponent, children:[
       {path: 'addEventF', component: AddEventComponentF},
       { path: 'getEventF', component: GetEventComponentF},
-        { path: 'updateEventF/:id', component: UpdateEventComponent},
-    ]
+      { path: 'UpdateEvent/:id', component: UpdateEventComponent},    ]
   },
 ]
 

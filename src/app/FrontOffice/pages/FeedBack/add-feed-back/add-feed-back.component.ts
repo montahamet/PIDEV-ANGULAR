@@ -28,7 +28,7 @@ export class AddFeedBackComponentF implements OnInit {
     this.createForm();
     this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd') || ''; // Utilisez datePipe pour obtenir la date actuelle
 
-    this.loadEvents();
+    // this.loadEvents();
   }
 
   createForm(): void {
@@ -61,14 +61,14 @@ export class AddFeedBackComponentF implements OnInit {
     }
   }
 
-  loadEvents(): void {
-    this.eventService.findAllEvent().subscribe(
-      events => {
-        this.events = events;
-      },
-      error => {
-        console.error('Error loading events:', error);
-      }
-    );
-  }
+  // loadEvents(): void {
+  //   this.eventService.findAllEvent().subscribe(
+  //     events => {
+  //       this.events = events;
+  //     },
+  //     error => {
+  //       console.error('Error loading events:', error);
+  //     }
+  //   );
+  // }
 }

@@ -14,18 +14,24 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  findAllEvent(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.EventUrl}/findAllEvents`);
+  findAllEvent(page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.EventUrl}/events?page=${page}&size=${size}`);
   }
-
+  hasRelatedActivities(eventId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.EventUrl}/${eventId}/hasRelatedActivities`);
+  }
   findOneEvent(eventId: number): Observable<Event> {
     return this.http.get<Event>(`${this.EventUrl}/findOneEvent/${eventId}`);
   }
 
 
-  UpdateEvent(event: Event): Observable<Event> {
-    return this.http.put<Event>(`${this.EventUrl}/UpdateEvent`, event);
+
+  updateEvent(eventId: number, event: Event): Observable<Event> {
+    return this.http.put<Event>(`${this.EventUrl}/events/${eventId}`, event);
   }
+
+
+
 
   addEvent(event: Event): Observable<Event> {
     console.log('Event to be added:', event);
