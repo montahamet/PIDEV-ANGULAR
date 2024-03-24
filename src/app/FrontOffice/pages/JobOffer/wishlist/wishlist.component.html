@@ -27,12 +27,19 @@
     </div>
 
     <ng-template #wishlistItems>
-      <div class="job_listing_area plus_padding">
+
+      <div class="job_listing_area plus_padding" style="background-color: white;">
+        <div *ngIf="wishlist.length > 0" class="wishlist-actions d-flex justify-content-end">
+          <button (click)="clearWishlist()" class="btn btn-danger clear-wishlist-btn">
+            <i class="fa fa-trash"></i> Clear Wishlist
+          </button>
+        </div>
+        <br>
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <div *ngFor="let jobOffer of wishlist" class="job_lists m-0">
-                <div class="single_jobs white-bg d-flex justify-content-between">
+              <div *ngFor="let jobOffer of getPaginatedItems()" class="job_lists m-0">
+                <div class="single_jobs white-bg d-flex justify-content-between" style="border: 1px solid #00d363;">
                   <div class="jobs_left d-flex align-items-center">
                     <div class="thumb">
                       <!-- Use the actual image source if available -->
@@ -66,13 +73,23 @@
           </div>
         </div>
       </div>
+
     </ng-template>
 
-    <div *ngIf="wishlist.length > 0" class="wishlist-actions">
-      <button (click)="clearWishlist()" class="btn btn-danger clear-wishlist-btn">
-        <i class="fa fa-trash"></i> Clear Wishlist
-      </button>
+
+    <div class="d-flex justify-content-center">
+      <div class="pagination-container">
+        <button class="btn btn-primary" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
+          <i class="fas fa-chevron-left"></i> <!-- Icon for "Previous" -->
+        </button>
+        <button class="btn btn-primary" *ngFor="let page of getPaginationNumbers()" (click)="onPageChange(page)" [class.active]="currentPage === page">{{ page }}</button>
+        <button class="btn btn-primary" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === Math.ceil(wishlist.length / itemsPerPage)">
+          <i class="fas fa-chevron-right"></i> <!-- Icon for "Next" -->
+        </button>
+      </div>
     </div>
+
+    <br>
 
   </div>
 </div>
@@ -115,5 +132,8 @@
 
 .clear-wishlist-btn:hover {
 background-color: #d9534f; /* Darker red on hover */
+}
+.job_listing_area.plus_padding {
+  background-color: white;
 }
 </style>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
   wishlist: any[] = [];
+  currentPage: number = 1; // Current page
+  itemsPerPage: number = 4; // Items per page
 
   ngOnInit() {
     // Retrieve wishlist from local storage on component initialization
@@ -44,4 +46,23 @@ export class WishlistComponent implements OnInit {
     // Save the updated wishlist to local storage
     this.saveWishlist();
   }
+  onPageChange(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
+
+  getPaginatedItems() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.wishlist.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+  getPaginationNumbers(): number[] {
+    const totalPages = Math.ceil(this.wishlist.length / this.itemsPerPage);
+    const pagesArray = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pagesArray.push(i);
+    }
+    return pagesArray;
+  }
+
+  // Import Math explicitly
+  Math = Math;
 }
