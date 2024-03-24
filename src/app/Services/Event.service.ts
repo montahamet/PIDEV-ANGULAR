@@ -17,7 +17,9 @@ export class EventService {
   findAllEvent(): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.EventUrl}/findAllEvents`);
   }
-
+  hasRelatedActivities(eventId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.EventUrl}/${eventId}/hasRelatedActivities`);
+  }
   findOneEvent(eventId: number): Observable<Event> {
     return this.http.get<Event>(`${this.EventUrl}/findOneEvent/${eventId}`);
   }

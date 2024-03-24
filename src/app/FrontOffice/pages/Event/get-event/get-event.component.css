@@ -81,6 +81,26 @@
 .btn-add-activity:hover {
   filter: brightness(85%);
 }
-
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #08718e;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+h2::after {
+  content: ''; /* Required property for pseudo-elements */
+  display: block; /* Treat the pseudo-element as a block */
+  margin: 0 auto; /* Center the block */
+  height: 3px; /* Height of the underline */
+  width: 100px; /* Width of the underline */
+  background: #08718e; /* Background color of the underline */
+  border-radius: 2px; /* Optional: rounded corners */
+  margin-top: 8px; /* Space between the text and the underline */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow for depth */
+}
 
 
