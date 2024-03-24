@@ -107,19 +107,19 @@
         <form [formGroup]="updateEventForm" (ngSubmit)="onUpdateEvent()">
           <div class="mb-3">
             <label for="event_name" class="form-label">Event Name</label>
-            <input type="text" class="form-control" id="event_name" formControlName="event_name1">
+            <input type="text" class="form-control" id="event_name" formControlName="event_name">
           </div>
           <div class="mb-3">
             <label for="event_date" class="form-label">Event Date</label>
-            <input type="date" class="form-control" id="event_date" formControlName="event_date1">
+            <input type="date" class="form-control" id="event_date" formControlName="event_date">
           </div>
           <div class="mb-3">
             <label for="place" class="form-label">Place</label>
-            <input type="text" class="form-control" id="place" formControlName="place1">
+            <input type="text" class="form-control" id="place" formControlName="place">
           </div>
           <div class="mb-3">
             <label for="event_description" class="form-label">Description</label>
-            <textarea class="form-control" id="event_description" formControlName="event_description1"></textarea>
+            <textarea class="form-control" id="event_description" formControlName="event_description"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!updateEventForm.valid">Update Event</button>
         </form>
@@ -127,3 +127,8 @@
     </div>
   </div>
 </div>
+<mat-paginator [length]="totalItems"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[5, 10, 20]"
+               (page)="changePage($event)">
+</mat-paginator>

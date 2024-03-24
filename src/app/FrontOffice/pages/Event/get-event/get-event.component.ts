@@ -7,6 +7,8 @@ import { Activity } from 'src/app/Models/Activity';
 import { RegistrationEvent } from 'src/app/Models/RegistrationEvent';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import * as bootstrap from "bootstrap";
+import {Location} from "@angular/common";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-get-event',
@@ -25,6 +27,10 @@ export class GetEventComponentF implements OnInit {
   selectedEvent?: Event;
   updateEventForm: FormGroup;
   event_id!: number;
+  event!: Event;
+  totalItems = 0;
+  currentPage = 0;
+  pageSize = 10; // Adjust based on your needs
 
 
   constructor(
@@ -33,6 +39,7 @@ export class GetEventComponentF implements OnInit {
     private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private location: Location,
 
   ) {
     this.newEventForm = this.formBuilder.group({
@@ -41,18 +48,18 @@ export class GetEventComponentF implements OnInit {
       place: ['', Validators.required],
       event_description: ['', Validators.required]
     });
-    {
-      this.updateEventForm = this.formBuilder.group({
-        event_name1: ['', Validators.required],
-        event_date1: ['', Validators.required],
-        place1: ['', Validators.required],
-        event_description1: ['', Validators.required]
-      });
+    this.updateEventForm = this.formBuilder.group({
+      event_name: ['', Validators.required],
+      event_date: ['', Validators.required],
+      place: [''],
+      event_description: [''],
+    });
 
-    }}
+
+    }
 
   ngOnInit(): void {
-    this.loadEvents();
+    this.loadEvents(this.currentPage, this.pageSize);
     this.event_id = parseInt(<string>this.route.snapshot.paramMap.get('id'));
 
   }
@@ -64,30 +71,62 @@ export class GetEventComponentF implements OnInit {
   showUpdateModal(event: Event): void {
     this.selectedEvent = event;
     this.updateEventForm.patchValue({
-      event_name1: event.event_name,
-      event_date1: event.event_date,
-      place1: event.place,
-      event_description1: event.event_description
+      event_name: event.event_name,
+      event_date: event.event_date,
+      place: event.place,
+      event_description: event.event_description,
     });
-
     const modal = new bootstrap.Modal(this.updateEventModal.nativeElement);
     modal.show();
   }
+  loadEvents(pageIndex: number, pageSize: number): void {
+    this.eventService.findAllEvent(pageIndex, pageSize).subscribe({
+      next: (response) => {
+        this.events = response.content; // Adjust according to your API response structure
+        this.totalItems = response.totalElements;
+        this.currentPage = pageIndex;
+        this.pageSize = pageSize;
+      },
+      error: (error) => {
+        console.error('Error loading events:', error);
+        this.showModalWithMessage('Error loading events. Please try again.');
+      }
+    });
+  }
 
-  loadEvents(): void {
-    this.eventService.findAllEvent().subscribe(
-      events => {
-        this.events = events;
-        console.log('Events:', this.events);
-        // Charger les données liées pour chaque événement
-        this.events.forEach(event => this.loadRelatedData(event));
+  changePage(event: PageEvent): void {
+    this.loadEvents(event.pageIndex, event.pageSize);
+  }
+
+
+  nextPage(): void {
+    if (this.currentPage < (this.totalItems / this.pageSize) - 1) {
+      this.currentPage++;
+      this.loadEvents(this.currentPage, this.pageSize);
+    }
+  }
+  previousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadEvents(this.currentPage, this.pageSize);
+    }
+  }
+  loadEvent(): void {
+    this.eventService.findOneEvent(this.event_id).subscribe(
+      (event: Event) => {
+        this.event = event;
+        this.updateEventForm.patchValue({
+          event_name: this.event.event_name,
+          event_description: this.event.event_description,
+          place: this.event.place,
+          event_date: this.event.event_date,
+        });
       },
       error => {
-        console.error('Error loading events:', error);
+        console.error('Error loading event:', error);
       }
     );
   }
-
   updateEvent(event_id: number): void {
     console.log('Updating event with ID:', event_id);
     this.router.navigate([`/EventF/UpdateEvent/${event_id}`]);
@@ -99,7 +138,7 @@ export class GetEventComponentF implements OnInit {
         () => {
           console.log('Event deleted successfully.');
           alert('Event deleted successfully.');
-          this.loadEvents();
+          this.loadEvents(this.currentPage, this.pageSize);
         },
         error => {
           console.error('Error deleting event:', error);
@@ -117,7 +156,7 @@ export class GetEventComponentF implements OnInit {
 
           console.log('Event added successfully.');
           this.newEventForm.reset();
-          this.loadEvents();
+          this.loadEvents(this.currentPage, this.pageSize);
           this.cdr.detectChanges();
 
         },
@@ -139,7 +178,7 @@ export class GetEventComponentF implements OnInit {
       } else {
         this.eventService.deleteEvent(this.eventIdToDelete).subscribe(() => {
           this.showModalWithMessage('Event deleted successfully!');
-          this.loadEvents(); // Refresh the events list
+          this.loadEvents(this.currentPage, this.pageSize); // Refresh the events list
         }, error => {
           this.showModalWithMessage('Error deleting the event. Please try again.');
         });
@@ -194,38 +233,28 @@ export class GetEventComponentF implements OnInit {
     );
   }
   onUpdateEvent(): void {
-    // Assurez-vous que le formulaire est valide avant de procéder à la mise à jour
     if (this.updateEventForm.valid && this.selectedEvent) {
-      // Créez un nouvel objet Event avec les valeurs mises à jour
-      const updatedEvent: Event = {
-        ...this.selectedEvent, // Utilisez l'opérateur spread pour copier les valeurs actuelles de selectedEvent
-        ...this.updateEventForm.value, // Mettez à jour avec les nouvelles valeurs du formulaire
-        event_id: this.selectedEvent.event_id, // Assurez-vous que l'ID de l'événement est correctement inclus
+      const updatedEvent = {
+        ...this.selectedEvent, // Ensure you have the event ID and any other non-updated fields
+        ...this.updateEventForm.value,
       };
 
-      // Utilisez votre service pour envoyer la requête de mise à jour
-      this.eventService.UpdateEvent(updatedEvent).subscribe({
+      this.eventService.updateEvent(updatedEvent.event_id, updatedEvent).subscribe({
         next: () => {
-          // Affichez un message de succès
           this.showModalWithMessage('Event updated successfully!');
-          // Rafraîchissez la liste des événements pour montrer les modifications
-          this.loadEvents();
-          // Fermez la modale de mise à jour
-          const modalInstance = bootstrap.Modal.getInstance(this.updateEventModal.nativeElement);
-          if (modalInstance) {
-            modalInstance.hide();
-          }
+          this.loadEvents(this.currentPage, this.pageSize); // Reload your events list to reflect the update
+          // Close the modal
         },
         error: (error) => {
-          // En cas d'erreur, affichez un message et loguez l'erreur
-          this.showModalWithMessage('Error updating event.');
           console.error('Error updating event:', error);
+          this.showModalWithMessage('Error updating event.');
         }
       });
     }
   }
 
-  navigateToAddEvent(): void {
-    this.router.navigate(['/EventF/addEventF']);
-  }
+
+
+
+
 }
