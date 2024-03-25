@@ -92,15 +92,29 @@ h2 {
   position: relative;
 }
 h2::after {
-  content: ''; /* Required property for pseudo-elements */
-  display: block; /* Treat the pseudo-element as a block */
-  margin: 0 auto; /* Center the block */
-  height: 3px; /* Height of the underline */
-  width: 100px; /* Width of the underline */
-  background: #08718e; /* Background color of the underline */
-  border-radius: 2px; /* Optional: rounded corners */
-  margin-top: 8px; /* Space between the text and the underline */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow for depth */
+  content: '';
+  display: block;
+  margin: 0 auto;
+  height: 3px;
+  width: 100px;
+  background: #08718e;
+  border-radius: 2px;
+  margin-top: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+#map {
+  height: 400px;
+}
+.error-message {
+  color: red;
+}
+
+.alert-red {
+  color: white; /* Text color */
+  background-color: red; /* Background color */
+  padding: 0.75rem 1.25rem; /* Padding inside the alert box */
+  margin-top: 1rem; /* Space above the alert box */
+  border-radius: 0.25rem; /* Rounded corners for the alert box */
+}
 

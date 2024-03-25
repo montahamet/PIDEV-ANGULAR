@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table-custom">
   <thead>
   <tr>
     <th>Nom de l'activité</th>
@@ -12,10 +12,9 @@
   <tr *ngFor="let activity of activities">
     <td>{{ activity.activity_name }}</td>
     <td>{{ activity.description }}</td>
-    <td>{{ activity.startTime }}</td>
-    <td>{{ activity.finishTime }}</td>
-    <td *ngIf="activity.event">{{ activity.event }}</td>
-    <td *ngIf="!activity.event">No Event</td> <!-- Example fallback if 'event' is null -->
+    <td>{{ activity.startTime | date: 'short' }}</td>
+    <td>{{ activity.finishTime | date: 'short' }}</td>
+    <td>{{ activity.event?.event_name || 'No Event' }}</td>
   </tr>
   </tbody>
 </table>

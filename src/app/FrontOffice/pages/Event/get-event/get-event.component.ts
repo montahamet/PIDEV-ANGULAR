@@ -56,7 +56,7 @@ export class GetEventComponentF implements OnInit {
     });
 
 
-    }
+  }
 
   ngOnInit(): void {
     this.loadEvents(this.currentPage, this.pageSize);
@@ -111,41 +111,7 @@ export class GetEventComponentF implements OnInit {
       this.loadEvents(this.currentPage, this.pageSize);
     }
   }
-  loadEvent(): void {
-    this.eventService.findOneEvent(this.event_id).subscribe(
-      (event: Event) => {
-        this.event = event;
-        this.updateEventForm.patchValue({
-          event_name: this.event.event_name,
-          event_description: this.event.event_description,
-          place: this.event.place,
-          event_date: this.event.event_date,
-        });
-      },
-      error => {
-        console.error('Error loading event:', error);
-      }
-    );
-  }
-  updateEvent(event_id: number): void {
-    console.log('Updating event with ID:', event_id);
-    this.router.navigate([`/EventF/UpdateEvent/${event_id}`]);
-  }
-  deleteEvent(event_id: number): void {
-    console.log('Deleting event with ID:', event_id);
-    if (confirm('Are you sure you want to delete this event?')) {
-      this.eventService.deleteEvent(event_id).subscribe(
-        () => {
-          console.log('Event deleted successfully.');
-          alert('Event deleted successfully.');
-          this.loadEvents(this.currentPage, this.pageSize);
-        },
-        error => {
-          console.error('Error deleting event:', error);
-        }
-      );
-    }
-  }
+
 
   addEvent(): void {
     if (this.newEventForm.valid) {

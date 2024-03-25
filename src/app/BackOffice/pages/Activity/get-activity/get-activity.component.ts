@@ -14,12 +14,18 @@ export class GetActivityComponentBack implements OnInit{
   pageSize = 10;
   constructor(private activityServiceB : ActivityService) {
   }
-  loadActivititesBack():void{
+  loadActivitiesBack(): void {
     this.activityServiceB.findAllActivities(this.currentPage, this.pageSize).subscribe(
-      activities => this.activities = activities
+      data => {
+        // Suppose que la réponse est un objet avec une propriété `content` contenant le tableau d'activités
+        this.activities = data.content;
+      },
+      error => console.error('Error fetching activities:', error)
     );
   }
-  ngOnInit() : void {
-    this.loadActivititesBack();
-}
+
+    ngOnInit() : void {
+    this.loadActivitiesBack();
+      console.log(this.activities);
+    }
 }

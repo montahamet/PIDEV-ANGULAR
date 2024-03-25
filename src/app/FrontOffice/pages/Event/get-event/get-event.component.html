@@ -76,18 +76,31 @@
           <div class="mb-3">
             <label for="event_name" class="form-label">Event Name</label>
             <input type="text" class="form-control" id="event_name" formControlName="event_name">
+            <div *ngIf="newEventForm.get('event_name')?.touched && newEventForm.get('event_name')?.invalid" class="text-danger">
+              Event name is required.
+            </div>
+
           </div>
           <div class="mb-3">
             <label for="event_date" class="form-label">Event Date</label>
             <input type="date" class="form-control" id="event_date" formControlName="event_date">
+            <div *ngIf="newEventForm.get('event_date')?.touched && newEventForm.get('event_date')?.invalid" class="text-danger">
+              Event date is required .
+            </div>
           </div>
           <div class="mb-3">
             <label for="place" class="form-label">Place</label>
             <input type="text" class="form-control" id="place" formControlName="place">
+            <div *ngIf="newEventForm.get('place')?.touched && newEventForm.get('place')?.invalid" class="text-danger">
+              Event place is required .
+            </div>
           </div>
           <div class="mb-3">
             <label for="event_description" class="form-label">Description</label>
             <textarea class="form-control" id="event_description" formControlName="event_description"></textarea>
+            <div *ngIf="newEventForm.get('event_description')?.touched && newEventForm.get('event_description')?.invalid" class="text-danger">
+              Event date is required .
+            </div>
           </div>
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!newEventForm.valid">Add Event</button>
         </form>

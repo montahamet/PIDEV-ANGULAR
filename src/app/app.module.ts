@@ -12,6 +12,7 @@ import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.co
 import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
+// import { MapComponent } from './components/map/map.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -61,6 +62,8 @@ import {CommonModule, DatePipe} from "@angular/common";
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
+import {MapComponent} from "./components/map/map.component";
+import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-event.component";
 
 
 
@@ -90,8 +93,7 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     UpdateInterviewComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-
-
+    // mapContainer,
     AddProjectofferComponent,
     AddQuoteComponent,
     GetProjectofferComponent,
@@ -101,13 +103,12 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     FilterPipe,
     WishlistComponent,
 
-
+    MapComponent,
     AddEventComponent,
     UpdateEventComponent,
     AddFeedBackComponent,
     UpdateFeedBackComponent,
     AddActivityComponent,
-    GetActivityComponentBack,
     UpdateActivityComponent,
     AppComponent,
     GetActivityComponentFront,
@@ -118,6 +119,8 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     AddFeedBackComponentF,
     UpdateEventComponent,
     GetFeedbackComponent,
+    GetActivityComponentBack,
+    GetEventComponentBack,
 
 
 
@@ -137,7 +140,6 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     MatDialogModule,
     BrowserAnimationsModule,
 
-
     CommonModule,
     MatPaginatorModule
 
@@ -148,9 +150,7 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
 
 
   ],
-  providers: [
-    DatePipe
-  ],
-  bootstrap: [AppComponent] // Bootstrap AppComponent here
+  providers: [DatePipe],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
