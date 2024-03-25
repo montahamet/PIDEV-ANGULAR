@@ -1,4 +1,5 @@
 import { Gender } from "./gender";
+import {Role} from "./role";
 
 export class User {
     userId!: number ;
@@ -6,6 +7,9 @@ export class User {
     firstname!: string;
     lastname!: string;
     password!: string;
-    Adresse!: string;
+    adresse!: string;
+   birthdate!: Date;
+  phonenumber!:number;
     gender!:Gender;
+    role!: Role
 }
