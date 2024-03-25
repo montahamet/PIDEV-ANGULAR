@@ -5,9 +5,11 @@ import {FeedBack} from "./FeedBack";
 
 export class Event{
   event_id!: number;
-  Event_name!: string;
-  Event_date!: Date;
-  user!:User;
+  event_name!: string;
+  event_description!: string ;
+  place !:string;
+  event_date!: Date;
+  users!: User [];
   RegistationEvents!:RegistrationEvent[];
   Activitys!: Activity[];
   FeedBacks!: FeedBack[];

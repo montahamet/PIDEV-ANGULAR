@@ -5,10 +5,14 @@ export class JobOffer {
     titleJobOffer!: string;
     postedDate!: Date;
     description!: string;
+    jobLocation!:string;
+    applicationDeadLine!: Date;
+    experience!: string;
     requiredSkills!: string;
     vacancy!: number;
-    salary!: number;
+    minsalary!: number;
+    maxsalary!: number;
     jobNature!:JobNature;
 
-    
+
 }

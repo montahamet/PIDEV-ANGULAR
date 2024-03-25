@@ -18,16 +18,20 @@ export class AddJobOfferComponent {
       titleJobOffer: ['', Validators.required],
       description: ['', Validators.required],
       requiredSkills: ['', Validators.required],
+      experience: ['', Validators.required],
+      jobLocation: ['', Validators.required],
+      applicationDeadLine: ['', Validators.required],
       vacancy:  [Validators.required, Validators.min(1)],
-      salary: [Validators.required, Validators.min(1)],
-      jobNature: [0, Validators.required], 
+      minsalary: [Validators.required, Validators.min(1)],
+      maxsalary: [Validators.required, Validators.min(1)],
+      jobNature: [0, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.jobOfferForm.valid) {
       const jobOffer: JobOffer = this.jobOfferForm.value;
-      jobOffer.postedDate = new Date(); 
+      jobOffer.postedDate = new Date();
       this.jobOfferService.addJobOffer(jobOffer).subscribe(
         (addedJobOffer: JobOffer) => {
           console.log('Job offer added successfully:', addedJobOffer);
@@ -40,6 +44,6 @@ export class AddJobOfferComponent {
     }
   }
   cancel() {
-    this.location.back(); 
+    this.location.back();
   }
 }

@@ -1,1 +1,22 @@
-<p>get-feed-back works!</p>
+<div class="container">
+  <h2>Feedbacks</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Note</th>
+      <th>Événement associé</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let feedback of feedbacks">
+      <td>{{ feedback.description }}</td>
+      <td>{{ feedback.FeedBack_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ feedback.note }}</td>
+      <td *ngIf="feedback.event">{{ feedback.event.event_name }}</td>
+      <td *ngIf="!feedback.event">No Event</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

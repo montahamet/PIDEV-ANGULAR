@@ -1,0 +1,106 @@
+:root {
+  --color-light-blue: #d6e4e4;
+  --color-dark-blue: #08718e;
+  --color-bright-orange: #fa7022;
+  --color-soft-blue: #63a5ac;
+  --color-vibrant-green: #11966e;
+  --color-soft-green: #75c0ae;
+  --color-dark-green: #719237;
+  --color-navy-blue: #3c7ea5;
+  --color-pale-blue: #7fadc4;
+}
+
+.card {
+  border: 0;
+}
+
+.card-header {
+  background-color: var(--color-dark-blue);
+  color: #fff;
+}
+
+
+.card-body {
+  background-color: #fff;
+  border-left: 5px solid var(--color-soft-green);
+}
+
+.card-footer {
+  background-color: var(--color-light-blue);
+}
+
+.btn-outline-secondary {
+  color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-dark-blue);
+  color: #fff;
+}
+
+.btn-outline-danger {
+  color: var(--color-bright-orange);
+  border-color: var(--color-bright-orange);
+}
+
+.btn-outline-danger:hover {
+  background-color: var(--color-bright-orange);
+  color: #fff;
+}
+.btn-success {
+  background-color: var(--color-vibrant-green) !important;
+  border-color: var(--color-dark-green) !important;
+  color: white !important;
+}
+.btn-add-activity {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #08718e;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-add-activity:hover {
+  background-color: #fa7022;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+
+.card-title {
+  color: black !important;
+}
+.btn-add-activity:hover {
+  filter: brightness(85%);
+}
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #08718e;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+h2::after {
+  content: ''; /* Required property for pseudo-elements */
+  display: block; /* Treat the pseudo-element as a block */
+  margin: 0 auto; /* Center the block */
+  height: 3px; /* Height of the underline */
+  width: 100px; /* Width of the underline */
+  background: #08718e; /* Background color of the underline */
+  border-radius: 2px; /* Optional: rounded corners */
+  margin-top: 8px; /* Space between the text and the underline */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow for depth */
+}
+
+

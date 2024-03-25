@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/Models/User';
 
+
 import {UserService} from "../../../../Services/user.service";
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class FindAllUsersComponent {
   users : User[] = [];
+
 
   constructor(private userService: UserService,private router: Router ){}
   ngOnInit(){
@@ -43,5 +46,6 @@ export class FindAllUsersComponent {
       );
     }
   }
+
 
 }

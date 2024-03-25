@@ -1,0 +1,13 @@
+/* calendar-styles.css */
+
+.custom-calendar-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Use full viewport height */
+}
+
+.custom-calendar {
+    width: 1000px; /* Adjust the width as needed */
+    height: 1000px; /* Adjust the height as needed */
+}

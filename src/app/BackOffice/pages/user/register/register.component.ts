@@ -1,14 +1,17 @@
+
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import { User } from 'src/app/Models/User';
 import { UserService } from 'src/app/Services/user.service';
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
   userForm : FormGroup ;
   submitted = false;
@@ -63,4 +66,5 @@ export class RegisterComponent implements OnInit {
       return null;
     };
   }
+
 }

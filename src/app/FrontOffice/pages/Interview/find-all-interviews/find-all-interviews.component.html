@@ -1,23 +1,46 @@
-<h1>interviews</h1>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>dateInterview</th>
-            <th>type </th>
-            <th>statusInterview</th>
-            <th>passed</th>
-            
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+      <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+        <h1 class="display-4 text-white animated zoomIn">Interviews</h1>
+        <a href="" class="h5 text-white">Home</a>
+        <i class="far fa-circle text-white px-2"></i>
+        <a href="" class="h5 text-white">Interview</a>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="custom-calendar-container">
+    <full-calendar class="custom-calendar" [events]="calendarEvents" [options]="calendarOptions"
+      (dateClick)="handleDayClick($event)" (eventClick)="handleEventClick($event)">
+    </full-calendar>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let i of interviews ">
-            <td>{{i.dateInterview}}</td>
-            <td>{{i.type}}</td>
-            <td>{{i.statusInterview}}</td>
-            <td>{{i.passed}}</td>
-            
-
-        </tr>
-    </tbody>
+<!-- <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Passed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let interview of interviews">
+      <td>{{ interview.dateInterview }}</td>
+      <td>{{ interview.type }}</td>
+      <td>{{ interview.statusInterview }}</td>
+      <td>{{ interview.passed ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
 </table>
+
+<button class="btn btn-success float-right" (click)="openAddInterviewDialog()">Add Interview</button> -->

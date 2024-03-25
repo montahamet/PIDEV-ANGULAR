@@ -1,0 +1,254 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+<link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/gijgo.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/slicknav.css">
+
+    <link rel="stylesheet" href="/assets/FrontOffice/JobOffer/css/style.css">
+
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="job_details_header">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="/assets/FrontOffice/JobOffer/img/svg_icon/1.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <h4>{{ jobOffer.titleJobOffer }}</h4>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> {{ jobOffer.jobLocation }}</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> {{ jobOffer.jobNature }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                  <a class="heart_mark" (click)="addToWishlist(jobOffer)"> <i class="fas fa-heart"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="descript_wrap white-bg">
+                        <div class="single_wrap">
+                            <h4>Job description</h4>
+                            <p>{{ jobOffer.description }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Required Skills</h4>
+                            <ul>
+                                <li>{{ jobOffer.requiredSkills }}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="apply_job_form white-bg">
+                        <h4>Apply for the job</h4>
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input_field">
+                                        <input type="text" placeholder="Your name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input_field">
+                                        <input type="text" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input_field">
+                                        <input type="text" placeholder="Website/Portfolio link">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                          </button>
+                                        </div>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                          <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
+                                        </div>
+                                      </div>
+                                </div>
+                              <div class="col-md-12">
+                                <div class="toolbar" style="width: 100%;">
+                                  <button id="bold" title="Bold"><b>B</b></button>
+                                  <button id="italic" title="Italic"><i>I</i></button>
+                                  <button id="underline" title="Underline"><u>U</u></button>
+                                  <select id="font-size">
+                                    <option value="1">Small</option>
+                                    <option value="2" selected>Medium</option>
+                                    <option value="3">Large</option>
+                                  </select>
+                                  <input type="color" id="font-color" title="Font Color">
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="input_field">
+                                  <textarea name="#" id="editor" cols="30" rows="10" placeholder="Coverletter" contenteditable="true"></textarea>
+                                </div>
+                              </div>
+                                <div class="col-md-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Job Summary</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>Published on: <span>{{ jobOffer.postedDate }}</span></li>
+                                <li>Vacancy: <span>{{ jobOffer.vacancy }} positions</span></li>
+                                <li>Experience: <span>{{ jobOffer.experience }} </span></li>
+                                <li>Salary: <span>[{{ jobOffer.minsalary }}-{{ jobOffer.maxsalary }}]TND</span> </li>
+                              <li>Location: <span>{{ jobOffer.jobLocation }}</span></li>
+                                <li>Job Nature: <span>{{ jobOffer.jobNature }}</span></li>
+                                <li>Application Deadline: <span>{{ jobOffer.applicationDeadLine }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="share_wrap d-flex">
+                        <span>Share at:</span>
+                        <ul>
+                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- JS here -->
+<script src="/assets/FrontOffice/JobOffer/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/popper.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/owl.carousel.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/isotope.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/ajax-form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/waypoints.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.counterup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/scrollIt.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.scrollUp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/wow.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/nice-select.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.slicknav.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/plugins.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/gijgo.min.js"></script>
+
+
+
+<!--contact js-->
+<script src="/assets/FrontOffice/JobOffer/js/contact.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.ajaxchimp.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.form.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/jquery.validate.min.js"></script>
+<script src="/assets/FrontOffice/JobOffer/js/mail-script.js"></script>
+
+
+<script src="/assets/FrontOffice/JobOffer/js/main.js"></script>
+<style>
+  .toolbar {
+    background-color: #f2f2f2;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .toolbar button {
+    background-color: #e7e7e7;
+    border: none;
+    color: #333;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .toolbar select,
+  .toolbar input[type="color"] {
+    margin: 4px 2px;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+  }
+
+  #editor {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+</style>
+<script>
+  const editor = document.getElementById('editor');
+  const boldButton = document.getElementById('bold');
+  const italicButton = document.getElementById('italic');
+  const underlineButton = document.getElementById('underline');
+  const fontSizeSelect = document.getElementById('font-size');
+  const fontColorInput = document.getElementById('font-color');
+
+  boldButton.addEventListener('click', () => {
+    document.execCommand('bold', false, null);
+  });
+
+  italicButton.addEventListener('click', () => {
+    document.execCommand('italic', false, null);
+  });
+
+  underlineButton.addEventListener('click', () => {
+    document.execCommand('underline', false, null);
+  });
+
+  fontSizeSelect.addEventListener('change', () => {
+    const fontSize = fontSizeSelect.value;
+    document.execCommand('fontSize', false, fontSize);
+  });
+
+  fontColorInput.addEventListener('change', () => {
+    const fontColor = fontColorInput.value;
+    document.execCommand('foreColor', false, fontColor);
+  });
+</script>

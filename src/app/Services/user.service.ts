@@ -13,6 +13,7 @@ export class UserService {
   findAllUsers(): Observable<User[]>{
     return this.http.get<User[]>(this.baseUrl + '/retrieveAllUser');
   }
+
   addUser(user : User): Observable<User>{
     return this.http.post<User>(this.baseUrl + '/addUser',user);
   }
@@ -26,5 +27,6 @@ export class UserService {
   deleteUser(userId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/removeUser/${userId}`);
   }
+
 
 }

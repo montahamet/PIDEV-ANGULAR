@@ -25,12 +25,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css", 
-              "src/assets/FrontOffice/css/bootstrap.min.css",
+              "src/custom-theme.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/FrontOffice/css/style.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/FrontOffice/lib/easing/easing.min.js",
               "src/assets/FrontOffice/lib/wow/wow.min.js",
               "src/assets/FrontOffice/lib/waypoints/waypoints.min.js",
@@ -38,6 +41,7 @@
               "src/assets/FrontOffice/lib/owlcarousel/owl.carousel.min.js",
               "src/assets/FrontOffice/js/main.js"
             ]
+
           },
           "configurations": {
             "production": {
@@ -97,6 +101,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
