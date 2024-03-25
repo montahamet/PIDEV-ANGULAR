@@ -1,0 +1,23 @@
+<h1>Candidacies</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>CV</th>
+            <th>Cover Letter</th>
+            <th>Submission Date</th>
+            <th>Status</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of candidacies ">
+            <td>{{c.cv}}</td>
+            <td>{{c.coverLetter}}</td>
+            <td>{{c.submissionDate}}</td>
+            <td>{{c.candidacystatus}}</td>
+            
+
+        </tr>
+    </tbody>
+</table>
