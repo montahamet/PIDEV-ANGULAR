@@ -7,7 +7,7 @@
           <div class="card-header pb-0">
             <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
               <a class="w-auto pl-0" href="/index.html">
-                <img src="/assets/BackOffice/images/logo.png" alt="Mono">
+
                 <span class="brand-name text-dark">CoConsult</span>
               </a>
             </div>
@@ -17,41 +17,82 @@
             <form [formGroup]="userForm" (ngSubmit)="addUser()">
               <div class="row">
                 <!-- Add the missing fields here -->
-                <div class="form-group col-md-12 mb-4">
-                  <input type="text" class="form-control input-lg" formControlName="firstName" placeholder="First Name">
+
+                <div *ngIf="submitted && userForm.get('firstname')?.hasError('required')">
+                  First name is required.
+                </div>
+                <div *ngIf="submitted && userForm.get('firstname')?.hasError('maxlength')">
+                  Maximum length is 50 characters.
+                </div>
+                  <div class="form-group col-md-12 mb-4">
+                  <label for="firstname">First Name:</label>
+                  <input type="text" id="firstname" class="form-control" formControlName="firstname">
+                  </div>
+
+
+
+                <div *ngIf="submitted && userForm.get('lastname')?.hasError('required') ">
+                  Last Name is required.
                 </div>
                 <div class="form-group col-md-12 mb-4">
-                  <input type="text" class="form-control input-lg" formControlName="lastName" placeholder="Last Name">
+                  <input type="text" class="form-control input-lg" formControlName="lastname" placeholder="Last Name">
+                </div>
+
+
+                <div *ngIf="submitted && userForm.get('email')?.hasError('required') ">
+                  email is required.
+                </div>
+                <div *ngIf="submitted && userForm.get('email')?.hasError('email')">
+                  Please enter a valid email address.
                 </div>
                 <div class="form-group col-md-12 mb-4">
                   <input type="email" class="form-control input-lg" formControlName="email" placeholder="Email">
                 </div>
+                <div *ngIf="submitted && userForm.get('password')?.hasError('required')">
+                  Password is required.
+                </div>
+                <div *ngIf="submitted && userForm.get('password')?.hasError('minlength')">
+                  Minimum password length is 8 characters.
+                </div>
                 <div class="form-group col-md-12 mb-4">
                   <input type="password" class="form-control input-lg" formControlName="password" placeholder="Password">
                 </div>
-                <div class="form-group col-md-12 mb-4">
-                  <input type="text" class="form-control input-lg" formControlName="Adresse" placeholder="Address">
+                <div *ngIf="submitted && userForm.get('adresse')?.hasError('required') ">
+                  Adresse is required.
                 </div>
+                <div class="form-group col-md-12 mb-4">
+                  <input type="text" class="form-control input-lg" formControlName="adresse" placeholder="Address">
+                </div>
+                <div *ngIf="submitted && userForm.get('phonenumber')?.hasError('required')">
+                  Please enter a valid phone number.
+                </div>
+                <div class="form-group col-md-12 mb-4">
+                  <input type="text" class="form-control input-lg" formControlName="phonenumber" placeholder="Phone">
+                </div>
+
+
+                <div *ngIf="submitted && userForm.get('birthdate')?.hasError('required') ">
+                  Birthdate  is required.
+                </div>
+                <div class="form-group col-md-12 mb-4">
+                  <input type="date" class="form-control input-lg" formControlName="birthdate" placeholder="Date">
+                </div><div *ngIf="submitted && userForm.get('gender')?.hasError('required') ">
+                gender is required.
+              </div>
                 <div class="form-group col-md-12 mb-4">
                   <select class="form-control input-lg" formControlName="gender" placeholder="Gender">
                     <option *ngFor="let g of genderOptions" [value]="g.value">{{ g.label }}</option>
                   </select>
+
                 </div>
                 <!-- End of missing fields -->
 
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between mb-3">
-                    <div class="custom-control custom-checkbox mr-3 mb-3">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2">
-                      <label class="custom-control-label" for="customCheck2">I Agree the terms and conditions.</label>
-                    </div>
-                  </div>
+                <div class="center">
 
-                  <button type="submit" class="btn btn-primary btn-pill mb-4">Sign Up</button>
 
-                  <p>Already have an account?
-                    <a class="text-blue" href="#">Sign in</a>
-                  </p>
+                  <button type="submit" class="btn btn-primary btn-pill mb-4">Add User</button>
+
+
                 </div>
               </div>
             </form>

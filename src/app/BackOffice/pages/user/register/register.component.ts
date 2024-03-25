@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import { User } from 'src/app/Models/User';
 import { UserService } from 'src/app/Services/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -10,29 +11,56 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class RegisterComponent implements OnInit {
   userForm : FormGroup ;
-  gender : string[] = ['MALE','FEMALE'];
-  constructor(private  formbulder:FormBuilder,private userService: UserService) {
-    this.userForm = this.formbulder.group({
-      firstName:['',Validators.required],
-      email:['',Validators.required],
-    lastname:['',Validators.required],
-    password:['',Validators.required],
-    Adresse:['',Validators.required],
-    gender:['',Validators.required],
-    })
-  }
+  submitted = false;
   genderOptions = [
-    { value: 'MALE', label: 'Male' },
-    { value: 'FEMALE', label: 'Female' }
+    { value: '1', label: 'Female' },
+    { value: '0', label: 'Male' }
   ];
-  addUser() {
-    if (this.userForm.valid) {
-      const newuser: User = this.userForm.value as User;
-      this.userService.addUser(newuser).subscribe();
-    }
+  constructor(private  formbulder:FormBuilder,private router: Router,private userService: UserService) {
+    this.userForm = this.formbulder.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.min(8)]],
+      adresse: ['', Validators.required],
+      birthdate:['', Validators.required],
+      phonenumber:['', [Validators.required,this.positiveNumberValidator()]],
+      gender: ['', Validators.required],
+    });
+
   }
+
+
+
 
   ngOnInit(): void {
-  }
 
+      }
+  addUser() {
+    this.submitted = true;
+    if (this.userForm.valid) {
+      const newuser: User = this.userForm.value as User;
+      this.userService.addUser(newuser).subscribe(
+        response => {
+          // Handle success, if needed
+          console.log('User added successfully:', response);
+          this.router.navigate(['/admin/findall']);
+          this.userForm.reset();
+
+        },
+        error => {
+          // Handle error
+          console.error('Error adding user:', error);
+        }
+      );}
+  }
+    positiveNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = control.value;
+      if (Validators.required(control) !== null || isNaN(value) || value < 0) {
+        return { 'positiveNumber': { value } };
+      }
+      return null;
+    };
+  }
 }

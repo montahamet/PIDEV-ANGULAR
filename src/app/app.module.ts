@@ -17,6 +17,12 @@ import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-
 import {  HttpClientModule } from '@angular/common/http';
 import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateUserComponent} from "./BackOffice/pages/user/update-user/update-user.component";
+import {UserService} from "./Services/user.service";
+import { UserDetailComponent} from "./BackOffice/pages/user/user-detail/user-detail.component";
+import { FindAllRoleComponent} from "./BackOffice/pages/role/find-all-role/find-all-role.component";
+import { UpdateRoleComponent} from "./BackOffice/pages/role/update-role/update-role.component";
+import { AddRoleComponent} from "./BackOffice/pages/role/add-role/add-role.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +38,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     AddProjectComponent,
-    FindAllUsersComponent
+    FindAllUsersComponent,
+    UpdateUserComponent,
+    UserDetailComponent,
+    FindAllRoleComponent,
+    UpdateRoleComponent,
+    AddRoleComponent
 
   ],
   imports: [
@@ -40,11 +51,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
-    
+
 
 
   ],
-  providers: [],
+  providers: [
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
