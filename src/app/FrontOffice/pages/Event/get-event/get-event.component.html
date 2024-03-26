@@ -41,6 +41,9 @@
   <button class="btn btn-add-activity mb-3 float-end" data-bs-toggle="modal" data-bs-target="#addEventModal">
     Add Event
   </button>
+  <div class="container mt-3">
+    <input type="text" class="form-control mb-3" placeholder="Search events..." [(ngModel)]="searchTerm" (ngModelChange)="filterEvents()">
+  </div>
 
   <!-- Event Cards Layout -->
   <div class="row">
@@ -56,6 +59,8 @@
         </div>
         <div class="card-footer">
           <button class="btn btn-outline-secondary" (click)="showUpdateModal(event)" style="color: var(--color-dark-blue);">Update</button>
+          <!-- Inside your event details template -->
+<!--          <button class="btn btn-primary" (click)="registerUserForEvent(event.event_id)">Register for this Event</button>-->
 
           <button class="btn btn-outline-danger" (click)="askDeleteConfirmation(event.event_id)" style="color: var(--color-bright-orange);">Delete</button>
         </div>

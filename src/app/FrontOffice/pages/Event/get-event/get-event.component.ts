@@ -5,10 +5,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { User } from 'src/app/Models/User';
 import { Activity } from 'src/app/Models/Activity';
 import { RegistrationEvent } from 'src/app/Models/RegistrationEvent';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import * as bootstrap from "bootstrap";
 import {Location} from "@angular/common";
 import {PageEvent} from "@angular/material/paginator";
+import {debounceTime} from "rxjs";
 
 @Component({
   selector: 'app-get-event',
@@ -31,6 +32,9 @@ export class GetEventComponentF implements OnInit {
   totalItems = 0;
   currentPage = 0;
   pageSize = 10; // Adjust based on your needs
+  searchTerm: string  = '';
+  searchControl = new FormControl('');
+  allEvents: any[] = [];
 
 
   constructor(
@@ -63,11 +67,45 @@ export class GetEventComponentF implements OnInit {
     this.event_id = parseInt(<string>this.route.snapshot.paramMap.get('id'));
 
   }
+
+
+  filterEvents(): void {
+    console.log('Filtering with searchTerm:', this.searchTerm);
+    if (this.searchTerm) {
+      this.events = this.allEvents.filter(event =>
+        event.event_name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        event.event_description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      // Reset the events to allEvents when search term is cleared
+      console.log('Resetting events to full list');
+      this.events = [...this.allEvents];
+    }
+  }
+
+
   showModalWithMessage(message: string): void {
     this.warningMessage = message;
     const modalInstance = new bootstrap.Modal(this.warningSuccessModal.nativeElement);
     modalInstance.show();
   }
+
+  // registerUserForEvent(eventId: number): void {
+  //   // Assuming you have a way to get the current userId,
+  //   // perhaps from an authentication service or a global state
+  //   const userId = this.authService.getCurrentUserId(); // Example method
+  //
+  //   this.eventService.registerForEvent(userId, eventId).subscribe({
+  //     next: (response) => {
+  //       console.log('Registration successful', response);
+  //       // Optionally, show a success message to the user
+  //     },
+  //     error: (error) => {
+  //       console.error('Registration failed', error);
+  //       // Optionally, show an error message to the user
+  //     }
+  //   });
+  // }
   showUpdateModal(event: Event): void {
     this.selectedEvent = event;
     this.updateEventForm.patchValue({
@@ -82,7 +120,8 @@ export class GetEventComponentF implements OnInit {
   loadEvents(pageIndex: number, pageSize: number): void {
     this.eventService.findAllEvent(pageIndex, pageSize).subscribe({
       next: (response) => {
-        this.events = response.content; // Adjust according to your API response structure
+        this.allEvents = response.content; // Store all events
+        this.events = [...this.allEvents]; // Initialize 'events' with 'allEvents' for display
         this.totalItems = response.totalElements;
         this.currentPage = pageIndex;
         this.pageSize = pageSize;
@@ -93,6 +132,7 @@ export class GetEventComponentF implements OnInit {
       }
     });
   }
+
 
   changePage(event: PageEvent): void {
     this.loadEvents(event.pageIndex, event.pageSize);

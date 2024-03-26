@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-templat-back.component.css']
 })
 export class AllTemplatBackComponent {
+  public showNavbar: boolean = true;
 
+  toggleNavbar(): void {
+    this.showNavbar = !this.showNavbar;
+  }
 }

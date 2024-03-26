@@ -12,6 +12,8 @@ export class GetActivityComponentBack implements OnInit{
   totalActivities = 0;
   currentPage = 0;
   pageSize = 10;
+  searchQuery = '';
+
   constructor(private activityServiceB : ActivityService) {
   }
   loadActivitiesBack(): void {
@@ -23,7 +25,12 @@ export class GetActivityComponentBack implements OnInit{
       error => console.error('Error fetching activities:', error)
     );
   }
-
+  get filteredActivities() {
+    return this.activities.filter(activity =>
+        activity.activity_name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        activity.description.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
     ngOnInit() : void {
     this.loadActivitiesBack();
       console.log(this.activities);

@@ -10,6 +10,17 @@ export class RegistrationEventService {
   private RegistrationEventUrl: string = 'http://localhost:8082/PiDev/RegistrationEvent-TrainingSession/';
 
   constructor(private http: HttpClient) { }
+  registerForEvent(userId: number, eventId: number): Observable<RegistrationEvent> {
+    // Assuming your backend expects something like this
+    const registrationData = {
+      registration_date: new Date(), // Assuming this is handled on the backend, you might not need to send it
+      userId, // Directly sending userId
+      eventId // Directly sending eventId
+    };
+
+    return this.http.post<RegistrationEvent>(`${this.RegistrationEventUrl}/register`, registrationData);
+  }
+
 
   findAllRegistrationEvent(): Observable<RegistrationEvent[]> {
     return this.http.get<RegistrationEvent[]>(this.RegistrationEventUrl + 'findAllRegistrationEvent');

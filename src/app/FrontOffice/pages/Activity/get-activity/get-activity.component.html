@@ -40,10 +40,14 @@
   <button class="btn btn-add-activity mb-3 float-right" data-bs-toggle="modal" data-bs-target="#addActivityModal">
     Add Activity
   </button>
+  <div class="container mt-3">
+    <input type="text" class="form-control mb-3" placeholder="Search activities" [(ngModel)]="searchTerm" (ngModelChange)="filterActivities()">
+
+  </div>
 
   <div class="row">
     <!-- Cartes d'activité -->
-    <div class="col-md-4" *ngFor="let activity of activities">
+    <div class="col-md-4" *ngFor="let activity of filteredActivities">
       <div class="card mb-3 shadow">
         <div class="card-header text-white">
           <h5 class="card-title" >{{ activity.activity_name }}</h5>

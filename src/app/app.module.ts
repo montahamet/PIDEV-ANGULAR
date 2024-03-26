@@ -62,7 +62,6 @@ import {CommonModule, DatePipe} from "@angular/common";
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
-import {MapComponent} from "./components/map/map.component";
 import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-event.component";
 
 
@@ -103,7 +102,7 @@ import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-even
     FilterPipe,
     WishlistComponent,
 
-    MapComponent,
+
     AddEventComponent,
     UpdateEventComponent,
     AddFeedBackComponent,

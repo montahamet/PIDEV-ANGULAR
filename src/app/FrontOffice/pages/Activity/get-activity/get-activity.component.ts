@@ -43,7 +43,9 @@ export class GetActivityComponentFront implements OnInit {
   updateActivityForm!: FormGroup;
   @ViewChild('updateActivityModal', { static: true }) updateActivityModal!: ElementRef;
   selectedActivity: Activity | null = null;
-
+  searchTerm: string = '';
+  filteredActivities: Activity[] = [];
+  allActivities: Activity[] = [];
 
   constructor(
     private activityServiceF: ActivityService,
@@ -110,26 +112,7 @@ export class GetActivityComponentFront implements OnInit {
       }
     }, 0);
   }
-  onUpdateActivity(): void {
-    if (this.updateActivityForm.valid && this.selectedActivity) {
-      const updatedActivity = {
-        ...this.selectedActivity, // Spread the selected activity to keep ID and other fields
-        ...this.updateActivityForm.value,
-      };
 
-      this.activityServiceF.updateActivity(updatedActivity.activity_id, updatedActivity).subscribe({
-        next: () => {
-          this.showModalWithMessage('Activity updated successfully!');
-          this.loadActivitiesFront(this.currentPage, this.pageSize); // Reload your activities list
-          // Optionally, close the modal here if it doesn't close automatically
-        },
-        error: (error) => {
-          console.error('Error updating activity:', error);
-          this.showModalWithMessage('Error updating activity.');
-        }
-      });
-    }
-  }
   askDeleteConfirmation(activityId: number): void {
     this.activityIdToDelete = activityId;
     const modal = new bootstrap.Modal(this.deleteConfirmationModal.nativeElement);
@@ -146,7 +129,6 @@ export class GetActivityComponentFront implements OnInit {
       }
     });
 
-    // Correct way to hide the modal
     const modalInstance = bootstrap.Modal.getInstance(this.deleteConfirmationModal.nativeElement);
     if (modalInstance) {
       modalInstance.hide();
@@ -156,12 +138,25 @@ export class GetActivityComponentFront implements OnInit {
 
   loadActivitiesFront(pageIndex: number, pageSize: number): void {
     this.activityServiceF.findAllActivities(pageIndex, pageSize).subscribe(response => {
-      this.activities = response.content;
+      this.allActivities = response.content; // Store all activities
+      this.filteredActivities = [...this.allActivities]; // Set filteredActivities to allActivities initially
       this.totalActivities = response.totalElements;
-      this.totalPages = Math.ceil(this.totalActivities / this.pageSize);
+      this.totalPages = response.totalPages || Math.ceil(this.totalActivities / this.pageSize);
     }, error => {
       console.error('Error fetching activities:', error);
     });
+  }
+
+
+  filterActivities(): void {
+    if (!this.searchTerm) {
+      this.filteredActivities = [...this.allActivities]; // Reset to the full list
+    } else {
+      this.filteredActivities = this.allActivities.filter(activity =>
+        activity.activity_name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        activity.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
   nextPage(): void {
     if (this.currentPage < (this.totalActivities / this.pageSize) - 1) {
