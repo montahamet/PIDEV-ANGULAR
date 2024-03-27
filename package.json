@@ -27,6 +27,8 @@
     "@fullcalendar/interaction": "^6.1.11",
     "@material/ripple": "^15.0.0-canary.684e33d25.0",
     "bootstrap": "^5.3.3",
+    "angular-calendar": "^0.31.0",
+    "date-fns": "^3.6.0",
     "feather-icons": "^4.29.1",
     "jquery": "^3.7.1",
     "leaflet": "^1.9.4",
