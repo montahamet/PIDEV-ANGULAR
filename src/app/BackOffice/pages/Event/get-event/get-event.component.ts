@@ -6,6 +6,6 @@ import {Event} from "@angular/router";
   templateUrl: './get-event.component.html',
   styleUrls: ['./get-event.component.css']
 })
-export class GetEventComponent {
+  export class GetEventComponentBack {
 event: Event[]=[];
 }

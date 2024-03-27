@@ -12,6 +12,7 @@ import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.co
 import { LoginComponent } from './BackOffice/pages/user/login/login.component';
 import { RegisterComponent } from './BackOffice/pages/user/register/register.component';
 import { AddProjectComponent } from './BackOffice/pages/project/add-project/add-project.component';
+// import { MapComponent } from './components/map/map.component';
 
 import { FindAllUsersComponent } from './BackOffice/pages/user/find-all-users/find-all-users.component' ;
 import { UpdateUserComponent} from "./BackOffice/pages/user/update-user/update-user.component";
@@ -68,6 +69,7 @@ import {CommonModule, DatePipe} from "@angular/common";
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
+import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-event.component";
 
 
 
@@ -103,8 +105,7 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     UpdateInterviewComponent,
     AddJobOfferComponent,
     UpdateJobOfferComponent,
-
-
+    // mapContainer,
     AddProjectofferComponent,
     AddQuoteComponent,
     GetProjectofferComponent,
@@ -120,7 +121,6 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     AddFeedBackComponent,
     UpdateFeedBackComponent,
     AddActivityComponent,
-    GetActivityComponentBack,
     UpdateActivityComponent,
     AppComponent,
     GetActivityComponentFront,
@@ -131,6 +131,8 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     AddFeedBackComponentF,
     UpdateEventComponent,
     GetFeedbackComponent,
+    GetActivityComponentBack,
+    GetEventComponentBack,
 
 
 
@@ -150,7 +152,6 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
     MatDialogModule,
     BrowserAnimationsModule,
 
-
     CommonModule,
     MatPaginatorModule
 
@@ -161,6 +162,7 @@ import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component"
 
 
   ],
+
   providers: [
     DatePipe
   ],

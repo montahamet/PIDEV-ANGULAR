@@ -40,10 +40,14 @@
   <button class="btn btn-add-activity mb-3 float-right" data-bs-toggle="modal" data-bs-target="#addActivityModal">
     Add Activity
   </button>
+  <div class="container mt-3">
+    <input type="text" class="form-control mb-3" placeholder="Search activities" [(ngModel)]="searchTerm" (ngModelChange)="filterActivities()">
+
+  </div>
 
   <div class="row">
     <!-- Cartes d'activité -->
-    <div class="col-md-4" *ngFor="let activity of activities">
+    <div class="col-md-4" *ngFor="let activity of filteredActivities">
       <div class="card mb-3 shadow">
         <div class="card-header text-white">
           <h5 class="card-title" >{{ activity.activity_name }}</h5>
@@ -93,15 +97,16 @@
           <div class="form-group">
             <label for="activity_name">Activity Name:</label>
             <input type="text" class="form-control" id="activity_name" formControlName="activity_name" required>
-            <div *ngIf="activityForm.get('activity_name')?.hasError('required') && activityForm.get('activity_name')?.touched">
+            <div *ngIf="activityForm.get('activity_name')?.touched && activityForm.get('activity_name')?.invalid" class="text-danger">
               Activity Name is required.
             </div>
+
           </div>
 
           <div class="form-group">
             <label for="description">Description:</label>
             <textarea class="form-control" id="description" formControlName="description" required></textarea>
-            <div *ngIf="activityForm.get('description')?.hasError('required') && activityForm.get('description')?.touched">
+            <div *ngIf="activityForm.get('description')?.hasError('required') && activityForm.get('description')?.touched" class="text-danger">
               Description is required.
             </div>
           </div>
@@ -109,7 +114,7 @@
           <div class="form-group">
             <label for="startTime">Start Time:</label>
             <input type="datetime-local" class="form-control" id="startTime" formControlName="startTime" required>
-            <div *ngIf="activityForm.get('startTime')?.hasError('required') && activityForm.get('startTime')?.touched">
+            <div *ngIf="activityForm.get('startTime')?.hasError('required') && activityForm.get('startTime')?.touched " class="text-danger">
               Start Time is required.
             </div>
           </div>
@@ -117,17 +122,22 @@
           <div class="form-group">
             <label for="finishTime">Finish Time:</label>
             <input type="datetime-local" class="form-control" id="finishTime" formControlName="finishTime" required>
-            <div *ngIf="activityForm.get('finishTime')?.hasError('required') && activityForm.get('finishTime')?.touched">
+            <div *ngIf="activityForm.get('finishTime')?.hasError('required') && activityForm.get('finishTime')?.touched" class="text-danger">
               Finish Time is required.
             </div>
           </div>
+          <div *ngIf="shouldShowDateRangeError()" class="text-danger">
+          The start time must be before the finish time.
+        </div>
 
           <div class="form-group">
             <label for="event">Event:</label>
             <select class="form-control" id="event" formControlName="event" required>
-              <option *ngFor="let event of events" [ngValue]="event" [selected]="event.event_id === activityForm.get('event')?.value?.event_id">{{ event.event_name }}</option>
+              <option *ngFor="let event of events" [ngValue]="event" [selected]="event.event_id === activityForm.get('event')?.value?.event_id" >{{ event.event_name }}</option>
             </select>
           </div>
+
+
 
 
 
@@ -142,7 +152,7 @@
     </div>
   </div>
 <!--  update modal-->
-  <div class="modal fade" id="updateActivityModal" tabindex="-1" aria-labelledby="updateActivityModalLabel" aria-hidden="true">
+  <div class="modal fade" id="updateActivityModal" tabindex="-1" aria-labelledby="updateActivityModalLabel" aria-hidden="true" #updateActivityModal>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

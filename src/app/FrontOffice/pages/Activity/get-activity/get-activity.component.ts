@@ -4,18 +4,28 @@ import { ActivityService } from 'src/app/Services/Activity.service';
 import { Router } from '@angular/router';
 import { Event } from 'src/app/Models/Event';
 import {PageEvent} from '@angular/material/paginator';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, ValidationErrors, ValidatorFn, AbstractControl} from "@angular/forms";
 import {Location} from "@angular/common";
 import * as bootstrap from 'bootstrap';
 
 
-
-
+export const dateRangeValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const group = control as FormGroup;
+  const start = group.get('startTime')?.value;
+  const end = group.get('finishTime')?.value;
+  // Check if both start and end values are present before validating
+  if (start && end) {
+    return start < end ? null : { dateRange: true };
+  }
+  return null; // No error if one or both fields are empty
+};
 @Component({
   selector: 'app-get-activity',
   templateUrl: './get-activity.component.html',
   styleUrls: ['./get-activity.component.css'],
 })
+
+
 export class GetActivityComponentFront implements OnInit {
   activities: Activity[] = [];
   activity: Activity = new Activity();
@@ -31,8 +41,11 @@ export class GetActivityComponentFront implements OnInit {
   @ViewChild('deleteConfirmationModal') deleteConfirmationModal!: ElementRef;
   private activityIdToDelete!: number;
   updateActivityForm!: FormGroup;
-  @ViewChild('updateActivityModal') updateActivityModal!: ElementRef;
-
+  @ViewChild('updateActivityModal', { static: true }) updateActivityModal!: ElementRef;
+  selectedActivity: Activity | null = null;
+  searchTerm: string = '';
+  filteredActivities: Activity[] = [];
+  allActivities: Activity[] = [];
 
   constructor(
     private activityServiceF: ActivityService,
@@ -48,27 +61,35 @@ export class GetActivityComponentFront implements OnInit {
     startTime: ['', Validators.required],
     finishTime: ['', Validators.required],
     event: ['', Validators.required]
-  });
+  }, { validators: dateRangeValidator });
   this.updateActivityForm = this.formBuilder.group({
     activity_name: ['', Validators.required],
     description: ['', Validators.required],
     startTime: ['', Validators.required],
     finishTime: ['', Validators.required],
     event: ['', Validators.required]
-  });
+  }, { validators: dateRangeValidator });
 }
   ngOnInit(): void {
     this.loadActivitiesFront(this.currentPage, this.pageSize);
     this.loadEvents();
 
   }
+  shouldShowDateRangeError(): boolean {
+    const form = this.activityForm;
+    const startTimeFilled = !!form.get('startTime')?.value;
+    const finishTimeFilled = !!form.get('finishTime')?.value;
+    const hasDateRangeError = !!form.errors?.['dateRange'];
+
+    return startTimeFilled && finishTimeFilled && hasDateRangeError;
+  }
+
   showModalWithMessage(message: string): void {
     this.warningMessage = message;
     const modalInstance = new bootstrap.Modal(this.warningSuccessModal.nativeElement);
     modalInstance.show();
   }
-
-  openUpdateModal(activity: Activity) {
+  openUpdateModal(activity: Activity): void {
     this.updateActivityForm.patchValue({
       activity_id: activity.activity_id,
       activity_name: activity.activity_name,
@@ -77,9 +98,21 @@ export class GetActivityComponentFront implements OnInit {
       finishTime: activity.finishTime,
       event: activity.event.event_id
     });
-    const modal = new bootstrap.Modal(this.updateActivityModal.nativeElement);
-    modal.show();
+
+    // Ensure change detection has run to update the view
+    this.cdr.detectChanges();
+
+    // Use a timeout to allow the view to update and modal to be ready in the DOM
+    setTimeout(() => {
+      if (this.updateActivityModal && this.updateActivityModal.nativeElement) {
+        const modalInstance = new bootstrap.Modal(this.updateActivityModal.nativeElement);
+        modalInstance.show();
+      } else {
+        console.error('Update activity modal element is not available.');
+      }
+    }, 0);
   }
+
   askDeleteConfirmation(activityId: number): void {
     this.activityIdToDelete = activityId;
     const modal = new bootstrap.Modal(this.deleteConfirmationModal.nativeElement);
@@ -96,7 +129,6 @@ export class GetActivityComponentFront implements OnInit {
       }
     });
 
-    // Correct way to hide the modal
     const modalInstance = bootstrap.Modal.getInstance(this.deleteConfirmationModal.nativeElement);
     if (modalInstance) {
       modalInstance.hide();
@@ -106,12 +138,25 @@ export class GetActivityComponentFront implements OnInit {
 
   loadActivitiesFront(pageIndex: number, pageSize: number): void {
     this.activityServiceF.findAllActivities(pageIndex, pageSize).subscribe(response => {
-      this.activities = response.content;
+      this.allActivities = response.content; // Store all activities
+      this.filteredActivities = [...this.allActivities]; // Set filteredActivities to allActivities initially
       this.totalActivities = response.totalElements;
-      this.totalPages = Math.ceil(this.totalActivities / this.pageSize);
+      this.totalPages = response.totalPages || Math.ceil(this.totalActivities / this.pageSize);
     }, error => {
       console.error('Error fetching activities:', error);
     });
+  }
+
+
+  filterActivities(): void {
+    if (!this.searchTerm) {
+      this.filteredActivities = [...this.allActivities]; // Reset to the full list
+    } else {
+      this.filteredActivities = this.allActivities.filter(activity =>
+        activity.activity_name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        activity.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
   nextPage(): void {
     if (this.currentPage < (this.totalActivities / this.pageSize) - 1) {
@@ -151,28 +196,44 @@ export class GetActivityComponentFront implements OnInit {
     this.router.navigate([`/ActivityF/updateActivityF/${activity_id}`]);
   }
 
-  deleteActivity(activity_id : number): void {
-    console.log('Activity ID:', activity_id );
-    if (confirm('Are you sure you want to delete this activity?')) {
-      this.activityServiceF.deleteActivity(activity_id ).subscribe(
-        () => {
-          console.log('Activity deleted successfully.');
-          alert('Activity deleted successfully.');
-          this.loadActivitiesFront(this.currentPage, this.pageSize);
-        },
-        error => {
-          console.error('Error deleting activity:', error);
-        }
-      );
-    }
-  }
+  // deleteActivity(activity_id : number): void {
+  //   console.log('Activity ID:', activity_id );
+  //   if (confirm('Are you sure you want to delete this activity?')) {
+  //     this.activityServiceF.deleteActivity(activity_id ).subscribe(
+  //       () => {
+  //         console.log('Activity deleted successfully.');
+  //         alert('Activity deleted successfully.');
+  //         this.loadActivitiesFront(this.currentPage, this.pageSize);
+  //       },
+  //       error => {
+  //         console.error('Error deleting activity:', error);
+  //       }
+  //     );
+  //   }
+  // }
 
 
 
   getEventName(activity: Activity): string {
     return activity.event ? activity.event.event_name : 'No Event';
   }
-
+  get formErrors() {
+    return this.activityForm.errors || {};
+  }
+  showUpdateModal(activity: Activity): void {
+    this.selectedActivity = activity;
+    this.updateActivityForm.patchValue({
+      activity_id: activity.activity_id,
+      activity_name: activity.activity_name,
+      description: activity.description,
+      startTime: activity.startTime,
+      finishTime: activity.finishTime,
+      event: activity.event.event_id
+    });
+    // Assuming you have a reference to the modal element
+    const modal = new bootstrap.Modal(this.updateActivityModal.nativeElement);
+    modal.show();
+  }
   onSubmit() {
     if (this.activityForm.valid) {
       const activity: Activity = this.activityForm.value;
