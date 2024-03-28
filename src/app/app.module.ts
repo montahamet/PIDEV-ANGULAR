@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -70,6 +70,8 @@ import {CommonModule, DatePipe} from "@angular/common";
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {HomeFrontComponent} from "./FrontOffice/home-front/home-front.component";
 import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-event.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+// import { MapComponent } from './map/map.component';
 
 
 
@@ -133,6 +135,7 @@ import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-even
     GetFeedbackComponent,
     GetActivityComponentBack,
     GetEventComponentBack,
+    // MapComponent,
 
 
 
@@ -151,9 +154,10 @@ import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-even
     MatIconModule,
     MatDialogModule,
     BrowserAnimationsModule,
-
+    FullCalendarModule,
     CommonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgbModule,
 
 
 
@@ -162,13 +166,12 @@ import {GetEventComponentBack} from "./BackOffice/pages/Event/get-event/get-even
 
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [
-    DatePipe
+    DatePipe,UserService
   ],
-  providers: [
-    UserService,
-  ],
+
   bootstrap: [AppComponent]
 
 })

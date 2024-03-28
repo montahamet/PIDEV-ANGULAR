@@ -38,9 +38,18 @@
 <div class="container mt-3">
   <h2>Events</h2>
   <br>
-  <button class="btn btn-add-activity mb-3 float-end" data-bs-toggle="modal" data-bs-target="#addEventModal">
-    Add Event
-  </button>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-add-activity" data-bs-toggle="modal" data-bs-target="#addEventModal">
+        <i class="bi bi-plus"></i> Add Event
+      </button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#calendarModal">
+        <i class="bi bi-calendar3"></i>
+      </button>
+    </div>
+  </div>
   <div class="container mt-3">
     <input type="text" class="form-control mb-3" placeholder="Search events..." [(ngModel)]="searchTerm" (ngModelChange)="filterEvents()">
   </div>
@@ -69,8 +78,8 @@
   </div>
 </div>
 <!-- Add Event Modal -->
-<div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div #mapModal class="modal fade" id="addEventModal" tabindex="-1"  role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="addEventModalLabel">Add New Event</h5>
@@ -96,6 +105,13 @@
           <div class="mb-3">
             <label for="place" class="form-label">Place</label>
             <input type="text" class="form-control" id="place" formControlName="place">
+            <br>
+            <input type="text" class="form-control" [(ngModel)]="locationQuery" [ngModelOptions]="{standalone: true}" placeholder="Search for a location" (change)="searchLocation(locationQuery, 'add')">
+
+            <!--            <input type="text" [(ngModel)]="locationQuery" placeholder="Search for a location" (change)="searchLocation(locationQuery)">-->
+            <div id="map" #mapContainer style="height: 400px;"></div>
+
+
             <div *ngIf="newEventForm.get('place')?.touched && newEventForm.get('place')?.invalid" class="text-danger">
               Event place is required .
             </div>
@@ -133,7 +149,14 @@
           </div>
           <div class="mb-3">
             <label for="place" class="form-label">Place</label>
-            <input type="text" class="form-control" id="place" formControlName="place">
+            <input type="text" class="form-control" id="place" formControlName="place" placeholder="Address">
+            <br>
+            <input type="text" class="form-control" [(ngModel)]="locationQuery"
+                   [ngModelOptions]="{standalone: true}" placeholder="Search for a location"
+                   (keydown.enter)="$event.preventDefault(); searchLocation(locationQuery, 'update')">
+
+            <div id="updateMap" #updateMapContainer style="height: 400px;"></div>
+
           </div>
           <div class="mb-3">
             <label for="event_description" class="form-label">Description</label>
@@ -145,8 +168,46 @@
     </div>
   </div>
 </div>
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#calendarModal">-->
+<!--  <i class="bi bi-calendar3"></i></button>-->
+
+
+<div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="calendarModalLabel" >Calendrier des Événements</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Ici, nous insérerons le calendrier -->
+        <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
 <mat-paginator [length]="totalItems"
                [pageSize]="pageSize"
                [pageSizeOptions]="[5, 10, 20]"
                (page)="changePage($event)">
 </mat-paginator>
+<div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailsModalLabel">{{ selectedEventDetails?.event_name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Les détails de votre événement ici -->
+        <p>Date: {{ selectedEventDetails?.event_date | date: 'longDate' }}</p>
+        <p>Lieu: {{ selectedEventDetails?.place }}</p>
+        <p>Description: {{ selectedEventDetails?.event_description }}</p>
+        <!-- etc. -->
+      </div>
+    </div>
+  </div>
+</div>

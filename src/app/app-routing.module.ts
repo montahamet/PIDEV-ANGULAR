@@ -78,8 +78,7 @@ const routes: Routes = [
 
       { path: 'allactivitiesB', component: GetActivityComponentBack },
 
-    ]
-  },
+
 //   {  path: 'admin',
 //     component: AllTemplatBackComponent ,
 //     import: { HomeFrontComponent }, from, './FrontOffice/home-front/home-front.component': ,
