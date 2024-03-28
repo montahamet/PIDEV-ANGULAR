@@ -6,6 +6,8 @@ import {FeedBack} from "./FeedBack";
 export class Event{
   event_id!: number;
   event_name!: string;
+   latitude!:number;
+   longitude!:number ;
   event_description!: string ;
   place !:string;
   event_date!: Date;

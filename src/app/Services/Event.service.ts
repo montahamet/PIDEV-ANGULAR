@@ -13,6 +13,10 @@ export class EventService {
   private EventUrl: string = 'http://localhost:8082/PiDev/Event-TrainingSession';
 
   constructor(private http: HttpClient) { }
+  saveLocation(locationData: any): Observable<any> {
+    // Replace '/api/location' with the actual endpoint where you send the location data
+    return this.http.post('/api/location', locationData);
+  }
 
   findAllEvent(page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.EventUrl}/events?page=${page}&size=${size}`);
